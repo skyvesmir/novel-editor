@@ -51,6 +51,21 @@ At this scale, scripted scans (keyword frequency, hook-pattern detection, dialog
 - **Falsification pass is mandatory**: for each settled condition, actively search for scenes that would violate it before confirming it. Name what you searched for and what you found.
 - Scans may direct attention (where to sample) and populate the ledger (counts for AI的紋切り型 accumulation), but the route condition → quotation → impact must run through text you actually read.
 
+## Machine extraction in file-access environments (付録: 機械抽出手順)
+
+This skill must stay portable to claude.ai (paste-only). In environments where scripts can read the manuscript files directly (local agent sessions, editors with shell access), the scans below become available. They follow the same boundary as 「機械走査と精読の線引き」: **signals only, never verdicts**, and every settled condition still requires declared close reading.
+
+Procedure used and validated across three completed works (765 / 371 / 274 episodes):
+
+1. **Load & clean**: strip page numbers and boilerplate; count clean characters as the work's size denominator.
+2. **Index episodes** per the Episode indexing section above — confirm marker style first, then verify numbering integrity (gaps, duplicates) and gap-size sanity.
+3. **Registers**: top-N proper-noun frequencies with first-appearance episode numbers (characters, systems, place names); first↔last mention distance for premise-tied names (long-range setup signal).
+4. **Density profiles per decile or arc**: dialogue markers, action vocabulary, system/level keywords per 万字 — rhythm fixation and escalation signals.
+5. **Tail-hook rate by third of the work**: last N characters of each episode checked against hook-pattern list; report counting rule. Within-work comparison only (cross-work rates range 0–16%; never an absolute anchor).
+6. **Cliché counts**: fixed pattern dictionary (苦笑・思わず・頷く etc.) per 万字 → ledger accumulation for 文章 cap-rule checks. Absence from the dictionary is not absence from the text.
+
+Output of scans goes into the ledger as facts with their collection method stated (e.g. 「走査: pythonスクリプト・パターン辞書X件」), so the next session can tell machine-collected rows from close-reading-derived ones. In claude.ai (no script execution), these steps degrade to sampling by hand — do them on a declared sample basis or skip them and say so; do not fake numbers.
+
 ## Ledger standard items (Layer 0 の標準項目)
 
 Beyond the format in `handoff-format.md`, a work-scale ledger should include these mechanically collectible items — they feed work-scale conditions that no chapter scoring can see:
