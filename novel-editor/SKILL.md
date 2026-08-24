@@ -44,7 +44,7 @@ Read the relevant reference files before writing anything. They are short, and t
 
 ## Test cases
 
-`evals/evals.json` holds the test prompts for this skill, `evals/trigger-evals.json` holds should-trigger / should-not-trigger queries for the description, and `evals/notes.md` records what the last check found. They are for maintaining the skill, not for evaluating manuscripts — ignore them during normal use.
+`evals/evals.json` holds the test prompts for this skill, `evals/trigger-evals.json` holds should-trigger / should-not-trigger queries for the description, and `notes.md` at the repository root records what the last check found. They are for maintaining the skill, not for evaluating manuscripts — ignore them during normal use.
 
 ## Handoff data between sessions
 
