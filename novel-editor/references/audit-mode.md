@@ -32,7 +32,16 @@ Everything else was already judged per chapter. Re-judging it here wastes the se
 1. **Collect**: ask for or load the 作品台帳 plus the volumes/arcs since the last audit. Without a ledger, build one before judging anything (see Layer 0).
 2. **Re-sample early work**: re-read stratified samples from the earliest volumes included in this audit — do not trust earlier scores as evidence. Past numbers are reference history, not proof.
 3. **Judge the listed conditions only**, each by the standard route: condition → quotation from the current sample or ledger entry with its source location → score impact.
-4. **Report**: per condition — settled (with quotes), still pending (name exactly what future text would settle it), or overturned (the chapter-scale judgment does not survive work-scale evidence; say which chapter said what).
+4. **Report**: per condition — settled (with quotes), still pending (name exactly what future text would settle it; write `点数:7(回収未検証)`-style pending marks when a numeric impact is provisional), or overturned (the chapter-scale judgment does not survive work-scale evidence; say which chapter said what).
+
+## Machine scanning vs. close reading (機械走査と精読の線引き)
+
+At this scale, scripted scans (keyword frequency, hook-pattern detection, dialogue-density profiles) are tempting and partially useful. Their role is strictly limited:
+
+- **Scans collect signals (兆候), never verdicts.** A count like 苦笑×0.88回/万字 is a fact about a pattern dictionary, not about prose quality. Patterns absent from the dictionary are invisible to it; a low count is therefore weak evidence of anything.
+- **Every judgment must rest on close reading.** Before settling any condition, read representative passages in full context: at minimum 2–4 complete episodes per arc boundary under review, chosen to include the strongest candidates *for and against* the condition. Declare the total close-reading volume in the output (e.g. 「精読：約2.4万字／全体277万字の0.9%」). An audit that cannot state its reading volume is a scan wearing an audit's clothes.
+- **Falsification pass is mandatory**: for each settled condition, actively search for scenes that would violate it before confirming it. Name what you searched for and what you found.
+- Scans may direct attention (where to sample) and populate the ledger (counts for AI的紋切り型 accumulation), but the route condition → quotation → impact must run through text you actually read.
 
 ## Prose axis sampling rule (文章軸の標本抽出)
 
