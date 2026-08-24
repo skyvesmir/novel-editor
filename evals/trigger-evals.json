@@ -1,0 +1,21 @@
+[
+  {"query": "この小説の原稿、厳しめに採点してほしい", "should_trigger": true},
+  {"query": "これどう？　厳しめでお願い", "should_trigger": true},
+  {"query": "次の章を読みたくなるかどうかも含めて評価して", "should_trigger": true},
+  {"query": "牽引力ってどのくらいある？　この章", "should_trigger": true},
+  {"query": "章末の引きが弱い気がするから見てほしい", "should_trigger": true},
+  {"query": "表現力の訓練をしたい、お題出して", "should_trigger": true},
+  {"query": "まだプロット段階だけど弱点を洗い出してほしい", "should_trigger": true},
+  {"query": "前回の続きです。引き継ぎデータ貼ります", "should_trigger": true},
+  {"query": "この文章、AIっぽくない？チェックして", "should_trigger": true},
+  {"query": "改稿したので再評価して。前回の指摘直したつもり", "should_trigger": true},
+  {"query": "この原稿、誤字だけチェックして。直さなくていい", "should_trigger": true},
+  {"query": "誤字脱字ないか確認してほしい、指摘だけで", "should_trigger": true},
+  {"query": "この小説、誤変換や表記ゆれがないか見て", "should_trigger": true},
+  {"query": "会社紹介資料のキャッチコピーを考えて", "should_trigger": false},
+  {"query": "学術論文の要約を手伝って", "should_trigger": false},
+  {"query": "英語のビジネスメールを添削して", "should_trigger": false},
+  {"query": "異世界転生ものの小説を新しく書いてほしい", "should_trigger": false},
+  {"query": "来週の予定を整理して", "should_trigger": false},
+  {"query": "このExcel関数のエラーを直して", "should_trigger": false}
+]
