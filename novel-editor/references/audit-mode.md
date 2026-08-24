@@ -34,6 +34,14 @@ Everything else was already judged per chapter. Re-judging it here wastes the se
 3. **Judge the listed conditions only**, each by the standard route: condition → quotation from the current sample or ledger entry with its source location → score impact.
 4. **Report**: per condition — settled (with quotes), still pending (name exactly what future text would settle it; write `点数:7(回収未検証)`-style pending marks when a numeric impact is provisional), or overturned (the chapter-scale judgment does not survive work-scale evidence; say which chapter said what).
 
+## Episode indexing (章立て索引化) — before any counting
+
+When working from raw text files rather than an existing ledger, index episodes first, and never assume the marker style:
+
+- **Confirm the delimiter style first** by sampling pages/sections across the file (start, middle, end). Styles observed in practice: `第N話` headings; bare title lines after page breaks (no numbering at all); full-width numbered titles (`１．タイトル`); 前書き/後書き lines interleaved with the episode proper.
+- **Index, then verify mechanically**: after building the episode list, check numbering integrity (missing/duplicate numbers), and sanity-check gap sizes between consecutive starts — a suspiciously small gap usually means a false-positive title (a skill name, a scene header), not an episode boundary.
+- Record in the ledger how the index was built and its verified coverage (e.g. 「765話・欠落3話は合併で本文連続・重複1」). An unverified index poisons every count built on it.
+
 ## Machine scanning vs. close reading (機械走査と精読の線引き)
 
 At this scale, scripted scans (keyword frequency, hook-pattern detection, dialogue-density profiles) are tempting and partially useful. Their role is strictly limited:
@@ -42,6 +50,15 @@ At this scale, scripted scans (keyword frequency, hook-pattern detection, dialog
 - **Every judgment must rest on close reading.** Before settling any condition, read representative passages in full context: at minimum 2–4 complete episodes per arc boundary under review, chosen to include the strongest candidates *for and against* the condition. Declare the total close-reading volume in the output (e.g. 「精読：約2.4万字／全体277万字の0.9%」). An audit that cannot state its reading volume is a scan wearing an audit's clothes.
 - **Falsification pass is mandatory**: for each settled condition, actively search for scenes that would violate it before confirming it. Name what you searched for and what you found.
 - Scans may direct attention (where to sample) and populate the ledger (counts for AI的紋切り型 accumulation), but the route condition → quotation → impact must run through text you actually read.
+
+## Ledger standard items (Layer 0 の標準項目)
+
+Beyond the format in `handoff-format.md`, a work-scale ledger should include these mechanically collectible items — they feed work-scale conditions that no chapter scoring can see:
+
+- **Character register with first-appearance locations** (人物レジスタ＋初出話). A top-N register without first appearances hides 後半依存の配役 — major characters who arrive late and carry the ending.
+- **Long-range setup distance**: for proper nouns tied to the premise or mysteries, record first mention ↔ last mention episode numbers. A seed planted in episode 1 and harvested 270 episodes later is direct evidence for 構成の循環 conditions; a name dropped once and never recovered is direct evidence against. Counts only; the interpretation still requires close reading of both endpoints.
+- **Rhythm profile per decile/arc** (dialogue density, action density, median episode length): detects 展開リズムの固定化 and supports 牽引力上限規則 checks.
+- **Tail-hook rate by third/arc**, with the counting rule stated. Rates differ wildly between works (observed range 0–16%); they are comparable within a work over time, not across works — never use one work's rate as an absolute anchor for another's.
 
 ## Prose axis sampling rule (文章軸の標本抽出)
 
@@ -63,7 +80,7 @@ An audit spans dozens of sessions of prior scoring. Score inflation accumulated 
 ## Output skeleton
 
 ```markdown
-## 監査の前提（対象範囲：第N巻〜第M巻／弧の完了状況／使用した台帳の版）
+## 監査の前提（対象範囲：第N巻〜第M巻／弧の完了状況／使用した台帳の版／章立て索引の作り方と検証結果）
 ## 台帳の確認と更新（Layer 0：今セッションで追記した事実のみ）
 ## 作品スケール条件の判定（Layer 2：条件ごとに 引用→判定→確定/保留/覆し）
 ## 文章軸 標本抽出結果（サンプル構成と宣言付き点数）
