@@ -34,6 +34,7 @@ So: re-derive every judgment from the fixed achievement conditions in the refere
 | A finished chapter, a revision, a plot, or a worldbuilding/setting document, with a request to evaluate, score, or critique | Scoring mode | `references/scoring-rubric.md` and `references/score-anchors.md` |
 | A request for expression / prose / description training or a drill, or a few-hundred-character passage written in response to a drill | Training mode | `references/expression-training.md` |
 | A Japanese fiction manuscript with a request to check for typos, misconversions, or inconsistent spelling — nothing about craft, no score, no rewrite requested | 誤字チェックモード (proofreading mode) | `references/proofreading-mode.md` |
+| A long-running work (multiple volumes / 100万字級) at an arc boundary, or any request to audit the whole work rather than one chapter | Audit mode (作品規模監査) | `references/audit-mode.md` |
 
 If the request explicitly asks for 誤字チェック／誤字脱字の確認／校正 with no mention of scoring or craft feedback, use 誤字チェックモード regardless of length — it is a distinct request from evaluation, not a shorter version of it.
 
@@ -53,4 +54,13 @@ When a session reaches a natural break point, offer a fresh handoff block. Forma
 
 ## Portable use
 
-In an environment with no skill support, paste this file plus the reference files for the mode you need: scoring mode needs `scoring-rubric.md` and `score-anchors.md`, training mode needs `expression-training.md` alone, 誤字チェックモード needs `proofreading-mode.md` alone. The reference files are self-contained on purpose.
+In an environment with no skill support, paste this file plus the reference files for the mode you need. The reference files are self-contained on purpose, but some reference other files — use this table to paste the minimum complete set:
+
+| Mode | Paste these files |
+|---|---|
+| Scoring mode | `SKILL.md` + `scoring-rubric.md` + `score-anchors.md` + `prose-diagnostics.md` + `hook-techniques.md` |
+| Training mode | `SKILL.md` + `expression-training.md` alone |
+| 誤字チェックモード | `SKILL.md` + `proofreading-mode.md` alone |
+| Audit mode (作品規模監査, long works) | `SKILL.md` + `audit-mode.md` + `score-anchors.md` + `handoff-format.md` |
+
+Dependencies to be aware of: scoring and audit both read achievement conditions from `score-anchors.md`; `prose-diagnostics.md` enforces cap rules defined in `score-anchors.md`, so never paste it without that file; audit reads its ledger format from `handoff-format.md`. If a file referenced by a pasted file is missing, say so plainly instead of reconstructing its contents from memory.
