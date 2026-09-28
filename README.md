@@ -100,6 +100,19 @@ SKILL.mdのdescriptionは1024文字以内という制約があります(現在97
 
 詳細なノウハウ(出力復旧方法等)は AGENTS.md 参照。
 
+### Claude Code での開発(自動化済み)
+
+Claude Code では上記の手順がコマンド化されています(設定は `.claude/`、運用ルールは `CLAUDE.md`)。
+
+| コマンド | 内容 |
+|---|---|
+| `/review-skill` | skill本体の変更を査読し、再実行すべきeval番号を出す |
+| `/package-skill` | zip再構築＋検証(`python3 scripts/build_skill.py` と同じ) |
+| `/run-evals 3 7` | 指定evalを生成役・判定役の分離方式で実行(入力の注記除去は自動) |
+| `/check-triggers` | description発火テスト21件 |
+
+`git commit` 時には、原稿ファイルの混入・zipのずれ・description超過をフックが自動で止めます。
+
 ### 変更時のチェックリスト
 
 - [ ] reference file変更 → novel-editor.skill 再構築+SHA-256照合

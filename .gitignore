@@ -1,0 +1,14 @@
+# 著作権ルール: ユーザー供給の原稿・PDF・台帳・監査の作業ファイルはここに置く（GitHubに上げない）
+local/
+*.pdf
+*.epub
+*.docx
+
+# eval 実行の一時ファイル（scripts/eval_prep.py が生成。正解ラベル抜きの入力など）
+evals/.work/
+
+# 個人用の Claude Code 設定
+.claude/settings.local.json
+CLAUDE.local.md
+
+__pycache__/
