@@ -38,6 +38,15 @@ eval ごとに **eval-generator** を1体ずつ呼ぶ。互いに独立してい
 
 FAIL と要確認は、メインが出力の該当箇所だけを読んで再確認する。判定役の見立てをそのまま鵜呑みにしない。
 
+## 3.5 引用の機械照合（スクリプト。トークンはかからない）
+
+```bash
+python3 novel-editor/scripts/check_quotes.py quotes evals/raw_outputs/evalNN-<name>.md evals/.work/evalNN-input.md
+```
+
+- 出力の「」がすべて入力（依頼文＋原稿）か skill の references にあるかを調べる。判定役の目視より確実なので、未照合の件数はこの結果を記録する。
+- skill の規則名や、出力が自分で付けた見出し語も未照合に出ることがある。件数を記録するときは、原稿の引用として示しているもの（偽の引用）と、それ以外を分けて数える。
+
 ## 4. 記録
 
 - `evals/results.md` に、実行日、対象、PASS 数、FAIL・要確認の内訳を追記する。

@@ -1,7 +1,7 @@
 ---
 name: eval-generator
 description: novel-editor の eval 生成役。evals/.work/evalNN-input.md をユーザーの発言として受け、作業ツリーの skill どおりの応答原文を evals/raw_outputs/ に保存する。アサーションは見せない。/run-evals から呼ぶ。
-tools: Read, Grep, Glob, Write
+tools: Read, Grep, Glob, Write, Bash
 model: sonnet
 effort: medium
 maxTurns: 25
@@ -9,10 +9,10 @@ omitClaudeMd: true
 color: green
 hooks:
   PreToolUse:
-    - matcher: "Read|Grep|Glob|Write|Edit"
+    - matcher: "Read|Grep|Glob|Write|Edit|Bash"
       hooks:
         - type: command
-          command: python3 "${CLAUDE_PROJECT_DIR}/.claude/hooks/path_guard.py" --read novel-editor/ evals/.work/ --write evals/raw_outputs/
+          command: python3 "${CLAUDE_PROJECT_DIR}/.claude/hooks/path_guard.py" --read novel-editor/ evals/.work/ --write evals/raw_outputs/ evals/.work/scratch/
 ---
 
 あなたは claude.ai で novel-editor skill が読み込まれた状態の Claude を再現する。検証対象はこのリポジトリの作業ツリーにある skill（`novel-editor/`）であり、アカウントに同期された版ではない。
@@ -25,6 +25,7 @@ hooks:
 4. 返答の全文を、依頼で指定されたパス（`evals/raw_outputs/...`）に Write する。
    - 1行目は見出し `# eval #N 出力（依頼文の日付）` のみ。2行目以降は、ユーザーに見せる返答そのものを書く。
    - 前置き、メタな説明、要約、「テストなので」といった言及は書かない。途中で省略しない。
+   - skill がコード実行での照合（`scripts/check_quotes.py`）を指示している場合は、claude.ai と同じくコードを実行できる環境として従う。skill のディレクトリは `novel-editor/`、コマンドは `python3 novel-editor/scripts/check_quotes.py ...` の形でリポジトリの根から実行する。作業ファイル（引用の一覧など）は `evals/.work/scratch/` に置き、提出物のファイルには入力ファイルをそのまま使う。
 5. 最終返答は次の3行だけにする。本文はここで繰り返さない（メイン会話のトークン節約のため）。
    - `保存: <パス>`
    - `文字数: <返答本文の概算字数>`

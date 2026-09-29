@@ -44,6 +44,17 @@ If the intent is ambiguous, use length as the tiebreaker: chapter-length text �
 
 Read the relevant reference files before writing anything. They are short, and the achievement conditions, cap rules, and output order are not reconstructible from memory.
 
+## Quote and count check
+
+Every 「」 you show as the submission's text is evidence, so it must match the submission exactly. When you can run code, check mechanically before sending a scoring, audit, or training reply:
+
+1. Use the submission as a file (an uploaded file as-is). If it exists only as pasted text, save it to a file unchanged — unless it is over about 20,000 characters, in which case go to the fallback.
+2. Write every 「」 quote you intend to use into a file, one per line, then run `python3 scripts/check_quotes.py quotes <quote file> <submission file(s)>` from this skill's directory.
+3. For each 未照合 line, replace the quote with the exact text shown as 近い原文, or drop the 「」 and treat it as a summary (not evidence). Rerun until 未照合 0, then copy the quotes into the reply exactly as checked.
+4. Any character or paragraph count you report comes from `python3 scripts/check_quotes.py count <file>`.
+
+Do not describe the check in the reply. Fallback — no code execution, or the check was skipped: compare each quote with the submission by eye, and add one line at the end of the reply: 引用・字数は機械照合していない.
+
 ## Test cases
 
 `evals/evals.json` holds the test prompts for this skill, `evals/trigger-evals.json` holds should-trigger / should-not-trigger queries for the description, and `notes.md` at the repository root records what the last check found. They are for maintaining the skill, not for evaluating manuscripts — ignore them during normal use.

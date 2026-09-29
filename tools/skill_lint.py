@@ -39,6 +39,7 @@ EXPECTED_FILES = {
     "references/expression-training.md",
     "references/proofreading-mode.md",
 }
+EXPECTED_SCRIPTS = {"scripts/check_quotes.py"}
 
 # 7軸。score-anchors.md に条件表があり、rubric が言及していること
 AXES = ["構成", "キャラクター", "世界観", "感情設計", "牽引力", "独自性", "文章"]
@@ -105,18 +106,33 @@ def _md_exists(name: str) -> bool:
     )
 
 
+# ---------------------------------------------------------------- 0. 引用照合スクリプトの動作
+def check_quote_script() -> None:
+    import subprocess, tempfile
+    with tempfile.TemporaryDirectory() as d:
+        src, ok, ng = (pathlib.Path(d) / n for n in ("src.md", "ok.md", "ng.md"))
+        src.write_text("　彼は「行くぞ」と言った。\n　扉が開く。", encoding="utf-8")
+        ok.write_text("「行くぞ」と言った。\n「扉が……開く」", encoding="utf-8")
+        ng.write_text("「行くぞ、と言った」", encoding="utf-8")
+        run = lambda f: subprocess.run([sys.executable, str(SKILL_DIR / "scripts/check_quotes.py"), "quotes", str(f), str(src)],
+                                       capture_output=True, text=True).returncode
+        r_ok, r_ng = run(ok), run(ng)
+    check(r_ok == 0 and r_ng == 1, "引用照合スクリプトが一致を通し不一致を検出", f"一致={r_ok} 不一致={r_ng}")
+
+
 # ---------------------------------------------------------------- 1. ファイル集合
 def check_file_set() -> None:
     actual = {
         str(p.relative_to(SKILL_DIR))
         for p in SKILL_DIR.rglob("*")
-        if p.is_file()
+        if p.is_file() and "__pycache__" not in p.parts
     }
-    missing = sorted(EXPECTED_FILES - actual)
-    extra = sorted(actual - EXPECTED_FILES)
+    expected = EXPECTED_FILES | EXPECTED_SCRIPTS
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
     check(
         not missing and not extra,
-        "skillファイル集合が9ファイル構成と一致",
+        "skillファイル集合が9ファイル＋照合スクリプト構成と一致",
         f"欠落={missing} 余分={extra}" if (missing or extra) else f"{len(actual)}ファイル",
     )
 
@@ -521,6 +537,7 @@ def check_no_manuscript_leak() -> None:
 # ---------------------------------------------------------------- main
 def main() -> int:
     quiet = "--quiet" in sys.argv
+    check_quote_script()
     check_file_set()
     check_description()
     check_condition_tables()

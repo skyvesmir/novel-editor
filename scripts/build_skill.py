@@ -25,8 +25,8 @@ DESC_LIMIT = 1024
 
 
 def tree_files():
-    # 配布対象は .md のみ（.DS_Store 等の混入防止）
-    return sorted(p for p in TREE.rglob("*.md") if p.is_file())
+    # 配布対象は .md と scripts/*.py のみ（.DS_Store・__pycache__ 等の混入防止）
+    return sorted(p for p in TREE.rglob("*") if p.is_file() and (p.suffix == ".md" or (p.suffix == ".py" and p.parent.name == "scripts")))
 
 
 def sha(data):
