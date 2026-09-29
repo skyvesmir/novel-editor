@@ -12,13 +12,13 @@
 | やること | 呼び出し | 担当（モデル／effort） |
 |---|---|---|
 | skill本体の変更を査読 | `/review-skill` | skill-reviewer（opus／high） |
-| 回帰確認（evals #1〜#12） | `/run-evals 3 7` | eval-generator（opus／medium）→ eval-grader（opus／high） |
+| 回帰確認（evals #1〜#15） | `/run-evals 3 7` | eval-generator（sonnet／medium）→ eval-grader（opus／high） |
 | description の発火確認 | `/check-triggers` | trigger-judge（opus／low） |
 | 配布zipの再構築・検証 | `/package-skill` | スクリプトのみ（LLM不要） |
 | 長編原稿の機械走査 | audit-scanner に依頼 | sonnet／medium |
 | テスト原稿の作成 | fixture-writer に依頼 | opus／medium |
 
-eval-generator は claude.ai の既定（Opus 5.5・medium）に合わせてある。本番の条件が変わったら、ここも合わせる。
+この skill は claude.ai の無料枠・有料枠のどちらでも動くことを目標にする。eval-generator は無料枠で使われる Sonnet（`sonnet` = 最新の Sonnet）を基準にし、有料枠の確認が要るときだけ opus でも回す。skill の読み込み量（採点1回あたりのトークン）も無料枠の負担になるので、配布ファイルに開発の経緯を書かない（経緯は `docs/calibration-evidence.md`）。
 
 ### 標準フロー（skill本体を変えたとき）
 

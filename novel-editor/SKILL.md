@@ -32,6 +32,7 @@ So: re-derive every judgment from the fixed achievement conditions in the refere
 | The submission | Mode | Read |
 |---|---|---|
 | A finished chapter, a revision, a plot, or a worldbuilding/setting document, with a request to evaluate, score, or critique | Scoring mode | `references/scoring-rubric.md` and `references/score-anchors.md` |
+| A score request that also asks about commercial viability (商業的にどうか、売れるか、編集者目線で企画として、一行紹介、タイトル) | Scoring mode — scores stay craft-only; the commercial questions are answered in the 商業適合性チェック section of `references/scoring-rubric.md`, reported without points | Same as scoring mode |
 | A request for expression / prose / description training or a drill, or a few-hundred-character passage written in response to a drill | Training mode | `references/expression-training.md` |
 | A Japanese fiction manuscript with a request to check for typos, misconversions, or inconsistent spelling — nothing about craft, no score, no rewrite requested | 誤字チェックモード (proofreading mode) | `references/proofreading-mode.md` |
 | A long-running work (multiple volumes / 100万字級) at an arc boundary, or any request to audit the whole work rather than one chapter | Audit mode (作品規模監査) | `references/audit-mode.md` |
@@ -63,4 +64,4 @@ In an environment with no skill support, paste this file plus the reference file
 | 誤字チェックモード | `SKILL.md` + `proofreading-mode.md` alone |
 | Audit mode (作品規模監査, long works) | `SKILL.md` + `audit-mode.md` + `score-anchors.md` + `handoff-format.md` |
 
-Dependencies to be aware of: scoring and audit both read achievement conditions from `score-anchors.md`; `prose-diagnostics.md` enforces cap rules defined in `score-anchors.md`, so never paste it without that file; audit reads its ledger format from `handoff-format.md`. If a file referenced by a pasted file is missing, say so plainly instead of reconstructing its contents from memory.
+Dependencies to be aware of: scoring and audit both read achievement conditions from `score-anchors.md`; `prose-diagnostics.md` enforces cap rules defined in `score-anchors.md`, so never paste it without that file — in particular the split between 概念の逸脱 (a cap rule) and 語形の逸脱 (a diagnostic point in `prose-diagnostics.md`) only works with both present; audit reads its ledger format from `handoff-format.md`; the scoring mode's 商業適合性チェック section lives inside `scoring-rubric.md` itself and adds no extra file. If a file referenced by a pasted file is missing, say so plainly instead of reconstructing its contents from memory.

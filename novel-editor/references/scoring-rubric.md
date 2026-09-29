@@ -10,10 +10,11 @@ Contents:
 5. [Axes and how to judge them](#axes-and-how-to-judge-them)
 6. [Weaknesses](#weaknesses)
 7. [Strengths](#strengths)
-8. [Procedure](#procedure)
-9. [Planning material with no prose yet](#planning-material-with-no-prose-yet)
-10. [When the author pushes back](#when-the-author-pushes-back)
-11. [Output skeleton](#output-skeleton)
+8. [Commercial fitness check (non-scored)](#commercial-fitness-check-商業適合性レーン-非採点)
+9. [Procedure](#procedure)
+10. [Planning material with no prose yet](#planning-material-with-no-prose-yet)
+11. [When the author pushes back](#when-the-author-pushes-back)
+12. [Output skeleton](#output-skeleton)
 
 ## Where the numbers come from
 
@@ -36,6 +37,26 @@ Decide this before Step 0 and state it in one line at the top of the output, bec
 **連作の一章** — judge the chapter's own work (scene construction, prose, whether it advances something), and judge structure at the chapter's scale rather than the work's. Ask the author for, or read if already pasted, the setting document, the foreshadowing table, and the running log; without them, unresolved threads cannot be distinguished from threads resolved elsewhere, which is the single most damaging error this mode can make. If they are unavailable, say which judgments are provisional for that reason instead of scoring as if the chapter were standalone. Two axes need explicit care here: 構成's 8-point condition (主筋全体で成立) and 感情設計's climax conditions belong to the work, not to one chapter — for a single chapter, judge the chapter's own peak and note that the work-level judgment is pending. 牽引力も同様の注意を要する：その章自身の終わり方（引きの有無・種類）は他章の情報なしで判定できるが、引きが実際に回収されたか（8点条件、および「引きの空手形」の上限規則）は後続章がなければ判定不能であり、その部分は保留と明記する。
 
 **全体（全章または設計一式）** — all conditions apply as written, including the cap rule on repeated scene patterns and 牽引力の回収に関する条件（8点条件、「引きの空手形」の上限規則）, which are only visible at this scale.
+
+### 掲載形態の宣言（連作の一章の場合）
+
+提出単位（何が提出されたか）とは別に、掲載形態（それがどう読まれるか）を三択で宣言する。同じ原稿でも、単独で読まれるかどうかで構成の判定が変わるためである。
+
+1. **単独掲載（続きなし）** — 上記「単章」として扱う。
+2. **連作の一章（単独では掲載されない）** — 上記「連作の一章」の手順そのまま。
+3. **連作の一章だが、単独でも掲載される**（部誌掲載＋投稿サイト連載など）
+
+すでに明示されていれば再質問せず、その形態で採点する。明示されていない場合は、質問だけで応答を終えない（往復を一回増やすと、利用枠の小さい環境ではそれだけで採点に届かなくなる）。次のように一つの応答で完結させる：
+
+- 応答の冒頭で、三択を一つの質問として示す。依頼文の記述で明らかに外れる選択肢（例：「連載中の第7章」なら1）は、外した理由を一言添えて示してよい。
+- 採点は **2 として進め**、「掲載形態：未確認のため2として採点」と採点の前提に明記する。著者の回答を推測で書き込まない。
+- 3 の場合に変わるのは構成だけなので、下の「3 の場合の追加手順」の弧の確認も済ませ、「3なら構成は〜」と一行で添える。著者が後で3と答えたら、その行が答えになる。
+
+3 の場合の追加手順:
+
+- 牽引力は 2 と同じく保留付きで採点する。
+- 構成に追加確認を行う：**章内で局所的な弧が閉じているか** — 始点の状態と終点の状態をそれぞれ引用で示せ、その差が章内の出来事で説明されるか。閉じていない場合、**単独掲載時の構成は5を上限**とする。
+- 単独掲載版と連作版で構成の点が異なりうることを報告時に明記する。これは掲載形態に由来する差であって原稿の欠陥ではない、という一文を添える。添えないと著者は「構成が弱い」と誤読して、連作としては不要な弧を章内に作る改稿へ進んでしまう。
 
 ## Revisions and re-scoring
 
@@ -62,14 +83,14 @@ At 9 there is no score above — 10 is not used — so the third part becomes: w
 Score axis by axis, using the conditions for that axis.
 
 - **構成 (structure)**: whether causality actually holds; whether the setting functions as a device that drives the story rather than decoration; whether setting, motivation, and event feed back into each other.
-- **キャラクター (characters)**: clarity and competition of motivation; arc design (the distance between start and end point, and what caused it); contrast against other characters.
+- **キャラクター (characters)**: clarity and competition of motivation; arc design (the distance between start and end point, and what caused it); contrast against other characters; whether the main characters' dialogue is differentiated enough to tell speakers apart with the tags hidden.
 - **世界観 (worldview)**: what was chosen to include and exclude; internal logical consistency; whether constraints cause the conflict; how information is disclosed and at what pace.
-- **感情設計 (emotional design)**: where the climax is and whether obstacles are stacked toward it; whether the emotional peak is caused by a character's choice rather than by circumstances turning favourable; whether the theme is embodied as a scene rather than stated in dialogue.
-- **牽引力 (page-turning pull)**: whether chapter/scene endings leave a concrete unresolved question rather than just closing an event; how many distinct hook techniques are in play across the work rather than one repeated pattern; whether opened hooks actually get paid off later rather than abandoned. This is about the force between reading units (chapter → next chapter), not the quality of any single climax.
+- **感情設計 (emotional design)**: where the climax is and whether obstacles are stacked toward it; whether the emotional peak is caused by a character's choice rather than by circumstances turning favourable; whether the theme is embodied as a scene rather than stated in dialogue; whether the opening of a chapter or scene reaches a bodily sign, an action choice, or the temperature of dialogue within 400 characters（到達距離で見る。風景から入る文体を罰しない）.
+- **牽引力 (page-turning pull)**: whether chapter/scene endings give the reader a reason to continue — a concrete unresolved question, an updated long-arc expectation, or a sign of relationship movement (明示的な疑問文である必要はない) — rather than just closing an event; how many distinct hook techniques are in play across the work rather than one repeated pattern; whether opened hooks actually get paid off later rather than abandoned. This is about the force between reading units (chapter → next chapter), not the quality of any single climax.
 - **独自性 (originality)**: concrete points of differentiation and whether they function or merely decorate; whether reader expectation is subverted and a new expectation built in its place.
 - **文章 (prose)** — only when actual prose was submitted: POV and tense stability, register consistency, rhythm, and whether any scene is unimaginable for lack of description. Omit this axis for plot or setting documents rather than inventing a number for it.
 
-キャラクター and 感情設計 divide as follows: キャラクター is the person as designed on the page, 感情設計 is the effect produced in the reader. One defect belongs to one axis; do not charge it twice.
+キャラクター and 感情設計 divide as follows: キャラクター is the person as designed on the page, 感情設計 is the effect produced in the reader. One defect belongs to one axis; do not charge it twice. 台詞の識別性はキャラクター軸にのみ置く（測っている対象は人物の書き分け）— 文章軸で同じ証拠を重ねて減点しない。
 
 感情設計 and 牽引力 both measure a reader effect, but at different timescales: 感情設計 is the quality of the climax itself (is the peak earned, is it caused by a choice); 牽引力 is whether the reader is pulled from one chapter into the next (is a question left open, is it varied, is it paid off). A flat chapter ending belongs to 牽引力 even when the climax inside that chapter scores well on 感情設計, and vice versa — do not charge the same defect to both.
 
@@ -88,6 +109,17 @@ When the same root cause produces several surface symptoms, say so and treat it 
 ## Strengths
 
 Evaluate structurally functioning strengths, axis by axis, explaining *why they function*. If an axis is not working, it belongs in the weaknesses section — do not quietly omit it, since silence on an axis reads as approval.
+
+## Commercial fitness check (商業適合性レーン、非採点)
+
+Four fixed items reported alongside the scores but **never scored**: no points, no 10-scale, no pass/fail stamp. These are market-facing facts about how the work travels outside its own pages — a different question from craft quality, and mixing the two would let a marketable premise inflate craft numbers or vice versa. Report each item as 「確認結果 + 根拠となる本文・資料からの引用」 and nothing more. This lane may cite setting documents; that permission does not extend to the scored axes (see `Evidence sources by axis` in `score-anchors.md`).
+
+1. **一行紹介成立性** — can the submission be introduced in one line that names protagonist, desire, and obstacle? Write out the one-line pitch as part of the report; if several competing candidates exist, that is itself the finding (the work's own positioning is unsettled). If none can be written without stacking qualifiers, say what is missing.
+2. **タイトル検索性** — search-collision check of the title: exact duplicates, near-duplicates, and generic-word combinations that bury the work in search results. State what was checked from the material itself (reading, genre conventions); if actual search is unavailable in this environment, report the collision candidates visible from the title alone and mark the rest 未実施.
+3. **冒頭3話（または冒頭4000字）引き込み** — where the first episodes land the promise (what kind of story this is, why following it is worth more reading), whether a concrete unresolved question is open by the end of episode 3, and what a dropping reader would name as the reason. Judged only from the submitted text; when fewer than 3 episodes are submitted, judge what exists and mark the rest 該当範囲外.
+4. **ジャンル型との意識的整合** — identify the genre convention the work operates in (from its own text: reader-service promises, tropes used or refused), then report whether deviations look systematic rather than accidental. The finding to report is the pattern (「型を踏んでいる箇所／外れている箇所とその一貫性」) — not whether obeying or deviating is good.
+
+Rules: these four never move any axis score, are never averaged into anything, and generate no 改善案 (they do not count toward the 10-suggestion cap because they produce none). This includes the closing lists: a fitness-only finding must not be restated as an item in 「今回直すのはこの3件」 or 「次回以降に回す項目」 — it enters those lists only when it is simultaneously a craft weakness, attributed to its craft axis with a cross-reference. If the author asked for scores only, omit the section entirely rather than reporting it in one dismissive line. When a fitness finding overlaps a craft weakness (e.g. the opening buries its hook — both a 牽引力 fact and a 冒頭3話 fact), report it in both places with cross-references instead of charging either lane twice.
 
 ## Procedure
 
@@ -144,7 +176,7 @@ Disagreement is expected and welcome; it is also the most reliable route to scor
 The number comes after its grounds, in the output as well as in the reasoning. Leading with the number invites the author to read the score and skip the reasoning that would let them change it.
 
 ```markdown
-## 採点の前提（提出単位：単章／連作の一章／全体、併読した資料、改稿版なら前回との関係）
+## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
 ## 基礎設定の確認（Step 0）
 ## 列挙と精査（Step 1・2：取り下げた指摘とその理由を含む）
 ## 軸別評価
@@ -156,6 +188,10 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ### 牽引力
 ### 独自性
 ### 文章（原稿がある場合のみ）
+## 別項報告（点数に混ぜない：同時代性／冒頭の掴み）
+（冒頭の掴み＝提出物の冒頭400字以内の疑問・異常・危機の提示箇所を引用、なければ「提示なし」。同時代性は該当時のみ。点数なし・改善案なし・「今回直すのはこの3件」にも載せない）
+## 商業適合性チェック（非採点・依頼が採点のみの場合は省略）
+（一行紹介成立性／タイトル検索性／冒頭3話引き込み／ジャンル型との意識的整合 — 各項目：確認結果＋根拠引用、点数なし・改善案なし。商業レーンのみの所見は「今回直すのはこの3件」「次回以降に回す項目」にも載せない。craft軸の弱点と重なる場合のみ、その軸の提案として記載し相互参照を付す）
 ## 今回直すのはこの3件
 ## 次回以降に回す項目
 ```

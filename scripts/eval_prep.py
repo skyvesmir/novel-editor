@@ -6,7 +6,9 @@
 （例:「埋め込み誤り: …」）は生成役に見せない。
 
 使い方:
-  python3 scripts/eval_prep.py prep 1 3 10     # evals/.work/evalNN-input.md を作る（all で #1〜#12）
+  python3 scripts/eval_prep.py prep 1 3 10     # evals/.work/evalNN-input.md を作る（all で全件）
+
+evals.json の files で指定された素材ファイルは、<!-- JUDGE-ONLY:START … END --> を除去して渡す。
   python3 scripts/eval_prep.py trigger         # evals/.work/trigger-queries.md（正解ラベル抜き）を作る
   python3 scripts/eval_prep.py trigger-score   # evals/.work/trigger-answers.txt を正解と照合
 """
@@ -27,9 +29,19 @@ MANUAL = {
        "「前回のアシスタントの返答」として input に追記すること。",
     6: "2ターン構成。第1ターン（出題）の出力を得た後、fixture-writer に提出文を書かせ、"
        "第1ターン出力＋提出文を追記した input で第2ターンを生成すること。",
-    13: "監査モード。長編原稿（local/ 配下）が必要なため /run-evals の対象外。audit-scanner で別途実施。",
 }
 HEADING = re.compile(r"^## fixture-(\w+):\s*(.*)$")
+JUDGE_ONLY = re.compile(r"<!-- JUDGE-ONLY:START.*?JUDGE-ONLY:END -->", re.S)
+
+
+def strip_judge_only(text, name):
+    """判定側専用ブロックを除去する。対応が崩れていたら黙って通さず中断する。"""
+    if text.count("JUDGE-ONLY:START") != text.count("JUDGE-ONLY:END"):
+        sys.exit(f"中断: {name} の JUDGE-ONLY START/END の数が一致しない（全文が漏れる恐れ）")
+    out = JUDGE_ONLY.sub("", text)
+    if "JUDGE-ONLY" in out:
+        sys.exit(f"中断: {name} に除去しきれない JUDGE-ONLY が残っている")
+    return out.strip("\n")
 
 
 def parse_fixtures():
@@ -64,21 +76,37 @@ def load_evals():
     return {e["id"]: e for e in json.loads(EVALS.read_text(encoding="utf-8"))["evals"]}
 
 
+def build_input(i, evals=None, fixtures=None):
+    """生成役に渡す入力テキストと、使った素材の一覧を返す（ファイルには書かない）。
+
+    tools/skill_lint.py がこれを実際に呼んで、答えの手がかりが漏れていないかを検査する。
+    """
+    evals = evals or load_evals()
+    fixtures = fixtures if fixtures is not None else parse_fixtures()
+    e = evals[i]
+    parts = ["## ユーザーの発言", "", e["prompt"].strip(), ""]
+    fx = fixtures.get(i, [])
+    # evals.json の files で指定された素材（#13〜#15 など）。判定側専用ブロックは除去する
+    for f in e.get("files", []):
+        body = strip_judge_only((ROOT / f).read_text(encoding="utf-8"), f)
+        fx = fx + [("", "", body, [])]
+    for label, title, body, _ in fx:
+        head = "## 貼り付けられた原稿" + (f"（{label}）" if len(fx) > 1 else "")
+        parts += [head, "", title, "", body, ""] if title else [head, "", body, ""]
+    return "\n".join(parts), fx
+
+
 def prep(ids):
     evals, fixtures = load_evals(), parse_fixtures()
     if ids == ["all"]:
-        ids = [i for i in sorted(evals) if i <= 12]
+        ids = sorted(evals)
     WORK.mkdir(parents=True, exist_ok=True)
     for raw in ids:
         i = int(raw)
         e = evals[i]
-        parts = ["## ユーザーの発言", "", e["prompt"].strip(), ""]
-        fx = fixtures.get(i, [])
-        for label, title, body, _ in fx:
-            head = "## 貼り付けられた原稿" + (f"（{label}）" if len(fx) > 1 else "")
-            parts += [head, "", title, "", body, ""] if title else [head, "", body, ""]
+        text, fx = build_input(i, evals, fixtures)
         path = WORK / f"eval{i:02d}-input.md"
-        path.write_text("\n".join(parts), encoding="utf-8")
+        path.write_text(text, encoding="utf-8")
         chars = sum(len(b) for _, _, b, _ in fx)
         print(f"#{i:>2} {e['name']}: {path.relative_to(ROOT)}（原稿 {chars} 字 / fixture {len(fx)} 件）")
         for _, _, _, stripped in fx:

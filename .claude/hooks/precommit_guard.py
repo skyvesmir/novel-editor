@@ -5,6 +5,7 @@
    コミット対象に入っていないか（`git add -f` で .gitignore をすり抜けた場合も捕まえる）
 2. skill 同期: novel-editor/ tree と novel-editor.skill の中身が一致しているか
 3. SKILL.md の description が 1024 文字以内か
+4. 構造検査（tools/skill_lint.py）が全件通るか
 
 `git add ... && git commit` の1コマンド実行にも対応するため、ステージ済みだけでなく
 未ステージの変更・未追跡ファイル（.gitignore 対象外）も検査対象に含める（保守的判定）。
@@ -51,6 +52,13 @@ def main():
         if r.returncode != 0:
             problems.append("skill 検証 NG → `python3 scripts/build_skill.py` で再構築・確認してから commit:\n"
                             + r.stdout.strip())
+
+    # 構造検査（条件表・上限規則・条項の保持・eval 定義・入力の漏洩・キー混入）
+    lint = root / "tools" / "skill_lint.py"
+    if lint.exists() and any(n.startswith(("novel-editor/", "evals/", "scripts/", "tools/")) for n in names):
+        r = subprocess.run([sys.executable, str(lint), "--quiet"], cwd=root, capture_output=True, text=True)
+        if r.returncode != 0:
+            problems.append("構造検査 NG（`python3 tools/skill_lint.py --quiet`）:\n" + r.stdout.strip()[-1500:])
 
     if problems:
         print("commit を止めました:\n- " + "\n- ".join(problems), file=sys.stderr)

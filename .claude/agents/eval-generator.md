@@ -2,7 +2,7 @@
 name: eval-generator
 description: novel-editor の eval 生成役。evals/.work/evalNN-input.md をユーザーの発言として受け、作業ツリーの skill どおりの応答原文を evals/raw_outputs/ に保存する。アサーションは見せない。/run-evals から呼ぶ。
 tools: Read, Grep, Glob, Write
-model: opus
+model: sonnet
 effort: medium
 maxTurns: 25
 omitClaudeMd: true

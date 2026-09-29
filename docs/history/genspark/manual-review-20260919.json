@@ -1,0 +1,990 @@
+{
+  "review_date": "2026-09-19",
+  "input_source_commit": "152b777157d98f880d7a2e13e69c5fc3be4bf94a",
+  "review_method": "main assistant direct grading of user-supplied outputs; no external AI API; not a blinded grader",
+  "input_provenance": "Kit hashes verified against repository; actual pasted/attached input bytes at execution not independently authenticated",
+  "eval_definition_sha256": "00ea57c76539854638cf00f7ecd5ece029ad2360115090e8f2b7c180cc647ec8",
+  "runs": [
+    {
+      "model_label": "opus5",
+      "run": "RUN_01",
+      "eval_id": 15,
+      "source_file": "RUN_01_response.txt.md",
+      "source_sha256": "2f09d0dea3905b4b65e99a8ef32f4a01d9b913e28cfdc0ee897d0ab6eeb4ee2d",
+      "kit_input_sha256": "3ac3db80e3b240f913c16ad67bfd9cacc0cf46364682d675ce262c9f8813c60a",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "input_method": "full paste (user report)",
+      "chat": "new chat per run; normal mode; memory effect unknown (user report)",
+      "effort": "Max (user report)",
+      "execution_time_reported": "9月16日、15時半頃（GMT Tokyo）",
+      "regeneration_or_followup": "none (user report)",
+      "duplicate_upload_same_bytes": true,
+      "extraction": "Removed operator header and trailing operator supplement; final response preserved",
+      "output_file": "evals/raw_outputs/opus5-run01-20260919.md",
+      "output_sha256": "8d5281391a3bb5679b4ea597290a9bcfc57444aff0aeed38efd8e79ec68ce665",
+      "output_characters": 12500,
+      "output_lines": 295,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "掲載形態の三択を示し、どれに当たるかを一つの質問で確認している",
+          "passed": false,
+          "evidence": "②でよいかという質問で、①②③の三択ではない。",
+          "citations": [
+            {
+              "quote": "本章の掲載形態は「連作の一章（単独では掲載されない）」でよいか",
+              "lines": [
+                7
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "掲載形態を勝手に仮定したり、ユーザーの回答を自作したりしていない",
+          "passed": false,
+          "evidence": "②を事実上の既定として採点し、③ならという結果を併記した。ユーザーの回答を待っていない。",
+          "citations": [
+            {
+              "quote": "3の場合も6のまま",
+              "lines": [
+                61
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "回答待ちの段階で軸別点数やStep 3の評価、改善案を出していない",
+          "passed": false,
+          "evidence": "回答待ちの段階で7軸の採点・評価・改善案を出した。",
+          "citations": [
+            {
+              "quote": "点数：6/10",
+              "lines": [
+                57,
+                92,
+                123,
+                193
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "掲載形態とは無関係な質問を追加せず、確認に必要な短い応答で止まっている",
+          "passed": false,
+          "evidence": "確認だけで止まらず長文の採点を続行。無関係な質問の有無だけではPASSにならない。",
+          "citations": [
+            {
+              "quote": "今回直すのはこの3件",
+              "lines": [
+                277
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 0,
+        "failed": 4,
+        "total": 4
+      }
+    },
+    {
+      "model_label": "opus5",
+      "run": "RUN_02",
+      "eval_id": 14,
+      "source_file": "RUN_02_response.txt.md",
+      "source_sha256": "feabc6fcabc8e14c6dbfbb62af01c61635e42d50db98c5ca2a0db9b5239fafee",
+      "kit_input_sha256": "6192095a7966958f56b2834b628a875178f936fc8fddc50da2117e3b4dc35a37",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "input_method": "full paste (user report)",
+      "chat": "new chat per run; normal mode; memory effect unknown (user report)",
+      "effort": "Max (user report)",
+      "execution_time_reported": "9月16日、15時半頃（GMT Tokyo）",
+      "regeneration_or_followup": "none (user report)",
+      "duplicate_upload_same_bytes": true,
+      "extraction": "Removed operator header and trailing operator supplement; final response preserved",
+      "output_file": "evals/raw_outputs/opus5-run02-20260919.md",
+      "output_sha256": "c941afae620cb7b3129d26b1ccb0560ac408cd28cb5720fef8a7a1c8b63916e8",
+      "output_characters": 12001,
+      "output_lines": 278,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "掲載形態②（連作の一章・単独掲載なし）を明示して採点を進め、掲載形態の再質問だけで停止していない",
+          "passed": true,
+          "evidence": "②を明示し採点を実行。",
+          "citations": [
+            {
+              "quote": "掲載形態の確認質問は行わない",
+              "lines": [
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "上限規則「語彙の水準逸脱」を適用せず、設定資料の技術水準と本文の語彙を対応させている",
+          "passed": true,
+          "evidence": "語彙キャップ不発火と、技術水準・語彙の具体的対応を確認。",
+          "citations": [
+            {
+              "quote": "「てこの原理」は製鉄・水車が存在する水準と矛盾しない",
+              "lines": [
+                242
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "水路について三度の失敗・別手段・夜通しの作業を引用または具体的に示し、都合よく解消されたという根拠がないため「ご都合主義」を適用していない",
+          "passed": true,
+          "evidence": "世界観節で三度の失敗、同節末で鉄べらとてこ、感情設計節で夜通しの作業を示し、ご都合主義を不適用。",
+          "citations": [
+            {
+              "quote": "水位が下がるまでに、夜が明けた",
+              "lines": [
+                150
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "牽引力の4以下条件の対象を明示区切り4件と章末に限定し、本文の末尾を引用して機能を判定している。暗黙の場面転換を追加で数えず、後続章での回収は未検証としている",
+          "passed": true,
+          "evidence": "対象5箇所を限定。末尾の隙間・目撃・飲み込んだ言葉・樹液等を引用し機能を説明。暗黙転換を追加せず、回収は保留。",
+          "citations": [
+            {
+              "quote": "明示区切り（◆）4箇所＋章末＝計5箇所",
+              "lines": [
+                170
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A5",
+          "text": "冒頭第3文の喉が焼ける身体反応を引用して到達距離を確認し、情景から始まることだけで冒頭条件を未達とせず、この条件だけで感情設計全体を6点以上ともしていない",
+          "passed": true,
+          "evidence": "第3文の到達を確認。高低・障害・選択等も別途論じ、冒頭だけで軸全体を6以上にしていない。",
+          "citations": [
+            {
+              "quote": "3文目「甘い、と思ったのは一瞬で、次には喉の奥が焼けた」",
+              "lines": [
+                144
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A6",
+          "text": "著者の「次章以降で書く予定」「最終章で回収する予定」という補足を、点数・条件の充足・上限解除の根拠に使っていない",
+          "passed": true,
+          "evidence": "冒頭の除外宣言に加え、採点でも著者予定を充足・免除の証拠にしていない。",
+          "citations": [
+            {
+              "quote": "次章以降の回収予定は本軸の証拠にならない",
+              "lines": [
+                127
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A7",
+          "text": "オキの理由未開示について本文の行動や対話を引用して現在の機能と回収未確認を区別し、未開示だけを根拠に因果破綻と断定していない。欠陥とする場合は該当条件と別の具体的根拠がある",
+          "passed": true,
+          "evidence": "隙間や問いの中断を引用して現在の謎の機能を論じ、規則違反と区別。世界観7の別設定による説明を未確認とすること自体は許容する。",
+          "citations": [
+            {
+              "quote": "未開示の空白",
+              "lines": [
+                24
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A8",
+          "text": "冒頭の掴みを非採点の別項で報告し、原稿の最初の本文行から空行込み10物理行以内の箇所を引用している。その項目に改善案を付けていない",
+          "passed": true,
+          "evidence": "別項・非採点。喉の身体反応と祖母の警告の引用は本文3・5物理行目、改善案なし。",
+          "citations": [
+            {
+              "quote": "本項は点数にも改善案にも算入しない",
+              "lines": [
+                197
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A9",
+          "text": "台詞の識別性について対象人物と台詞を示し、話者名を伏せた語尾・語彙・文長の比較で判定している。同じ識別性の欠点をキャラクター軸でも重ねて減点していない",
+          "passed": true,
+          "evidence": "ミラの敬体・言い淀みとオキの常体・俺・語尾を台詞で比較。副次人物の重なりも記述。キャラ軸に二重減点せず。",
+          "citations": [
+            {
+              "quote": "主要人物2名は識別可能",
+              "lines": [
+                234
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A10",
+          "text": "軸を平均した総合点を出していない",
+          "passed": true,
+          "evidence": "全文確認で軸平均の総合点なし。",
+          "citations": [
+            {
+              "quote": "軸は平均しない",
+              "lines": [
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A11",
+          "text": "末尾の樹液の動きを具体的に取り上げ、引きの機能と仕組み・回収の未確認を区別している。未説明だけで規則矛盾を断定せず、数値付き保留を使う場合も該当軸の条件と根拠を示し一律6点を付けていない",
+          "passed": true,
+          "evidence": "樹液を疑問の引きとし回収未検証。仕組み未説明を矛盾へ変換しない。7点を開閉構造の本文根拠で説明し、一律6点なし。",
+          "citations": [
+            {
+              "quote": "7/10（回収未検証）",
+              "lines": [
+                189
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A12",
+          "text": "設定資料による規則の存在確認と本文での機能確認を区別し、世界観6以上を支持する場合は設定資料や作者補足だけでなく本文を引用している",
+          "passed": true,
+          "evidence": "規則の存在・整合と本文での機能を分離し、世界観6を実際の障害の本文引用で支持。",
+          "citations": [
+            {
+              "quote": "ミラは三度試して、三度とも合わなかった。根の律動は幹より速く、彼女の呼吸では追いつかない",
+              "lines": [
+                118
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 12,
+        "failed": 0,
+        "total": 12
+      }
+    },
+    {
+      "model_label": "opus5",
+      "run": "RUN_03",
+      "eval_id": 13,
+      "source_file": "RUN_03_response.txt.md",
+      "source_sha256": "dc5b70f7e7aed11fb67353775eb7893855eb5df63957ac50f2d8f3fbd6782619",
+      "kit_input_sha256": "3d0bb536ae1e3dadccb80e8dd68eaa2567a40e100119e6d136dfe44244fc1622",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "input_method": "full paste (user report)",
+      "chat": "new chat per run; normal mode; memory effect unknown (user report)",
+      "effort": "Max (user report)",
+      "execution_time_reported": "9月16日、15時半頃（GMT Tokyo）",
+      "regeneration_or_followup": "none (user report)",
+      "duplicate_upload_same_bytes": true,
+      "extraction": "Removed operator header and trailing operator supplement; final response preserved",
+      "output_file": "evals/raw_outputs/opus5-run03-20260919.md",
+      "output_sha256": "5f0a1d9333e3d82612872b90b7840f5ab798a2a93154cd2ff0092d1da5aa9a7c",
+      "output_characters": 9363,
+      "output_lines": 216,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "人物レジスタ・引き台帳・弧骨格・Step 0恒久版を新規に作り、著者資料由来の未確認項目と本文で確認した項目を区別している",
+          "passed": false,
+          "evidence": "四種の台帳は作成したが、最終弧骨格で第10章の全手順を本文照合済みにした。標本Cに移動・帰還はない。",
+          "citations": [
+            {
+              "quote": "本文照合は第10章のみ",
+              "lines": [
+                175
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "監査本体を作品スケール条件に限定し、文章標本の所見は別枠にしている。資料不足を理由に無関係な章別の全面再採点をしていない",
+          "passed": true,
+          "evidence": "Layer 2と文章標本を別枠にし、無関係な章別全面再採点を行っていない。下位条件参照や将来のLayer 1提案を全面再採点とは数えない。",
+          "citations": [
+            {
+              "quote": "文章軸 標本抽出結果",
+              "lines": [
+                88
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "各所見に現行抜粋または出所を明示した資料の引用があり、要約や著者補足を本文で確認済みの証拠にしていない。元位置不明の抜き書きに架空の章・節を付けていない",
+          "passed": false,
+          "evidence": "第1・6章の引用だけから第2部までの循環を確認扱い。最終弧骨格でも要約の全手順を本文確認へ昇格した。冒頭の注意書きでは相殺できない。",
+          "citations": [
+            {
+              "quote": "第1部→第2部の1周分だけ",
+              "lines": [
+                35
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "文章標本を第1/6/10/18章の4区画と明示し、6〜10区画の要件に足りないことを述べている。作品全体の文章点を確定せず、暫定点を出す場合は限定範囲と条件を示している",
+          "passed": true,
+          "evidence": "第1/6/10/18章4区画と6〜10区画への不足を明示し、文章5.5は限定標本の数値。",
+          "citations": [
+            {
+              "quote": "標本水準の数値であり作品水準の数値ではない",
+              "lines": [
+                113
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A5",
+          "text": "第1章の現行抜粋から実際に引用して所見を示し、未提供の過去スコアを発明したり証拠に使ったりしていない",
+          "passed": true,
+          "evidence": "第1章の実在引用で限定所見あり。過去点数の発明なし。過去の採点履歴の不当な断定は別途所見に残す。",
+          "citations": [
+            {
+              "quote": "ただ、次からは手袋をしろ。塔守が全部の記憶を背負ったら、三年で壊れる",
+              "lines": [
+                35
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A6",
+          "text": "軸を平均した総合点を出していない",
+          "passed": true,
+          "evidence": "平均総合点なし。才能・技術を平均点と取り違えない。",
+          "citations": [
+            {
+              "quote": "軸別スコア：構成 判定不能",
+              "lines": [
+                198
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A7",
+          "text": "第14章の引きを著者資料上の調査候補として特定し、未回収と2章以内の無言及・無視を区別している。第14章末と第15〜16章等の本文不足により「引きの空手形」の確定適用を保留し、必要本文を指定している",
+          "passed": true,
+          "evidence": "第14章を資料上の候補とし、回収と2章以内の言及を分離、キャップ保留。指定は第14章末＋15〜16章を含む。1件だけで全体確定できるとの誇張は別途記録。",
+          "citations": [
+            {
+              "quote": "必要：各引き提示章＋直後2章の本文",
+              "lines": [
+                66
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A8",
+          "text": "第9〜12章の手順反復を著者資料上の調査候補として特定し、第10章の抜粋だけでは各章の手順全体を確認できないため「展開リズムの固定化」の確定適用を保留している。著者の意図の説明だけで免除もせず、必要本文を指定している",
+          "passed": false,
+          "evidence": "キャップ保留・意図免除拒否は適切だが、第10章を確認済みとして追加要求から除外した。交渉抜粋だけでは章全体の手順を確認できない。",
+          "citations": [
+            {
+              "quote": "必要：第9・11・12章の本文",
+              "lines": [
+                67
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A9",
+          "text": "未提出の本文・標本を生成したり、4区画を小分けして6〜10区画の要件を満たしたことにしたりしていない",
+          "passed": true,
+          "evidence": "未提出本文そのものの生成・標本水増しなし。既存資料の誤昇格はA1/A3/A8で扱う。",
+          "citations": [
+            {
+              "quote": "4区画／全22章中4章（第1・6・10・18章）",
+              "lines": [
+                90
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A10",
+          "text": "第18章の抜粋だけで作品全体の感情の頂点や感情設計7点未達を断定せず、最終章等の主な場面の本文がないため作品全体の比較が未確認であることを示している",
+          "passed": true,
+          "evidence": "第18章を全体頂点とせず作品全体の比較は保留。第22章だけに結論を依存させる不当な限定は、本項の第18章頂点固定とは分けて記録。",
+          "citations": [
+            {
+              "quote": "作品全体の最強の見せ場が第6章か第22章かは、第22章本文なしに決められない",
+              "lines": [
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A11",
+          "text": "実際に読める本文抜粋の量または範囲を宣言し、約105万字は著者申告規模として区別している。全文精読や全章の反証探索を完了したと偽っていない",
+          "passed": true,
+          "evidence": "1,688字の実読範囲と105万字の著者申告を分離。全章精読・反証探索を完了したとの主張なし。",
+          "citations": [
+            {
+              "quote": "完全な1章は1本も読んでいない",
+              "lines": [
+                10
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A12",
+          "text": "少なくとも一つは実在する本文抜粋を引用した限定所見を示し、確定できない各主要項目について追加資料と確認目的を対応させている。単に資料不足とだけ答えていない",
+          "passed": true,
+          "evidence": "実在抜粋の限定所見と各主要項目の資料・目的の対応あり。要求範囲の不足や一章で確定できるとの保証はA8と追加所見に残す。",
+          "citations": [
+            {
+              "quote": "提出すべき本文と、それが何を確定させるかの対応",
+              "lines": [
+                125
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 9,
+        "failed": 3,
+        "total": 12
+      }
+    },
+    {
+      "model_label": "sonnet5",
+      "run": "RUN_01",
+      "eval_id": 15,
+      "source_file": "Sonnet Run 01.mhtml",
+      "source_sha256": "1e7b1b9aa92c94256f7e79c43d76b6fdc82a0a0d59cd9e79808039f3a6ad825b",
+      "kit_input_sha256": "3ac3db80e3b240f913c16ad67bfd9cacc0cf46364682d675ce262c9f8813c60a",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "question_card_choices": 2,
+      "input_method": "attached RUN file; file-reading tool UI present",
+      "chat": "Secret chat UI visible; distinct chat IDs not verifiable from snapshot URL",
+      "effort": "最大 (UI)",
+      "model_ui": "Sonnet 5",
+      "secret_chat_ui": true,
+      "execution_time_reported": null,
+      "regeneration_or_followup": "not independently verified",
+      "extraction": "First text/html MIME part decoded UTF-8; .font-claude-response minus TurnStatus/buttons/svg; markdownify; RUN01 includes separate question card; no sidebar, attachment preview or tool progress retained",
+      "output_file": "evals/raw_outputs/sonnet5-run01-20260919.md",
+      "output_sha256": "d03520fee58cf8daaefbaddb54b4d50b39c8ea25188c2c83e3ff71141fec443d",
+      "output_characters": 194,
+      "output_lines": 8,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "掲載形態の三択を示し、どれに当たるかを一つの質問で確認している",
+          "passed": false,
+          "evidence": "別UIカードは②③の二択のみ。三択要求には不足。質問カードを見落とした不合格ではない。",
+          "citations": [
+            {
+              "quote": "連作の一章だが、単独でも掲載される",
+              "lines": [
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "掲載形態を勝手に仮定したり、ユーザーの回答を自作したりしていない",
+          "passed": true,
+          "evidence": "掲載形態を質問し、選択・回答の自作なし。UIの色やフォーカスはユーザーの回答とは扱わない。",
+          "citations": [
+            {
+              "quote": "第7章の掲載形態を教えてください",
+              "lines": [
+                5
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "回答待ちの段階で軸別点数やStep 3の評価、改善案を出していない",
+          "passed": true,
+          "evidence": "本文とカードを通読し、点数・Step 3・改善案なし。",
+          "citations": [
+            {
+              "quote": "採点に入る前に",
+              "lines": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "掲載形態とは無関係な質問を追加せず、確認に必要な短い応答で止まっている",
+          "passed": true,
+          "evidence": "掲載形態の一問のみで停止。ツール進捗は最終回答に含めない。",
+          "citations": [
+            {
+              "quote": "一点だけ確認させてください",
+              "lines": [
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 3,
+        "failed": 1,
+        "total": 4
+      }
+    },
+    {
+      "model_label": "sonnet5",
+      "run": "RUN_02",
+      "eval_id": 14,
+      "source_file": "Run 02 sonnet5 max.mhtml",
+      "source_sha256": "f4729f455affcf84d9766b7ede54e166297ef5bdf93d039e68d3f5b58602c11a",
+      "kit_input_sha256": "6192095a7966958f56b2834b628a875178f936fc8fddc50da2117e3b4dc35a37",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "input_method": "attached RUN file; file-reading tool UI present",
+      "chat": "Secret chat UI visible; distinct chat IDs not verifiable from snapshot URL",
+      "effort": "最大 (UI)",
+      "model_ui": "Sonnet 5",
+      "secret_chat_ui": true,
+      "execution_time_reported": null,
+      "regeneration_or_followup": "not independently verified",
+      "extraction": "First text/html MIME part decoded UTF-8; .font-claude-response minus TurnStatus/buttons/svg; markdownify; RUN01 includes separate question card; no sidebar, attachment preview or tool progress retained",
+      "output_file": "evals/raw_outputs/sonnet5-run02-20260919.md",
+      "output_sha256": "5d5e31b8104dd7512f103188ff311583eb05f98471b01749a9b5a600e53aae0d",
+      "output_characters": 5980,
+      "output_lines": 105,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "掲載形態②（連作の一章・単独掲載なし）を明示して採点を進め、掲載形態の再質問だけで停止していない",
+          "passed": true,
+          "evidence": "②の採点を進めた。",
+          "citations": [
+            {
+              "quote": "掲載形態②＝単独では掲載されない",
+              "lines": [
+                5
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "上限規則「語彙の水準逸脱」を適用せず、設定資料の技術水準と本文の語彙を対応させている",
+          "passed": false,
+          "evidence": "不適用結論はあるが、製鉄・水車等の技術水準とてこの原理等の本文語彙の対応を示さない。複合項目の根拠要件不足。",
+          "citations": [
+            {
+              "quote": "いずれの上限規則も該当箇所を3箇所引用できず不発火",
+              "lines": [
+                87
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "水路について三度の失敗・別手段・夜通しの作業を引用または具体的に示し、都合よく解消されたという根拠がないため「ご都合主義」を適用していない",
+          "passed": false,
+          "evidence": "不発火・三度の失敗・鉄べらの言及はあるが、夜通しの作業を引用も具体説明もしていない。結論は妥当でも現行項目が求める根拠の一部不足。",
+          "citations": [
+            {
+              "quote": "水路危機はオキの労働で、都合よくではなく解決している",
+              "lines": [
+                29
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "牽引力の4以下条件の対象を明示区切り4件と章末に限定し、本文の末尾を引用して機能を判定している。暗黙の場面転換を追加で数えず、後続章での回収は未検証としている",
+          "passed": false,
+          "evidence": "◆4件＋章末という対象の明示と4以下条件の検査がない。第五場面途中の「なぜだ」を場面末として数えた。回収保留はできているが全要件は満たさない。",
+          "citations": [
+            {
+              "quote": "第四・五場面末の飲み込んだ言葉／なぜだ",
+              "lines": [
+                69
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A5",
+          "text": "冒頭第3文の喉が焼ける身体反応を引用して到達距離を確認し、情景から始まることだけで冒頭条件を未達とせず、この条件だけで感情設計全体を6点以上ともしていない",
+          "passed": true,
+          "evidence": "第3文の身体反応を引用し到達確認。他の障害・山場・選択も論じる。第五場面冒頭の追加改善は本項とは別。",
+          "citations": [
+            {
+              "quote": "（3文目）",
+              "lines": [
+                56,
+                67
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A6",
+          "text": "著者の「次章以降で書く予定」「最終章で回収する予定」という補足を、点数・条件の充足・上限解除の根拠に使っていない",
+          "passed": true,
+          "evidence": "全文の論証を確認し、作者の回収予定・意図を充足・解除根拠には使っていない。除外の定型文がないだけでFAILにしない。",
+          "citations": [
+            {
+              "quote": "その例外を説明する別の設定要素が本章にはまだ引用できない",
+              "lines": [
+                50
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A7",
+          "text": "オキの理由未開示について本文の行動や対話を引用して現在の機能と回収未確認を区別し、未開示だけを根拠に因果破綻と断定していない。欠陥とする場合は該当条件と別の具体的根拠がある",
+          "passed": true,
+          "evidence": "隙間・手の停止・鉄べら等による段階的開示を引用し、未開示の回収を後続章の範囲とした。独自性節の「制度の欠陥」という強い解釈は別途注意。因果破綻や本章の減点の断定とは同一視しない。",
+          "citations": [
+            {
+              "quote": "矛盾の引用ができない",
+              "lines": [
+                19
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A8",
+          "text": "冒頭の掴みを非採点の別項で報告し、原稿の最初の本文行から空行込み10物理行以内の箇所を引用している。その項目に改善案を付けていない",
+          "passed": true,
+          "evidence": "喉の身体反応は本文3物理行目。非採点の別項で改善案なし。第五場面冒頭の改善と章冒頭の掴みを混同しない。",
+          "citations": [
+            {
+              "quote": "冒頭の掴み（別項・非採点）",
+              "lines": [
+                67
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A9",
+          "text": "台詞の識別性について対象人物と台詞を示し、話者名を伏せた語尾・語彙・文長の比較で判定している。同じ識別性の欠点をキャラクター軸でも重ねて減点していない",
+          "passed": true,
+          "evidence": "ミラの丁寧体と比較し話者名を伏せた判定。対象2名が明示され二重減点なし。原典は語尾・語彙・文長のいずれかでよい。",
+          "citations": [
+            {
+              "quote": "オキは一貫して常体（「分かっている」「なぜだ」）",
+              "lines": [
+                87
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A10",
+          "text": "軸を平均した総合点を出していない",
+          "passed": true,
+          "evidence": "7軸全文に平均総合点なし。",
+          "citations": [
+            {
+              "quote": "点数：6/10",
+              "lines": [
+                31,
+                49
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A11",
+          "text": "末尾の樹液の動きを具体的に取り上げ、引きの機能と仕組み・回収の未確認を区別している。未説明だけで規則矛盾を断定せず、数値付き保留を使う場合も該当軸の条件と根拠を示し一律6点を付けていない",
+          "passed": false,
+          "evidence": "樹液の機能・仕組み・回収未確認は区別したが、8/10（回収未検証）の数値根拠が不足。原典の8は手法と回収の連言で、注記だけで未確認の必要条件を充足にできない。一律6を避けたことだけでは数値根拠の要件を満たさない。",
+          "citations": [
+            {
+              "quote": "確認できているのは3種類以上の手法の使い分けのみ",
+              "lines": [
+                72
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A12",
+          "text": "設定資料による規則の存在確認と本文での機能確認を区別し、世界観6以上を支持する場合は設定資料や作者補足だけでなく本文を引用している",
+          "passed": true,
+          "evidence": "Step 0の規則整合とは別に本文の開示と根の律動に追いつけない障害を示した。設定資料だけから6以上を支持していない。",
+          "citations": [
+            {
+              "quote": "「垣が覚えるからだ」「六割だ」",
+              "lines": [
+                47
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 8,
+        "failed": 4,
+        "total": 12
+      }
+    },
+    {
+      "model_label": "sonnet5",
+      "run": "RUN_03",
+      "eval_id": 13,
+      "source_file": "Sonnet 5 max Run 3.mhtml",
+      "source_sha256": "7473a56e5e7c50ae3857d757cedfffbb85d9bae5bb8b1dc9181097a97a707a68",
+      "kit_input_sha256": "3d0bb536ae1e3dadccb80e8dd68eaa2567a40e100119e6d136dfe44244fc1622",
+      "existing_skill_enabled": false,
+      "duration_seconds": null,
+      "tokens": null,
+      "input_method": "attached RUN file; file-reading tool UI present",
+      "chat": "Secret chat UI visible; distinct chat IDs not verifiable from snapshot URL",
+      "effort": "最大 (UI)",
+      "model_ui": "Sonnet 5",
+      "secret_chat_ui": true,
+      "execution_time_reported": null,
+      "regeneration_or_followup": "not independently verified",
+      "extraction": "First text/html MIME part decoded UTF-8; .font-claude-response minus TurnStatus/buttons/svg; markdownify; RUN01 includes separate question card; no sidebar, attachment preview or tool progress retained",
+      "output_file": "evals/raw_outputs/sonnet5-run03-20260919.md",
+      "output_sha256": "430e3934e8accdfdf344be87b8aa4945e83ef0061f58b60b99268cf9766701f2",
+      "output_characters": 8564,
+      "output_lines": 200,
+      "expectations": [
+        {
+          "id": "A1",
+          "text": "人物レジスタ・引き台帳・弧骨格・Step 0恒久版を新規に作り、著者資料由来の未確認項目と本文で確認した項目を区別している",
+          "passed": false,
+          "evidence": "四種の台帳は作ったが、冒頭の本文未検証が最終引き継ぎで確定へ変化。人物レジスタも要約由来の終章状態の未確認表示が一貫しない。",
+          "citations": [
+            {
+              "quote": "回収は20件中19件確定・1件未回収",
+              "lines": [
+                188
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "監査本体を作品スケール条件に限定し、文章標本の所見は別枠にしている。資料不足を理由に無関係な章別の全面再採点をしていない",
+          "passed": true,
+          "evidence": "作品規模条件を監査し文章標本は別枠。第18章参考論点はLayer 1へ回し、全面再採点しない。",
+          "citations": [
+            {
+              "quote": "この論点はLayer 1の採点対象",
+              "lines": [
+                115
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "各所見に現行抜粋または出所を明示した資料の引用があり、要約や著者補足を本文で確認済みの証拠にしていない。元位置不明の抜き書きに架空の章・節を付けていない",
+          "passed": false,
+          "evidence": "引用文は章一覧第10章の引き欄であり標本Cには存在しない。要約を本文の直接引用に昇格した。",
+          "citations": [
+            {
+              "quote": "第10章標本の「受け入れた灰に、覚えのない記憶が混ざっていた」は直接引用でき",
+              "lines": [
+                88
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "文章標本を第1/6/10/18章の4区画と明示し、6〜10区画の要件に足りないことを述べている。作品全体の文章点を確定せず、暫定点を出す場合は限定範囲と条件を示している",
+          "passed": true,
+          "evidence": "第1/6/10/18章の4区画・1,688字と不足を明示。文章6は限定標本の暫定値。下位条件と数値の整合は別途所見。",
+          "citations": [
+            {
+              "quote": "6〜10区画の下限を下回るため暫定値",
+              "lines": [
+                121
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A5",
+          "text": "第1章の現行抜粋から実際に引用して所見を示し、未提供の過去スコアを発明したり証拠に使ったりしていない",
+          "passed": true,
+          "evidence": "第1章の現行引用で所見あり、過去点数の発明なし。",
+          "citations": [
+            {
+              "quote": "標本A「灰は指に残る。洗っても三日は落ちない。」",
+              "lines": [
+                126
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A6",
+          "text": "軸を平均した総合点を出していない",
+          "passed": true,
+          "evidence": "平均総合点なし。文章・技術の数値は総合点ではない。",
+          "citations": [
+            {
+              "quote": "他軸は材料不足のため未数値化",
+              "lines": [
+                177
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A7",
+          "text": "第14章の引きを著者資料上の調査候補として特定し、未回収と2章以内の無言及・無視を区別している。第14章末と第15〜16章等の本文不足により「引きの空手形」の確定適用を保留し、必要本文を指定している",
+          "passed": false,
+          "evidence": "候補特定・保留はしたが、作者補足の崩落を劇中の言及証拠に寄せ、第14・18章だけを要求。2章以内を確認する第15〜16章が抜けている。",
+          "citations": [
+            {
+              "quote": "崩落という形でこの謎自体には触れているため",
+              "lines": [
+                104
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A8",
+          "text": "第9〜12章の手順反復を著者資料上の調査候補として特定し、第10章の抜粋だけでは各章の手順全体を確認できないため「展開リズムの固定化」の確定適用を保留している。著者の意図の説明だけで免除もせず、必要本文を指定している",
+          "passed": false,
+          "evidence": "交渉内の手順を章全体の移動→面会→交渉→帰還にすり替え、第10章を追加要求から除外。保留・意図免除拒否だけでは充足しない。",
+          "citations": [
+            {
+              "quote": "少なくとも1章分（第10章）は本文標本で直接確認できる",
+              "lines": [
+                106
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A9",
+          "text": "未提出の本文・標本を生成したり、4区画を小分けして6〜10区画の要件を満たしたことにしたりしていない",
+          "passed": true,
+          "evidence": "架空の追加本文・標本、区画水増しなし。第10章の既存要約の誤帰属はA3で評価。",
+          "citations": [
+            {
+              "quote": "標本A403字・B423字・C441字・D421字",
+              "lines": [
+                9
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A10",
+          "text": "第18章の抜粋だけで作品全体の感情の頂点や感情設計7点未達を断定せず、最終章等の主な場面の本文がないため作品全体の比較が未確認であることを示している",
+          "passed": true,
+          "evidence": "第18章を全体頂点とせず、第22章等との比較未確認を明示。",
+          "citations": [
+            {
+              "quote": "判定：保留（対象場面が未特定）",
+              "lines": [
+                97
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A11",
+          "text": "実際に読める本文抜粋の量または範囲を宣言し、約105万字は著者申告規模として区別している。全文精読や全章の反証探索を完了したと偽っていない",
+          "passed": true,
+          "evidence": "4区画1,688字の実読範囲と申告規模を分離し、全章精読・反証探索済みとは偽らない。",
+          "citations": [
+            {
+              "quote": "申し送りにある全体約105万字",
+              "lines": [
+                9
+              ]
+            }
+          ]
+        },
+        {
+          "id": "A12",
+          "text": "少なくとも一つは実在する本文抜粋を引用した限定所見を示し、確定できない各主要項目について追加資料と確認目的を対応させている。単に資料不足とだけ答えていない",
+          "passed": true,
+          "evidence": "実在標本の所見と、構成・人物・世界・感情・引き・反復等の資料と目的の対応あり。資料不足だけで終わらない。本項PASSは要求範囲の完全性の保証ではなく、不足はA7/A8で記録。",
+          "citations": [
+            {
+              "quote": "世界設定抜き書き5項目の出典章・節番号",
+              "lines": [
+                146
+              ]
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 8,
+        "failed": 4,
+        "total": 12
+      }
+    }
+  ],
+  "excluded_model": "Qwen: cancelled by user; do not request a run",
+  "summary": {
+    "passed": 40,
+    "failed": 16,
+    "total": 56
+  },
+  "grading_policy": [
+    "現行項目を固定。複合項目は全要件を満たす場合だけPASS。",
+    "回答末尾の台帳まで読む。別UI質問カードを含め、ツール進捗・操作者メモは除く。",
+    "PASSは当該項目に限定し、項目外の問題を別枠に残す。FAIL数は独立した失敗件数ではない。",
+    "不適用という結論と、要求された根拠の有無を分ける。",
+    "eval14 A11の数値根拠はscore-anchorsの必要条件と照合。回収未検証だけで8を認めない。",
+    "eval13 A12は限定所見と追加資料・目的の対応の存在を検査。範囲不足はA7/A8と追加所見に残す。"
+  ]
+}

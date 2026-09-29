@@ -24,11 +24,13 @@ claude.aiにポータブルな形で動く、日本語小説専用の編集AI sk
 
 ## 使い方(claude.ai)
 
+無料プラン・有料プランのどちらでも使えます(無料プランでは Sonnet で動きます)。**事前に「設定 → Capabilities」でコード実行をオンにしてください**(skill 機能の前提条件です)。
+
 1. claude.aiの「カスタマイズ」を押す
 2. スキルを選択
 3. 追加を押し、アップロードを選ぶ
 4. skill機能がある環境なら `novel-editor.skill` をzipのままアップロード
-5. 原稿と依頼(例:「第3章を厳しく採点して」)を送る
+5. 原稿と依頼(例:「第3章を厳しく採点して」)を送る。連載の一章なら「単独でも掲載するか」も書いておくと、確認の質問が省けます(書いていない場合は、連作の一章として採点しつつ確認の質問が添えられます)
 
 ### ポータブル利用(必要最小限のファイルセット)
 
@@ -64,7 +66,7 @@ claude.aiにポータブルな形で動く、日本語小説専用の編集AI sk
 novel-editor/          skill本体(Skill.json相当のSKILL.md + references/)
 novel-editor.skill     配布用zip(treeとSHA-256一致を保つこと)
 evals/
-  evals.json           eval定義13件(#1〜#12挙動テスト+#13監査)
+  evals.json           eval定義15件・87項目(#1〜#12挙動/#13監査/#14歯止め/#15掲載形態)
   trigger-evals.json   description発火テスト21件
   fixtures/            テスト原稿(オリジナル創作)
   raw_outputs/         eval実行の出力原文
@@ -117,7 +119,7 @@ Claude Code では上記の手順がコマンド化されています(設定は 
 
 - [ ] reference file変更 → novel-editor.skill 再構築+SHA-256照合
 - [ ] SKILL.md description変更 → 1024文字以内確認
-- [ ] 採点ルール変更 → evals #1〜#12 再実行で回帰確認
+- [ ] 採点ルール変更 → `python3 tools/skill_lint.py --quiet` → 影響する eval を Sonnet で再実行(`/run-evals`)
 - [ ] notes.md に事実を追記(GitHubには数値のみ・本文引用禁止)
 
 ## 著作権ポリシー
