@@ -288,6 +288,10 @@ WORKFLOW_GUARDS = [
     # v2 実走（#14）で確認された失敗への手当て
     ("R-convenience", "score-anchors.md", ("その障害がどう解消されたか",), ()),
     ("R-pull-targets", "score-anchors.md", ("**先に列挙し**",), ()),
+    # Sonnet 実走（2026-09-29）で繰り返し出た失敗への手当て
+    ("R-quote-fidelity", "score-anchors.md", ("鉤括弧「」で示すのは原文どおりの文字列だけ", "推測の値を書かない"), ()),
+    ("R-three-labels", "scoring-rubric.md", ("Use these three fixed labels",), ()),
+    ("R-summaries", "scoring-rubric.md", ("Summaries submitted as the work itself are scored the same way",), ()),
     ("P2-status", "handoff-format.md", ("出所と位置／確認できた範囲／本文照合状態", "「本文確認済み」「未照合」「照合不一致」"), ()),
     ("P2-recovery", "handoff-format.md", ("著者が申告した回収先と本文で確認した回収先を区別する", "全体集計と引き継ぎにも同じ区別を残す"), ()),
     ("P2-setting", "handoff-format.md", ("本文での開示・機能を照合した範囲を分けて記録する",), ("設定資料が提出された時点で確定版として記録",)),

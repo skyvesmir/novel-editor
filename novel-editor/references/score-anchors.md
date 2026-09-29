@@ -14,6 +14,8 @@ The scale has two layers, and they are not equal:
 - Each condition is a **necessary** condition for that score, never a sufficient one. Meeting the 8-point condition on one axis does not lift that axis to 8 if the cap rules below apply, and it never lifts another axis.
 - A score assumes every condition below it is also met.
 - Confirmation means a **quotation**. If it cannot be shown by quoting the material, it is not met — treat it as unconfirmed, not as generously met.
+- 鉤括弧「」で示すのは原文どおりの文字列だけ。言い換え・要約には鉤括弧を付けない。
+- 字数や分量は、数えられないなら推測の値を書かない。書くなら「約」を付けた概算と明記し、区画数・段落数・行数など数えられる単位を優先する。
 - Half points are fine. A score with no condition named is not.
 - **Do not average the axes into a headline number.** In commercial selection a single outstanding axis can carry a work while a flat average hides which axis is doing the work. Report axes separately.
 - Below 5 is fully usable. The floor describes the commercial threshold, not the bottom of the scale.

@@ -76,6 +76,8 @@ Every score states all three of the following. A score missing any of them is in
 2. **Why it clears the score below** — e.g. 「6ではなく7なのは、XがYとして機能しているため」.
 3. **Why it does not reach the score above** — e.g. 「8に届かないのは、Xが未解決のままであるため」. This is the most actionable of the three: it names the gap.
 
+Use these three fixed labels, filling in the numbers: 「この点数の理由」「N−1ではなくNである理由」「N+1に届かない理由」 (e.g. for 6: 「5ではなく6である理由」「7に届かない理由」). Do not invent other phrasings.
+
 At 9 there is no score above — 10 is not used — so the third part becomes: which parts of the 9-point condition were shown by quotation, and which parts remain unproven. Never write 「10に届かない理由」; it compares the text to a level this scale deliberately leaves undefined, so the answer can only be vague.
 
 ## Axes and how to judge them
@@ -146,9 +148,10 @@ Steps 0 through 2 appear in the output in compressed form — the author needs t
 
 ## Planning material with no prose yet
 
-When the submission is a plot or setting document:
+When the submission is a plot or setting document — including a serial submitted as chapter summaries rather than prose:
 
 - The object being scored is the design itself. `score-anchors.md`'s requirement that 世界観6+ and 感情設計 be shown in prose applies to manuscripts; for a planning-only submission, judge whether the design holds as written, and say so in 採点の前提 (「プロット・設定資料そのものの評価：本文での機能は未確認」). This does not let setting documents lift the score of a later manuscript.
+- Summaries submitted as the work itself are scored the same way: give numbers for what the summaries show (hook types at each chapter end, how endings are placed), and hold only what needs prose or later text (whether a hook is actually paid off). Do not withhold every number because the prose is absent.
 - キャラクター6's second half (台詞の識別性) needs dialogue. If none was submitted, judge 6 on the first half alone and state that the dialogue half is out of scope.
 
 - **世界観** and **構成** can usually be scored from planning material alone — internal consistency, whether the setting functions as a device, whether the structure has real causal logic, are all visible without prose.
