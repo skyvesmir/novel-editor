@@ -289,7 +289,7 @@ WORKFLOW_GUARDS = [
     ("R-convenience", "score-anchors.md", ("その障害がどう解消されたか",), ()),
     ("R-pull-targets", "score-anchors.md", ("**先に列挙し**",), ()),
     # Sonnet 実走（2026-09-29）で繰り返し出た失敗への手当て
-    ("R-quote-fidelity", "score-anchors.md", ("鉤括弧「」で示すのは原文どおりの文字列だけ", "推測の値を書かない"), ()),
+    ("R-quote-fidelity", "score-anchors.md", ("鉤括弧「」で示すのは、原文どおりの文字列だけ", "確認の引用には数えない", "推測の値を書かない"), ()),
     ("R-three-labels", "scoring-rubric.md", ("Use these three fixed labels",), ()),
     ("R-summaries", "scoring-rubric.md", ("Summaries submitted as the work itself are scored the same way",), ()),
     ("P2-status", "handoff-format.md", ("出所と位置／確認できた範囲／本文照合状態", "「本文確認済み」「未照合」「照合不一致」"), ()),

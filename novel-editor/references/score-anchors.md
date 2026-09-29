@@ -14,7 +14,7 @@ The scale has two layers, and they are not equal:
 - Each condition is a **necessary** condition for that score, never a sufficient one. Meeting the 8-point condition on one axis does not lift that axis to 8 if the cap rules below apply, and it never lifts another axis.
 - A score assumes every condition below it is also met.
 - Confirmation means a **quotation**. If it cannot be shown by quoting the material, it is not met — treat it as unconfirmed, not as generously met.
-- 鉤括弧「」で示すのは原文どおりの文字列だけ。言い換え・要約には鉤括弧を付けない。
+- 提出物の文章を鉤括弧「」で示すのは、原文どおりの文字列だけ。作品についての言い換え・要約・自分で付けたパターン名には鉤括弧を付けない（強調が要るなら太字）。この skill が定める規則名・分類名は「」で書いてよい。引用は提出物の該当箇所と照合してから出す。照合できない箇所は鉤括弧を外して要約として書き、確認の引用には数えない（その条件は未確認）。
 - 字数や分量は、数えられないなら推測の値を書かない。書くなら「約」を付けた概算と明記し、区画数・段落数・行数など数えられる単位を優先する。
 - Half points are fine. A score with no condition named is not.
 - **Do not average the axes into a headline number.** In commercial selection a single outstanding axis can carry a work while a flat average hides which axis is doing the work. Report axes separately.
@@ -140,7 +140,7 @@ No calibration work is listed for this axis yet, for the same reason as 文章: 
 | 5 | 各章の終わりが読み継ぎの動機を残している。(a) 次に何が起こるかという具体的な疑問（危機の帰趨・正体・選択の結果など）、(b) 長期弧への期待の更新（主筋の進展や次の展開への予告）、(c) 関係性の変化の予兆（距離・態度・立場の変化の示唆）のいずれか1つ以上を残していればよい。章末が明示的な疑問文で終わることは要求しない。 |
 | 6 | 章末の引きが状況の提示だけに留まらず、読者が複数の可能性を予測できる分岐点として機能している箇所が1つ以上ある。 |
 | 7 | 章内で開いた疑問を閉じる前に次の疑問を重ねて開く構造（開く→開く→閉じる）が複数箇所にあり、常に未解決の疑問が1つ以上残る設計になっている。 |
-| 8 | 引きの手法が単一パターンに依存せず、性質の異なる手法（情報の欠落・選択の分岐・脅威の切迫・関係性変化の予兆など）を3種類以上使い分けている。かつ提示された引きが後続章で意味のある形で回収されており、アテが外れたまま放置される引きが確認できない。 |
+| 8 | 引きの手法が単一パターンに依存せず、性質の異なる手法（情報の欠落・選択の分岐点・脅威の切迫・関係性変化の予兆など、`hook-techniques.md`の6分類）を3種類以上使い分けている。かつ提示された引きが後続章で意味のある形で回収されており、アテが外れたまま放置される引きが確認できない。 |
 | 9 | 章末の引きがプロットレベルとキャラクターレベルの疑問を同時に駆動する多層構造になっており、読者の予測が意図的に外れること自体が次の引きとして機能している箇所がある。 |
 
 4以下条件の判定対象：
