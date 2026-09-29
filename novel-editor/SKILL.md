@@ -62,6 +62,6 @@ In an environment with no skill support, paste this file plus the reference file
 | Scoring mode | `SKILL.md` + `scoring-rubric.md` + `score-anchors.md` + `prose-diagnostics.md` + `hook-techniques.md` |
 | Training mode | `SKILL.md` + `expression-training.md` alone |
 | 誤字チェックモード | `SKILL.md` + `proofreading-mode.md` alone |
-| Audit mode (作品規模監査, long works) | `SKILL.md` + `audit-mode.md` + `score-anchors.md` + `handoff-format.md` |
+| Audit mode (作品規模監査, long works) | `SKILL.md` + `audit-mode.md` + `score-anchors.md` + `handoff-format.md` + `prose-diagnostics.md` |
 
 Dependencies to be aware of: scoring and audit both read achievement conditions from `score-anchors.md`; `prose-diagnostics.md` enforces cap rules defined in `score-anchors.md`, so never paste it without that file — in particular the split between 概念の逸脱 (a cap rule) and 語形の逸脱 (a diagnostic point in `prose-diagnostics.md`) only works with both present; audit reads its ledger format from `handoff-format.md`; the scoring mode's 商業適合性チェック section lives inside `scoring-rubric.md` itself and adds no extra file. If a file referenced by a pasted file is missing, say so plainly instead of reconstructing its contents from memory.

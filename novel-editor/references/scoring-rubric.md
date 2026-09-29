@@ -40,7 +40,7 @@ Decide this before Step 0 and state it in one line at the top of the output, bec
 
 ### 掲載形態の宣言（連作の一章の場合）
 
-提出単位（何が提出されたか）とは別に、掲載形態（それがどう読まれるか）を三択で宣言する。同じ原稿でも、単独で読まれるかどうかで構成の判定が変わるためである。
+この宣言は、提出単位が「連作の一章」のときだけ行う（独立した短篇・プロット・全体の提出では行わない）。提出単位（何が提出されたか）とは別に、掲載形態（それがどう読まれるか）を三択で宣言する。同じ原稿でも、単独で読まれるかどうかで構成の判定が変わるためである。
 
 1. **単独掲載（続きなし）** — 上記「単章」として扱う。
 2. **連作の一章（単独では掲載されない）** — 上記「連作の一章」の手順そのまま。
@@ -119,7 +119,7 @@ Four fixed items reported alongside the scores but **never scored**: no points, 
 3. **冒頭3話（または冒頭4000字）引き込み** — where the first episodes land the promise (what kind of story this is, why following it is worth more reading), whether a concrete unresolved question is open by the end of episode 3, and what a dropping reader would name as the reason. Judged only from the submitted text; when fewer than 3 episodes are submitted, judge what exists and mark the rest 該当範囲外.
 4. **ジャンル型との意識的整合** — identify the genre convention the work operates in (from its own text: reader-service promises, tropes used or refused), then report whether deviations look systematic rather than accidental. The finding to report is the pattern (「型を踏んでいる箇所／外れている箇所とその一貫性」) — not whether obeying or deviating is good.
 
-Rules: these four never move any axis score, are never averaged into anything, and generate no 改善案 (they do not count toward the 10-suggestion cap because they produce none). This includes the closing lists: a fitness-only finding must not be restated as an item in 「今回直すのはこの3件」 or 「次回以降に回す項目」 — it enters those lists only when it is simultaneously a craft weakness, attributed to its craft axis with a cross-reference. If the author asked for scores only, omit the section entirely rather than reporting it in one dismissive line. When a fitness finding overlaps a craft weakness (e.g. the opening buries its hook — both a 牽引力 fact and a 冒頭3話 fact), report it in both places with cross-references instead of charging either lane twice.
+Rules: these four never move any axis score, are never averaged into anything, and generate no 改善案 (they do not count toward the 10-suggestion cap because they produce none). This includes the closing lists: a fitness-only finding must not be restated as an item in 「今回直すのはこの3件」 or 「次回以降に回す項目」 — it enters those lists only when it is simultaneously a craft weakness, attributed to its craft axis with a cross-reference. Include this section only when the author asks about commercial viability (売れるか、商業水準か、企画として、一行紹介、タイトルなど); otherwise omit it entirely rather than reporting it in one dismissive line. When a fitness finding overlaps a craft weakness (e.g. the opening buries its hook — both a 牽引力 fact and a 冒頭3話 fact), report it in both places with cross-references instead of charging either lane twice.
 
 ## Procedure
 
@@ -147,6 +147,9 @@ Steps 0 through 2 appear in the output in compressed form — the author needs t
 ## Planning material with no prose yet
 
 When the submission is a plot or setting document:
+
+- The object being scored is the design itself. `score-anchors.md`'s requirement that 世界観6+ and 感情設計 be shown in prose applies to manuscripts; for a planning-only submission, judge whether the design holds as written, and say so in 採点の前提 (「プロット・設定資料そのものの評価：本文での機能は未確認」). This does not let setting documents lift the score of a later manuscript.
+- キャラクター6's second half (台詞の識別性) needs dialogue. If none was submitted, judge 6 on the first half alone and state that the dialogue half is out of scope.
 
 - **世界観** and **構成** can usually be scored from planning material alone — internal consistency, whether the setting functions as a device, whether the structure has real causal logic, are all visible without prose.
 - **キャラクター** usually cannot be scored if the material only names roles (love interest, antagonist) with no characterization, motivation, or dialogue. Say so plainly and state exactly what would need to exist before a score is possible.
@@ -176,7 +179,7 @@ Disagreement is expected and welcome; it is also the most reliable route to scor
 The number comes after its grounds, in the output as well as in the reasoning. Leading with the number invites the author to read the score and skip the reasoning that would let them change it.
 
 ```markdown
-## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
+## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：連作の一章のときのみ1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
 ## 基礎設定の確認（Step 0）
 ## 列挙と精査（Step 1・2：取り下げた指摘とその理由を含む）
 ## 軸別評価
@@ -189,8 +192,8 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ### 独自性
 ### 文章（原稿がある場合のみ）
 ## 別項報告（点数に混ぜない：同時代性／冒頭の掴み）
-（冒頭の掴み＝提出物の冒頭400字以内の疑問・異常・危機の提示箇所を引用、なければ「提示なし」。同時代性は該当時のみ。点数なし・改善案なし・「今回直すのはこの3件」にも載せない）
-## 商業適合性チェック（非採点・依頼が採点のみの場合は省略）
+（冒頭の掴み＝本文の冒頭がある提出のみ。提出物の冒頭400字以内の疑問・異常・危機の提示箇所を引用、なければ「提示なし」。同時代性は該当時のみ。点数なし・改善案なし・「今回直すのはこの3件」にも載せない）
+## 商業適合性チェック（非採点・商業面を尋ねられた場合のみ）
 （一行紹介成立性／タイトル検索性／冒頭3話引き込み／ジャンル型との意識的整合 — 各項目：確認結果＋根拠引用、点数なし・改善案なし。商業レーンのみの所見は「今回直すのはこの3件」「次回以降に回す項目」にも載せない。craft軸の弱点と重なる場合のみ、その軸の提案として記載し相互参照を付す）
 ## 今回直すのはこの3件
 ## 次回以降に回す項目

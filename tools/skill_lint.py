@@ -277,7 +277,11 @@ WORKFLOW_GUARDS = [
     # Qwen 系統の較正値（docs/calibration-evidence.md）。旧値の復活を検出する
     ("Q-window", "score-anchors.md", ("冒頭400字以内", "沈黙の記号"), ("冒頭3文以内",)),
     ("Q-hook-opening", "score-anchors.md", ("冒頭**400字以内**に、疑問・異常・危機",), ("冒頭10行以内",)),
-    ("Q-cliche", "score-anchors.md", ("同じ系統のまま3箇所以上、かつ1万字あたり3箇所以上", "「同型」は系統単位"), ()),
+    ("Q-cliche", "score-anchors.md", ("同じ系統のまま3箇所以上、かつ1万字あたり3箇所以上", "「同じ系統」で数える"), ()),
+    ("Q-cliche-diag", "prose-diagnostics.md", ("その件数に入れない",), ("3箇所以上がAI的紋切り型に該当する場合は",)),
+    ("R-audit-perchapter", "audit-mode.md", ("章をまたいで足さない",), ("標本内5箇所＋台帳累積11箇所",)),
+    ("R-planning", "scoring-rubric.md", ("The object being scored is the design itself",), ()),
+    ("R-format-scope", "scoring-rubric.md", ("提出単位が「連作の一章」のときだけ行う",), ()),
     ("Q-lexdev", "score-anchors.md", ("同一話（章）内で3箇所以上、かつ1万字あたり2箇所以上", "ルビ・傍点・括弧書き"), ()),
     ("Q-dialogue", "score-anchors.md", ("台詞の識別性（6点条件の後半）は**この軸にのみ置く**", "**非対称がある**"), ()),
     ("Q-homogeneity", "prose-diagnostics.md", ("均質化の判定手順", "3次元すべてで差が認められないときにだけ"), ()),

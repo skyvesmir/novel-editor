@@ -39,7 +39,7 @@ claude.aiにポータブルな形で動く、日本語小説専用の編集AI sk
 | 採点 | SKILL.md + scoring-rubric.md + score-anchors.md + prose-diagnostics.md + hook-techniques.md |
 | 訓練 | SKILL.md + expression-training.md |
 | 誤字チェック | SKILL.md + proofreading-mode.md |
-| 監査 | SKILL.md + audit-mode.md + score-anchors.md + handoff-format.md |
+| 監査 | SKILL.md + audit-mode.md + score-anchors.md + handoff-format.md + prose-diagnostics.md |
 
 すべて `novel-editor/references/` 配下にあります。参照先ファイルが足りない場合は、記憶で補完せず「このファイルが足りない」と伝える仕様になっています。
 

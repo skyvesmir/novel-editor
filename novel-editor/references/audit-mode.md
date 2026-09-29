@@ -45,8 +45,8 @@ When working from raw text files rather than an existing ledger, index episodes 
 - **Confirm the delimiter style first** by sampling pages/sections across the file (start, middle, end). Styles observed in practice: `第N話` headings; bare title lines after page breaks (no numbering at all); full-width numbered titles (`１．タイトル`); 前書き/後書き lines interleaved with the episode proper.
 - **Index, then verify mechanically**: after building the episode list, check numbering integrity (missing/duplicate numbers), and sanity-check gap sizes between consecutive starts — a suspiciously small gap usually means a false-positive title (a skill name, a scene header), not an episode boundary.
 - Record in the ledger how the index was built and its verified coverage (e.g. 「765話・欠落3話は合併で本文連続・重複1」). An unverified index poisons every count built on it.
-- **場面区切り記号の様式も同じ手順で先に確認する。** 牽引力の4以下条件は「章末、および区切り記号で明示された場面末」を判定対象にするため（`score-anchors.md`）、区切り様式が分からないと対象を数えられない。様式は章立て表記と同様に作品ごとに異なり、実測では ＊ / ◇ / ◆ / ■ がそれぞれ別作品の主要記号だった。1章あたりの区切り数も 0.00〜1.93箇所と作品差が大きい。
-  - **「・」の連続は区切り記号ではない。** 沈黙・絶句の表現（「・・・・」）であり、これを区切りとして数えると1作品で千件超の誤検出が出る。
+- **場面区切り記号の様式も同じ手順で先に確認する。** 牽引力の4以下条件は「章末、および区切り記号で明示された場面末」を判定対象にするため（`score-anchors.md`）、区切り様式が分からないと対象を数えられない。様式は章立て表記と同様に作品ごとに異なり、実測では ＊ / ◇ / ◆ / ■ がそれぞれ別作品の主要記号だった。1章あたりの区切り数も作品差が大きい。
+  - **「・」の連続は区切り記号ではない。** 沈黙・絶句の表現（「・・・・」）であり、
   - **区切りを多用する作品は判定対象が増え、4以下条件の「2箇所以上」が統計的に発火しやすくなる。** 区切りの密度（箇所/章）を台帳に記録し、発火の判定時にこのバイアスを明示すること。
   - PDF抽出テキストでは改行が潰れて区切り記号が行内に埋没する。行単位の検出（行頭から行末までが記号だけの行）では拾えないので、前後の空白を境界とする検出に切り替える。
 
@@ -71,7 +71,7 @@ Procedure used and validated across three completed works (765 / 371 / 274 episo
 4. **Density profiles per decile or arc**: dialogue markers, action vocabulary, system/level keywords per 万字 — rhythm fixation and escalation signals.
 5. **Tail-hook rate by third of the work**: last N characters of each episode checked against hook-pattern list; report counting rule. Within-work comparison only (cross-work rates range 0–16%; never an absolute anchor).
 6. **Cliché counts**: fixed pattern dictionary (苦笑・思わず・頷く etc.) per 万字 → ledger accumulation for 文章 cap-rule checks. Absence from the dictionary is not absence from the text.
-7. **章末の明示疑問を数えるときは会話文の相づちを除外する。** 末尾N字に「？」があるかで数えると、「ん？」「え？」「なに？」のような会話中の驚き・相づちを拾って率が数倍に膨らむ（実測で 9.5% が 35.6% に化けた）。除外条件は3つ: 判定範囲を章の最終2文に限る／間投詞のみの疑問文を落とす／疑問符の直前に4字以上の内容語があることを要求する。この補正を入れると商業作の章末明示疑問率は 0.4〜9.5% に収まる。
+7. **章末の明示疑問を数えるときは会話文の相づちを除外する。** 末尾N字に「？」があるかで数えると、「ん？」「え？」「なに？」のような会話中の驚き・相づちを拾って率が数倍に膨らむ。除外条件は3つ: 判定範囲を章の最終2文に限る／間投詞のみの疑問文を落とす／疑問符の直前に4字以上の内容語があることを要求する。
 8. **回収距離の走査は代理指標であることを明示する。** 章末尾の特徴語が後続章に再出現するまでの距離は測れるが、それは「言及された」であって「回収された」ではない（同名の別事象や単なる語の再利用を拾うため過大評価方向に振れる）。上限規則「引きの空手形」の発火判定には、距離の数値ではなく該当箇所の精読と引用が必要。
 
 前処理の共通注意（実測で確認済み）: ページ番号の数字行を除去しないと尾部分類が全て narrative に倒れる。後書きは `rfind` で切断する（位置が本文の30%より後ろのときのみ切る。著者挨拶は物語の尾ではない）。対話終了型は末尾60字では判定できないので末尾300〜500字の窓で見る。
@@ -94,11 +94,10 @@ Beyond the format in `handoff-format.md`, a work-scale ledger should include the
 Full-text prose diagnosis is impossible at this scale; the axis is scored from a declared sample instead.
 
 - Stratified extraction: from each volume in scope, take openings, climax scenes, dialogue-centered scenes, action scenes, and transition/connector scenes. Total 6–10 segments of roughly 500 characters per audit, spread across volumes — never all from one volume.
-- Cap rules apply within the sample, with counts stated: e.g. 「AI的紋切り型の反復：標本内5箇所＋台帳累積11箇所」.
+- 文章軸の上限規則（AI的紋切り型の反復・語彙の水準逸脱）は `score-anchors.md` のとおり**章（話）ごと**の二重条件（同一話内の件数＋1万字あたりの密度）で判定する。区画や台帳の件数を章をまたいで足さない。同じ章の件数と字数がそろう場合だけ判定し、「確認できた章の数のうち発火した章の数」で報告する：「AI的紋切り型の反復：確認6章中2章で発火（第3・9章）」。
 - The output line must declare its basis: 「文章：6（全12巻中4巻・10区画の標本に基づく）」. **A work-scale prose score without a declared basis is not a score** — same rule as everywhere else, extended.
 - Ledger accumulation: when a chapter scoring found AI的紋切り型 or 表記ゆれ instances, they go into the ledger. The audit uses those accumulated counts alongside fresh samples.
-- **語彙の水準逸脱**（`score-anchors.md` の上限規則）も同じ枠で扱う。作品規模では逸脱語が全編に散るため、標本内の該当箇所と台帳累積を併記して発火を判定する：「語彙の水準逸脱：標本内2箇所＋台帳累積4箇所」。ただし発火の前提として**作品の技術・文化水準が本文または設定資料で確定していること**が必要 — 確定していない作品ではこの規則を適用せず、その旨を出力に一行書く。判定するのは概念の逸脱のみで、語形（現代のカタカナ借用語）は診断観点として扱い上限規則には使わない。
-- **台詞の識別性**（キャラクター6点条件の後半）は、標本の中から会話中心の場面を選び、主要人物の台詞を発話者名を伏せて並べて判定する。作品規模では登場人物が多いため、判定対象は台帳の人物レジスタ上位（出現頻度順）に限り、対象人物を出力に明示する。
+- **語彙の水準逸脱**（`score-anchors.md` の上限規則）も同じ枠で扱う。上の行と同じく章ごとに判定する：「語彙の水準逸脱：確認6章中0章」。ただし発火の前提として**作品の技術・文化水準が本文または設定資料で確定していること**が必要 — 確定していない作品ではこの規則を適用せず、その旨を出力に一行書く。判定するのは概念の逸脱のみで、語形（現代のカタカナ借用語）は診断観点として扱い上限規則には使わない。
 
 ## Drift control (the audit is where drift does maximum damage)
 
