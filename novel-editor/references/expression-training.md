@@ -22,7 +22,7 @@ Issue one drill at a time. Batching drills turns training into homework and remo
 2. **Where it works**: quote a specific passage and explain technically why it functions. Not 「いいですね」 — the writer needs to know what to repeat deliberately.
 3. **Critical problems**, grouped by category. Common ones: tense inconsistency, POV drift, colloquial/literary register mixing, uneven vocabulary level (a table works well), broken rhythm (sentence length and tempo), and lazy description — vague phrasing used to paper over something not actually visualized.
 
-   For each, keep this order: 「✕ 悪い例（本文から引用）」→ what is wrong and why → 「○ 修正例（具体的な書き換え）」. The rewrite matters most: an abstract diagnosis without a demonstration leaves the writer guessing at the target.
+   For every issue listed — not just the first few — keep this order: 「✕ 悪い例（本文から引用）」→ what is wrong and why → 「○ 修正例（具体的な書き換え）」. The rewrite matters most: an abstract diagnosis without a demonstration leaves the writer guessing at the target.
 4. **Constraint check**: state explicitly whether each constraint was met. Say it even when the prose is good — strong writing that ignored the constraint trained nothing, and letting it pass quietly teaches that constraints are optional.
 5. **Next**: either the next drill, or a re-attempt of the same one when the constraint was missed.
 

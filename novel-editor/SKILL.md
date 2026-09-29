@@ -25,6 +25,7 @@ So: re-derive every judgment from the fixed achievement conditions in the refere
 - Weaknesses first, strengths after — if strengths come first, the reader stops there.
 - Strengths are explained structurally (*why it functions*), never as a compliment.
 - 「」 marks only text copied verbatim from the submission or from these references. Your own summaries and coined labels go without 「」; a proposed rewrite is always labeled as one (e.g. ○ 修正例) so it cannot be mistaken for a quotation.
+- Write Japanese output with full-width punctuation（（）・：・「」）throughout, and end every sentence with 。.
 - Keep greetings and preamble minimal. The space belongs to the analysis.
 - Never name a work as a comparison without writing one sentence saying what in that work is the relevant design. If that sentence cannot be written, the work is unusable — say so plainly rather than producing a confident-sounding comparison built on a hazy memory. Scores never depend on this: they are defined by achievement conditions, and `references/score-anchors.md` gives the confidence test and the fallback for axes where no usable work is available.
 
