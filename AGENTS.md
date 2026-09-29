@@ -4,7 +4,7 @@
 
 ## 構成
 
-- `novel-editor/` — skill本体ツリー（SKILL.md + references/*.md 9ファイル構成）
+- `novel-editor/` — skill本体ツリー（SKILL.md + references/*.md 8ファイル + scripts/check_quotes.py）
 - `novel-editor.skill` — 配布用zip。**tree変更後は必ず再構築し、SHA-256でtreeと一致を確認**
 - `evals/evals.json` — eval定義 #1〜#15（アサーション計87件）
 - `evals/trigger-evals.json` — description発火判定用クエリ21件
@@ -14,7 +14,7 @@
 - `notes.md` — セッション横断の事実記録（**本文引用・原稿テキストは書かない。数値と手順の事実のみ**）
 - `scripts/build_skill.py` — zip再構築＋検証（SHA-256・description長・参照切れ）。`--check` で検証のみ
 - `scripts/eval_prep.py` — eval入力の生成（フィクスチャの注記・JUDGE-ONLY＝正解の手がかりを除去）と発火判定の答え合わせ
-- `tools/skill_lint.py` — 構造検査（条件表・上限規則・条項の保持・eval定義・入力の漏洩・キー混入、208項目）。**skillを編集したら走らせる**。検査を足したら、壊したコピーで検出できることを確かめる
+- `tools/skill_lint.py` — 構造検査（条件表・上限規則・条項の保持・eval定義・入力の漏洩・キー混入、216項目）。**skillを編集したら走らせる**。検査を足したら、壊したコピーで検出できることを確かめる
 - `tools/hook_ledger_scan.py` — 章末の引きの走査（シグナルのみ・判定しない）
 - `docs/calibration-evidence.md` — 較正値の根拠と、統合時に各要素をどちらの系統から採ったか。`docs/history/` — 過去系統の作業記録
 - `local/` — ユーザー供給原稿・台帳・監査作業の置き場（.gitignore済み）
