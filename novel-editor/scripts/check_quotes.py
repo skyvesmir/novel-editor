@@ -7,7 +7,8 @@
 
 quotes: 下書きの最上位の「」を1つずつ取り出し、提出物（と、この skill の references/）に
   同じ文字列があるかを調べる。空白・改行の違いは無視する。「…」「……」「...」「（中略）」で
-  区切られた抜粋は、区切りごとに照合する。見つからないものだけを一覧にする（終了コード 1）。
+  区切られた抜粋は、区切りごとに照合する。「修正例」を含む行（書き直し案）は照合しない。
+  見つからないものだけを一覧にする（終了コード 1）。
 count: 空白・改行を除いた字数と、段落数を出す。
 """
 import re
@@ -48,7 +49,8 @@ def quotes(draft, sources):
     refs = Path(__file__).resolve().parent.parent
     hay_ref = "".join(norm(p.read_text(encoding="utf-8")) for p in refs.rglob("*.md"))
     bad = []
-    for q in top_level_quotes(Path(draft).read_text(encoding="utf-8")):
+    lines = [ln for ln in Path(draft).read_text(encoding="utf-8").splitlines() if "修正例" not in ln]
+    for q in top_level_quotes("\n".join(lines)):
         frags = [norm(f) for f in ELLIPSIS.split(q) if norm(f)]
         miss = [f for f in frags if f not in hay and f not in hay_ref]
         if miss:
