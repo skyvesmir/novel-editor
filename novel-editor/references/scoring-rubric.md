@@ -80,7 +80,7 @@ Use these three fixed labels, filling in the numbers: 「この点数の理由�
 
 At 9 there is no score above — 10 is not used — so the third part becomes: which parts of the 9-point condition were shown by quotation, and which parts remain unproven. Never write 「10に届かない理由」; it compares the text to a level this scale deliberately leaves undefined, so the answer can only be vague.
 
-At 4以下 there is no defined band below — the condition tables stop at 「4以下」 — so the second part becomes 「4以下に置く理由」: name the 4以下 condition that the quotation satisfies, or the 5-point condition that it fails. Never write 「3ではなく4である理由」.
+At 4以下 there is no defined band below — the condition tables stop at 「4以下」 — so the second part becomes 「4以下に置く理由」: name the 4以下 condition that the quotation satisfies, or the 5-point condition that it fails. The first and third labels stay as usual, so the three labels are 「この点数の理由」「4以下に置く理由」「5に届かない理由」. Never write 「3ではなく4である理由」.
 
 ## Axes and how to judge them
 
