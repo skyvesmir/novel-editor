@@ -14,6 +14,7 @@ The scale has two layers, and they are not equal:
 - Each condition is a **necessary** condition for that score, never a sufficient one. Meeting the 8-point condition on one axis does not lift that axis to 8 if the cap rules below apply, and it never lifts another axis.
 - A score assumes every condition below it is also met.
 - Confirmation means a **quotation**. If it cannot be shown by quoting the material, it is not met — treat it as unconfirmed, not as generously met.
+- 「〜がない」「定型どおり」という否定の判定も、確かめた本文の箇所（該当しそうで該当しなかった場面、定型に戻る場面など）を1つ以上引用する。引用のない否定は、読まずに書いたものと区別できない。
 - 条件が数を求めるとき（「複数箇所」「2箇所以上」「3種類以上」など）は、1件ごとに別の引用を並べて数を示す。示せた数が足りなければ、その条件は未確認。
 - 提出物の文章を鉤括弧「」で示すのは、原文どおりの文字列だけ。作品についての言い換え・要約・自分で付けたパターン名には鉤括弧を付けない（強調が要るなら太字）。この skill が定める規則名・分類名は「」で書いてよい。引用は提出物の該当箇所と照合してから出す。照合できない箇所は鉤括弧を外して要約として書き、確認の引用には数えない（その条件は未確認）。
 - 字数や分量は、数えられないなら推測の値を書かない。書くなら「約」を付けた概算と明記し、区画数・段落数・行数など数えられる単位を優先する。
