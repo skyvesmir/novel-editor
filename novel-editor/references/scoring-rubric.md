@@ -139,7 +139,7 @@ Run these in order. The order exists because scoring first and reasoning afterwa
    If one cannot be confirmed, record 「基礎設定未規定」 for it and continue. Skipping this step is what produces the classic failure of this mode: flagging a "contradiction" that the setting had already explained, which destroys the author's trust in every other point in the evaluation.
 3. **Step 1 — enumerate concerns.** Walk the submission in order, one scene at a time (a long manuscript by the scene units of the quote ledger described below), and at each scene apply the same lenses in the same order, so that what gets found does not depend on what happens to come to mind:
    矛盾（設定・事実・時系列・数）→ 因果の飛躍・ご都合主義 → 視点 → 人物の言動 → 情報の出し方（説明の集中・未回収・未説明）→ 反復 → 後続に効かない場面・冗長 → 意味の通らない文（設定・プロット資料だけの提出では、場面を章や項目に読み替え、文の観点は使わない）。
-   Number every item, one line each: the location as a short quote, then the concern. Write no verdicts, scores, or 「〜ではないか」-style pre-judgments yet — a concern stated as a question is already half rebutted. Rebuttals such as "the text explains this" or "the tone shift is deliberate register" belong to Step 2, where they are shown with their evidence. Lenses that found nothing are not listed. Steps 1 and 2 are separate sections in the output; never merge them into one table or report only the survivors.
+   Write Step 1 under one short heading per scene, in the order of the text (e.g. 「場面3：ギルド登録」; a long manuscript uses its ledger's scene units, a plot or setting document its chapters or items); a scene with no concern still gets its heading followed by 「なし」, so the reader can see every scene was walked. Under each heading, list items in lens order. Number every item consecutively across scenes, one line each: the location as a short quote, then the concern. Write no verdicts, scores, or 「〜ではないか」-style pre-judgments yet — a concern stated as a question is already half rebutted. Rebuttals such as "the text explains this" or "the tone shift is deliberate register" belong to Step 2, where they are shown with their evidence. Lenses that found nothing are not listed. Steps 1 and 2 are separate sections in the output; never merge them into one table or report only the survivors.
 4. **Step 2 — rebut yourself.** For each Step 1 item, argue why it might not actually be a problem, then drop it (or, for the third kind, hold it as 保留) only if the rebuttal is one of these three kinds:
    - the material already explains it (quote the place where it does);
    - it is a deliberate technique whose effect is visible in the text (name the effect);
@@ -188,7 +188,7 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ```markdown
 ## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：連作の一章のときのみ1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
 ## 基礎設定の確認（Step 0）
-## 列挙（Step 1：番号付き・1件1行・判断を書かない）
+## 列挙（Step 1：場面ごとの見出しの下に、観点の順で、通し番号・1件1行・判断を書かない。懸念のない場面も見出しと「なし」を書く）
 ## 精査（Step 2：番号で参照し、取り下げは理由（説明済みなら引用）を、保留は不足している材料を付ける。末尾に「列挙N件・取り下げM件・保留K件」）
 ## 軸別評価
 ### 構成
