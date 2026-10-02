@@ -1,0 +1,37 @@
+{
+  "fixture-16": {
+    "positives": [
+      {"wrong": "白羽の矢が建った", "right": "白羽の矢が立った", "class": "idiom", "third": 1},
+      {"wrong": "関心した", "right": "感心した", "class": "homophone", "third": 1},
+      {"wrong": "耳を済ました", "right": "耳を澄ました", "class": "idiom", "third": 1},
+      {"wrong": "進入", "right": "侵入", "class": "homophone", "third": 1},
+      {"wrong": "振り帰った", "right": "振り返った", "class": "aux", "third": 1},
+      {"wrong": "読み説く", "right": "読み解く", "class": "aux", "third": 2},
+      {"wrong": "頭角を表した", "right": "頭角を現した", "class": "idiom", "third": 2},
+      {"wrong": "収集がつかなく", "right": "収拾がつかなく", "class": "homophone", "third": 2},
+      {"wrong": "体制を崩して", "right": "体勢を崩して", "class": "homophone", "third": 2},
+      {"wrong": "肝に命じて", "right": "肝に銘じて", "class": "idiom", "third": 2},
+      {"wrong": "打ち開けた", "right": "打ち明けた", "class": "aux", "third": 2},
+      {"wrong": "後を断たない", "right": "後を絶たない", "class": "idiom", "third": 3},
+      {"wrong": "追求", "right": "追及", "class": "homophone", "third": 3},
+      {"wrong": "割り混んだ", "right": "割り込んだ", "class": "aux", "third": 3},
+      {"wrong": "危機一発", "right": "危機一髪", "class": "idiom", "third": 3},
+      {"wrong": "精算", "right": "清算", "class": "homophone", "third": 3}
+    ],
+    "negatives": ["押しも押されもせぬ", "断ち切る", "的を射た", "態勢を整える", "読み解いて", "振り返ってみれば"]
+  },
+  "fixture-17": {
+    "positives": [],
+    "negatives": ["白羽の矢が立った", "異口同音", "意味深長", "五里霧中", "采配を振るって", "感心する", "収拾がつかなく", "後を絶たず", "二の舞を演じる", "並行して", "取り付く島もない", "頭角を現した", "打ち明けた", "汚名返上", "耳を澄まして", "危機一髪", "体勢を崩し", "肝に銘じて", "心機一転", "振り返って"]
+  },
+  "fixture-18": {
+    "positives": [
+      {"wrong": "流れに棹さすように", "right": "流れに逆らうように（棹さす＝流れに乗って勢いを増す）", "class": "misuse", "third": 1},
+      {"wrong": "他山の石として", "right": "手本として（他山の石＝他人の誤った言行も自分を磨く助けになる）", "class": "misuse", "third": 1},
+      {"wrong": "小春日和", "right": "春らしい穏やかな（うららかな）（小春日和＝晩秋から初冬の暖かな晴天）", "class": "misuse", "third": 1},
+      {"wrong": "琴線に触れた", "right": "逆鱗に触れた（琴線に触れる＝感動や共鳴を呼び起こす）", "class": "misuse", "third": 1},
+      {"wrong": "情けは人のためならずだ", "right": "甘やかしは本人のためにならない、の類（情けは人のためならず＝人にかけた情けは巡って自分に返る）", "class": "misuse", "third": 2}
+    ],
+    "negatives": ["青田買い", "浮き足立った", "おっとり刀で駆けつけて", "白眉", "破天荒の快挙"]
+  }
+}

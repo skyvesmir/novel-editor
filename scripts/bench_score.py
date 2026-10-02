@@ -6,6 +6,7 @@
 
 判定（1行単位・機械的）:
   検出   = 出力のある行に、誤った文字列（wrong）と正しい形（right）が両方ある
+           （class が misuse のものは、wrong を含む指摘の行があれば検出）
   言及のみ = wrong はあるが right がない行しかない（根拠の引用などで、指摘とは限らない）
   偽陽性 = negatives の文字列を含む行があり、その行が指摘の行（表の行・番号付きの行）である
 誤字の節（「誤字」を含む見出し以降）があればそこだけを見る。fixture-18 は全体を見る。
@@ -33,7 +34,7 @@ def score(fixture, path, key):
     hits, mentions = [], []
     for p in key["positives"]:
         rows = [l for l in lines if p["wrong"] in l]
-        if any(p["right"] in l for l in rows):
+        if any(p["right"] in l or (p.get("class") == "misuse" and ITEM.match(l)) for l in rows):
             hits.append(p)
         elif rows:
             mentions.append(p)
