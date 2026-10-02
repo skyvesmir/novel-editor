@@ -145,7 +145,7 @@ Run these in order. The order exists because scoring first and reasoning afterwa
    - it is a deliberate technique whose effect is visible in the text (name the effect);
    - it belongs to a scope outside this submission (name the scope — a later chapter, a different document); such an item is recorded as 保留 rather than dropped (see below).
 
-   Rebuttals of the form 「作者の意図かもしれない」「好みの問題」「読者によっては気にならない」 do not count and cannot drop an item. This step exists to keep strictness from turning into noise, and its failure mode is the reverse: an unfalsifiable rebuttal quietly deletes the one finding the author most needed. Show the dropped items with their reasons in the output so the author can object. Refer to Step 1 items by number. An item whose deciding material lies outside the submission (a later chapter, an unsubmitted document) is 保留, not dropped: name what is missing; it is neither counted as a defect nor removed. End the section with one line: 「列挙N件・取り下げM件・保留K件」. If more than half of Step 1 was dropped, re-read Step 1 — the usual cause is that the rebuttals were being generated to reduce the workload of the evaluation.
+   Rebuttals of the form 「作者の意図かもしれない」「好みの問題」「読者によっては気にならない」 do not count and cannot drop an item. This step exists to keep strictness from turning into noise, and its failure mode is the reverse: an unfalsifiable rebuttal quietly deletes the one finding the author most needed. Show the dropped items with their reasons in the output so the author can object. Refer to Step 1 items by number. An item whose deciding material lies outside the submission (a later chapter, an unsubmitted document) is 保留, not dropped: name what is missing; it is neither counted as a defect nor removed. End the section with two lines: first 「列挙N件・取り下げM件・保留K件」, then one line saying that Step 1 comes from a single read and is not exhaustive, and that an author who wants a scene looked at again can name it in a new request (for a whole long work, Audit mode). A re-check never moves a score by itself: scores change only through the condition tables and quoted evidence. If more than half of Step 1 was dropped, re-read Step 1 — the usual cause is that the rebuttals were being generated to reduce the workload of the evaluation.
 5. **Step 3 — evaluate.** Using what survived Step 2, judge each axis against the conditions in `score-anchors.md`, apply the cap rules, and only then state the number with the full three-part justification.
 
 Steps 0 through 2 appear in the output in compressed form (one line per Step 1 item) — the author needs to see what was checked and what was dismissed, but these steps are working notes, not the main event. The bulk of the output belongs to Step 3.
@@ -189,7 +189,7 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：連作の一章のときのみ1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
 ## 基礎設定の確認（Step 0）
 ## 列挙（Step 1：場面ごとの見出しの下に、観点の順で、通し番号・1件1行・判断を書かない。懸念のない場面も見出しと「なし」を書く）
-## 精査（Step 2：番号で参照し、取り下げは理由（説明済みなら引用）を、保留は不足している材料を付ける。末尾に「列挙N件・取り下げM件・保留K件」）
+## 精査（Step 2：番号で参照し、取り下げは理由（説明済みなら引用）を、保留は不足している材料を付ける。末尾に2行：「列挙N件・取り下げM件・保留K件」の行と、列挙は1回の通読によるもので網羅ではない旨と再確認の頼み方の行）
 ## 軸別評価
 ### 構成
 （達成条件の判定と引用 → 上限規則の適用有無 → 3部構成の根拠 → **点数：X/10**（X は条件表で導いた数値。「4以下」などの語をここに書かない。保留・採点不能・対象外の軸は score-anchors.md の保留表記とそれぞれの規則に従う）→ 弱点と改善案（全体で10件以内・最重要弱点に最大3件）→ 機能している点）
@@ -219,6 +219,6 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 - 理由：その書き方で読者が何を受け取り損ねるか（誰の視点か分からなくなる、場面の山が平らになる等）を一文で書く。「読みにくい」「不自然」だけで終えない。
 - ○ 修正例：引用した箇所を書き直した一案を、ラベルと同じ行に書く。書き直すのは原則一文だけで、場面転換の合図や文長の変化のように一文では見せられない技術に限り、隣り合う三文まで書き直してよい。引用ではないので「」を付けない。作品の出来事・設定・人物の口調は変えず、欠けている技術（または正しい用法）だけを入れ、それに関わらない語句は原文のまま残す。原文にある情報を削らず、原文より大幅に長くせず、新しい描写や展開を足さない。反復の型では、反復した箇所のうち一つだけを書き直す。意味・用法の誤りでは、一般的な意味と正しい形の行が理由を兼ねるので、理由の行は省いてよい。修正例を書いたら、出す前に二点を確かめる：原文の出来事・情報で落としたものがないか（原文と修正例を語句ごとに突き合わせる）、名指しした技術を修正例そのものが使っているか（例：視点の管理なら、他人の内面を断定する文を残さない）。確認の過程は出力に書かない。どちらかを満たせない修正例は出さず、その件は理由の行（意味・用法の誤りでは一般的な意味と正しい形の行）で終える。修正例は技術の見本であって改善案ではないので、改善案10件の上限に数えず、「今回直すのはこの3件」「次回以降に回す項目」にも載せない（所見の項目名を挙げることも含む）。
 
-採点と一緒に誤字の確認も頼まれたときは、骨格の後に「誤字・表記ゆれ（点数に混ぜない）」を Markdown の表（区切りは半角の `|`）で付ける。列は「原文」「種類」「正しいと思われる形」の3つ。原文は「」で原文どおりに示し、種類は誤字チェックモードと同じ6種（誤字／脱字／誤変換／表記ゆれ／数値矛盾／句読点）。正しいと思われる形は、その箇所の引用ではないので「」を付けない。意図的な表記の可能性があるものは、誤字チェックモードと同じく両論で示す。この一覧は採点のついでの確認で全数ではないと一行で断り、漏れなく確かめたい場合は誤字チェックモードで別に依頼するよう案内する。
+採点と一緒に誤字の確認も頼まれたときは、骨格の後に「誤字・表記ゆれ（点数に混ぜない）」を Markdown の表（区切りは半角の `|`）で付ける。列は「原文」「種類」「正しいと思われる形」の3つ。原文は「」で原文どおりに示し、種類は誤字チェックモードと同じ6種（誤字／脱字／誤変換／表記ゆれ／数値矛盾／句読点）。正しいと思われる形は、その箇所の引用ではないので「」を付けない。意図的な表記の可能性があるものは、誤字チェックモードと同じく両論で示す。目に付いたものを拾った後、読み流しやすい3つの型（同音・類音の熟語の取り違え、語として成り立たなくなる送り仮名・活用語尾の欠落、地の文の助詞の重複・脱落）に照らしてもう一度確かめる。許容の送り仮名の違いや、台詞の口語的な助詞の省略は挙げない。この一覧は採点のついでの確認で全数ではないと一行で断り、漏れなく確かめたい場合は誤字チェックモードで別に依頼するよう案内する。
 
 When an axis was scored without a calibration work, the line 「本軸は作品名アンカーを用いず、達成条件のみで判定」 belongs in that axis's block.
