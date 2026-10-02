@@ -137,16 +137,18 @@ Run these in order. The order exists because scoring first and reasoning afterwa
    - whether the above is internally consistent within the material.
 
    If one cannot be confirmed, record 「基礎設定未規定」 for it and continue. Skipping this step is what produces the classic failure of this mode: flagging a "contradiction" that the setting had already explained, which destroys the author's trust in every other point in the evaluation.
-3. **Step 1 — enumerate concerns.** Bullet everything: contradictions, gaps, redundancies. No scores or evaluation yet.
-4. **Step 2 — rebut yourself.** For each Step 1 item, argue why it might not actually be a problem, then drop it only if the rebuttal is one of these three kinds:
+3. **Step 1 — enumerate concerns.** Walk the submission in order, one scene at a time (a long manuscript by the scene units of the quote ledger described below), and at each scene apply the same lenses in the same order, so that what gets found does not depend on what happens to come to mind:
+   矛盾（設定・事実・時系列・数）→ 因果の飛躍・ご都合主義 → 視点 → 人物の言動 → 情報の出し方（説明の集中・未回収・未説明）→ 反復 → 後続に効かない場面・冗長 → 意味の通らない文（設定・プロット資料だけの提出では、場面を章や項目に読み替え、文の観点は使わない）。
+   Number every item, one line each: the location as a short quote, then the concern. Write no verdicts, scores, or 「〜ではないか」-style pre-judgments yet — a concern stated as a question is already half rebutted. Rebuttals such as "the text explains this" or "the tone shift is deliberate register" belong to Step 2, where they are shown with their evidence. Lenses that found nothing are not listed. Steps 1 and 2 are separate sections in the output; never merge them into one table or report only the survivors.
+4. **Step 2 — rebut yourself.** For each Step 1 item, argue why it might not actually be a problem, then drop it (or, for the third kind, hold it as 保留) only if the rebuttal is one of these three kinds:
    - the material already explains it (quote the place where it does);
    - it is a deliberate technique whose effect is visible in the text (name the effect);
-   - it belongs to a scope outside this submission (name the scope — a later chapter, a different document).
+   - it belongs to a scope outside this submission (name the scope — a later chapter, a different document); such an item is recorded as 保留 rather than dropped (see below).
 
-   Rebuttals of the form 「作者の意図かもしれない」「好みの問題」「読者によっては気にならない」 do not count and cannot drop an item. This step exists to keep strictness from turning into noise, and its failure mode is the reverse: an unfalsifiable rebuttal quietly deletes the one finding the author most needed. Show the dropped items with their reasons in the output so the author can object. If more than half of Step 1 was dropped, re-read Step 1 — the usual cause is that the rebuttals were being generated to reduce the workload of the evaluation.
+   Rebuttals of the form 「作者の意図かもしれない」「好みの問題」「読者によっては気にならない」 do not count and cannot drop an item. This step exists to keep strictness from turning into noise, and its failure mode is the reverse: an unfalsifiable rebuttal quietly deletes the one finding the author most needed. Show the dropped items with their reasons in the output so the author can object. Refer to Step 1 items by number. An item whose deciding material lies outside the submission (a later chapter, an unsubmitted document) is 保留, not dropped: name what is missing; it is neither counted as a defect nor removed. End the section with one line: 「列挙N件・取り下げM件・保留K件」. If more than half of Step 1 was dropped, re-read Step 1 — the usual cause is that the rebuttals were being generated to reduce the workload of the evaluation.
 5. **Step 3 — evaluate.** Using what survived Step 2, judge each axis against the conditions in `score-anchors.md`, apply the cap rules, and only then state the number with the full three-part justification.
 
-Steps 0 through 2 appear in the output in compressed form — the author needs to see what was checked and what was dismissed, but these steps are working notes, not the main event. The bulk of the output belongs to Step 3.
+Steps 0 through 2 appear in the output in compressed form (one line per Step 1 item) — the author needs to see what was checked and what was dismissed, but these steps are working notes, not the main event. The bulk of the output belongs to Step 3.
 
 ## Planning material with no prose yet
 
@@ -186,7 +188,8 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ```markdown
 ## 採点の前提（提出単位：単章／連作の一章／全体、掲載形態：連作の一章のときのみ1／2／3（未確認なら「未確認のため2として採点」と三択の質問）、併読した資料、改稿版なら前回との関係）
 ## 基礎設定の確認（Step 0）
-## 列挙と精査（Step 1・2：取り下げた指摘とその理由を含む）
+## 列挙（Step 1：番号付き・1件1行・判断を書かない）
+## 精査（Step 2：番号で参照し、取り下げは理由（説明済みなら引用）を、保留は不足している材料を付ける。末尾に「列挙N件・取り下げM件・保留K件」）
 ## 軸別評価
 ### 構成
 （達成条件の判定と引用 → 上限規則の適用有無 → 3部構成の根拠 → **点数：X/10**（X は条件表で導いた数値。「4以下」などの語をここに書かない。保留・採点不能・対象外の軸は score-anchors.md の保留表記とそれぞれの規則に従う）→ 弱点と改善案（全体で10件以内・最重要弱点に最大3件）→ 機能している点）
@@ -205,14 +208,16 @@ The number comes after its grounds, in the output as well as in the reasoning. L
 ## 次回以降に回す項目
 ```
 
-「文章の所見」は、文章軸の点数（条件表と上限規則で決まり、4以下の条件に一つ当たると他の良し悪しが点に出ない）を補い、本文に何が足りないかを技術の名で示す別項。点数を動かさず、改善案を生まない（10件の上限に数えず、「今回直すのはこの3件」「次回以降に回す項目」にも載せない。軸の弱点と同じものは「改善案N を参照」と番号で書き添えるだけにする）。節全体で5件まで、各件の引用は3箇所まで。該当がなければ「該当なし」と書き、埋めるために作らない。書くのは本文の事実だけで、書き手の能力や理解は推測しない。
+改善案に ○ 修正例を付けるときも、原文の出来事・設定・人物の口調・情報を保つ。足してよいのは、その改善案の本文が名指しした要素だけで、それ以外の物・出来事・描写を足さず、本文で無い・できないと書かれた物事を、修正例の中で有る・できるものとして使わない。
+
+「文章の所見」は、文章軸の点数（条件表と上限規則で決まり、4以下の条件に一つ当たると他の良し悪しが点に出ない）を補い、本文に何が足りないかを技術の名で示す別項。点数を動かさず、改善案を生まない（10件の上限に数えず、「今回直すのはこの3件」「次回以降に回す項目」にも載せない。軸の弱点と同じものは「改善案N を参照」と番号で書き添える。書き添えても、所見の引用と理由の行は省かない）。節全体で5件まで、各件の引用は3箇所まで。該当がなければ「該当なし」と書き、埋めるために作らない。書くのは本文の事実だけで、書き手の能力や理解は推測しない。
 - **本文に欠けている技術**：軸の判定で見つけた欠陥の背後にある技術を名指しする（例：視点の管理、場面転換の合図、文末・文長の変化）。新しい欠陥を数え足さない。訓練モードで練習できる題を、節全体で一つだけ添える（5件の件数には数えない）。
-- **意味・用法の誤り**：打ち間違いではなく、語の意味や用法が文脈と合わない箇所（例：「目が離せない」の意味で使われた「目をそらさずにはいられない」、力不足の意味の「役不足」）。その語句の一般的な意味を先に一行で書き、そこから文脈に合う正しい形を導き（どちらも引用ではないので「」を付けない）、同じ誤りの件数を添える。
+- **意味・用法の誤り**：打ち間違いではなく、語の意味や用法が文脈と合わない箇所（例：「目が離せない」の意味で使われた「目をそらさずにはいられない」、力不足の意味の「役不足」）。一般的な辞書に載る語義（比喩・転義を含む）のどれかで文脈が通るものや、誤りと言い切れないものは挙げない。挙げる場合は、その語句の一般的な意味を先に一行で書き、そこから文脈に合う正しい形を導き（どちらも引用ではないので「」を付けない）、同じ誤りの件数を添える。
 - **目につく反復の型**：同一話（章）内で3箇所以上、または3つ以上の話に出る型（感情や主題を地の文で言い切る、同じ返事・文型・副詞の反復など）。読み心地を損なう理由を一文で言えるものに限り、ありふれた表現の単なる再使用は数えない。上限規則「AI的紋切り型の反復」の系統（身体反応・感情推移・比喩・要約的な締め）に当たる文は、発火・不発火にかかわらずこの項に立てない（その判定は文章軸にある）。各箇所は位置だけでなく文を引用する。読解を妨げる破綻に当たるものは文章軸の条件で判定し、ここでは参照させる。
 
 上の3分類とも、各件の引用の後に次の2行を付ける（修正例は下の確認を満たす場合だけ）。
 - 理由：その書き方で読者が何を受け取り損ねるか（誰の視点か分からなくなる、場面の山が平らになる等）を一文で書く。「読みにくい」「不自然」だけで終えない。
-- ○ 修正例：引用した箇所を書き直した一案を、ラベルと同じ行に書く。書き直すのは原則一文だけで、場面転換の合図や文長の変化のように一文では見せられない技術に限り、隣り合う三文まで書き直してよい。引用ではないので「」を付けない。作品の出来事・設定・人物の口調は変えず、欠けている技術（または正しい用法）だけを入れる。原文にある情報を削らず、原文より大幅に長くせず、新しい描写や展開を足さない。反復の型では、反復した箇所のうち一つだけを書き直す。意味・用法の誤りでは、一般的な意味と正しい形の行が理由を兼ねるので、理由の行は省いてよい。修正例を書いたら、出す前に二点を確かめる：原文の出来事・情報で落としたものがないか（原文と修正例を語句ごとに突き合わせる）、名指しした技術を修正例そのものが使っているか（例：視点の管理なら、他人の内面を断定する文を残さない）。確認の過程は出力に書かない。どちらかを満たせない修正例は出さず、その件は理由の行（意味・用法の誤りでは一般的な意味と正しい形の行）で終える。修正例は技術の見本であって改善案ではないので、改善案10件の上限に数えず、「今回直すのはこの3件」「次回以降に回す項目」にも載せない（所見の項目名を挙げることも含む）。
+- ○ 修正例：引用した箇所を書き直した一案を、ラベルと同じ行に書く。書き直すのは原則一文だけで、場面転換の合図や文長の変化のように一文では見せられない技術に限り、隣り合う三文まで書き直してよい。引用ではないので「」を付けない。作品の出来事・設定・人物の口調は変えず、欠けている技術（または正しい用法）だけを入れ、それに関わらない語句は原文のまま残す。原文にある情報を削らず、原文より大幅に長くせず、新しい描写や展開を足さない。反復の型では、反復した箇所のうち一つだけを書き直す。意味・用法の誤りでは、一般的な意味と正しい形の行が理由を兼ねるので、理由の行は省いてよい。修正例を書いたら、出す前に二点を確かめる：原文の出来事・情報で落としたものがないか（原文と修正例を語句ごとに突き合わせる）、名指しした技術を修正例そのものが使っているか（例：視点の管理なら、他人の内面を断定する文を残さない）。確認の過程は出力に書かない。どちらかを満たせない修正例は出さず、その件は理由の行（意味・用法の誤りでは一般的な意味と正しい形の行）で終える。修正例は技術の見本であって改善案ではないので、改善案10件の上限に数えず、「今回直すのはこの3件」「次回以降に回す項目」にも載せない（所見の項目名を挙げることも含む）。
 
 採点と一緒に誤字の確認も頼まれたときは、骨格の後に「誤字・表記ゆれ（点数に混ぜない）」を Markdown の表（区切りは半角の `|`）で付ける。列は「原文」「種類」「正しいと思われる形」の3つ。原文は「」で原文どおりに示し、種類は誤字チェックモードと同じ6種（誤字／脱字／誤変換／表記ゆれ／数値矛盾／句読点）。正しいと思われる形は、その箇所の引用ではないので「」を付けない。意図的な表記の可能性があるものは、誤字チェックモードと同じく両論で示す。この一覧は採点のついでの確認で全数ではないと一行で断り、漏れなく確かめたい場合は誤字チェックモードで別に依頼するよう案内する。
 
