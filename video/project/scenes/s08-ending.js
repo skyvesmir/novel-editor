@@ -26,16 +26,18 @@ HF.scene("s08-ending", function (S) {
   `);
 
   const s = S.q("#s08-s");
-  // 拍64：右から滑り込む（whoosh）
-  tl.fromTo("#s08-g", { x: 260 }, { x: 0, duration: HF.beats(0.5), ease: "power4.out", immediateRender: false }, sent.t);
+  // 意図した重ね：落ちてくるカードが、打ち消した1文と札の上を約3フレーム通過する
+  HF.allowOverlap(S.qa("#s08-s, #s08-gb > .hf-tag, #s08-card .hf-tag, #s08-card .hf-card-body"));
+  // 拍64：右から滑り込む（whoosh）。1文が横に長いので、1フレーム目に文末が画面外へ出ない距離（120px）にする
+  tl.fromTo("#s08-g", { x: 120 }, { x: 0, duration: HF.beats(0.5), ease: "power4.out", immediateRender: false }, sent.t);
   // 拍65：赤線
   M.strike(tl, s, slash.t, { thick: "0.12em" });
   tl.set(s, { color: "rgba(20,17,15,0.55)" }, slash.t + HF.beats(0.25));
   // 拍66〜67：最後の1文が上へ押し上げられる（「最後に置かない」＝最後の位置から退かせる）
   const t66 = S.at(slash.beat + 1);
   tl.fromTo("#s08-gu", { y: 0 }, { y: -190, duration: HF.beats(1.5), ease: "power2.inOut", immediateRender: false }, t66);
-  // 拍68：出力カードが画面の上から落ちてくる（bounce で着地）
-  M.dropIn(tl, "#s08-card", fall.t, { from: -260 });
+  // 拍68：出力カードが上から落ちてくる（bounce で着地）。1フレーム目にカードの大半が見える高さ（-150%）から落とし、拍頭で絵が変わる
+  M.dropIn(tl, "#s08-card", fall.t, { from: -150 });
   M.breathe(tl, "#s08-cw", fall.t + HF.beats(1), S.end, { amt: 0.015 });
   M.breathe(tl, "#s08-gb", S.at(slash.beat + 2.5), S.end, { amt: 0.012, period: HF.beats(3) });
 });

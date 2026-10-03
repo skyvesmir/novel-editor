@@ -34,8 +34,8 @@ HF.scene("s10-drill", function (S) {
   const key = S.q(".s10-key");
   const ul = UI.underline(S.q("#s10-card"), key, { gap: 0, width: 10, seed: 81 });
 
-  // 拍80：カードが右から滑り込む（whoosh）
-  tl.fromTo("#s10-cw", { x: 260 }, { x: 0, duration: HF.beats(0.5), ease: "power4.out", immediateRender: false }, card.t);
+  // 拍80：カードが右から滑り込む（whoosh）。カードが横に長いので、1フレーム目に右端が画面外へ出ない距離（120px）にする
+  tl.fromTo("#s10-cw", { x: 120 }, { x: 0, duration: HF.beats(0.5), ease: "power4.out", immediateRender: false }, card.t);
   // 拍81：「感情語を使わず」に赤の下線
   const t81 = S.at(card.beat + 1);
   tl.set(key, { color: HF.COLORS.red }, t81);
