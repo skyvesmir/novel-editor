@@ -492,6 +492,23 @@ def check_fixture_separation() -> None:
               f"漏洩語={hits}" if hits else "")
 
 
+def check_no_bench_examples() -> None:
+    """skill の例文に、測定用原稿の仕込み（bench-keys.json の誤り側）を使っていないか。
+
+    例文と測定の仕込みが同じだと、規則を読んだだけで正解でき、測定が甘く出る
+    （以外⇔意外、目をそらさずにはいられない、の前例）。
+    """
+    keys = EVALS / "fixtures" / "bench-keys.json"
+    if not keys.exists():
+        return
+    seeds = sorted({p["wrong"] for k in json.loads(keys.read_text(encoding="utf-8")).values()
+                    for p in k.get("positives", [])})
+    text = "\n".join(f.read_text(encoding="utf-8") for f in sorted(SKILL_DIR.rglob("*"))
+                     if f.is_file() and f.suffix in (".md", ".py"))
+    hits = [s for s in seeds if s in text]
+    check(not hits, "skill の例文に測定用原稿の仕込みを使っていない", f"{hits}" if hits else "")
+
+
 # ---------------------------------------------------------------- 10. 著作権ルール
 def _committable_files():
     """コミットされうるファイル（追跡中＋.gitignore 対象外の未追跡）。local/ などの除外領域は見ない。"""
@@ -549,6 +566,7 @@ def main() -> int:
     check_evals()
     check_runner()
     check_fixture_separation()
+    check_no_bench_examples()
     check_no_manuscript_leak()
 
     failed = [r for r in results if not r[0]]

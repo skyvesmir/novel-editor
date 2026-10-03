@@ -9,7 +9,7 @@
 - 作業ブランチ: claude/skill-creation-claude-code-rirfp6（main へは fast-forward で反映）
 - skill本体: novel-editor/（SKILL.md + references/ 8ファイル + scripts/check_quotes.py、計10ファイル）+ novel-editor.skill（zip）
 - description長: 972/1024字
-- 検査: python3 scripts/build_skill.py（zip再構築＋検証）／python3 tools/skill_lint.py --quiet（216項目）
+- 検査: python3 scripts/build_skill.py（zip再構築＋検証）／python3 tools/skill_lint.py --quiet（217項目）
 
 ■ 段階
 - 仕上げ段階。評価軸の再設計は不要（7軸の分割は 2026-08-26 に3源照合で確認済み）
