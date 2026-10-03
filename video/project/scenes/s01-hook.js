@@ -9,8 +9,8 @@ HF.scene("s01-hook", function (S) {
   const rests = S.ev.filter((e) => e.kind === "silence"); // 拍3・11
 
   S.css(`
-    #s01-ms { position:absolute; left:110px; top:150px; width:1700px; }
-    #s01-ms p { font-size:64px; line-height:1.62; }
+    #s01-ms { position:absolute; left:110px; top:47%; width:1700px; transform:translateY(-50%); }
+    #s01-ms p { font-size:70px; line-height:1.62; }
     #s01-dim { position:absolute; inset:0; background:var(--paper); opacity:0; }
     #s01-st1o, #s01-st2o { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
     #s01-st2o { padding-top:250px; }
@@ -37,6 +37,9 @@ HF.scene("s01-hook", function (S) {
     <div id="s01-slam">${slams.map((e, i) => `<div class="s01-w" data-i="${i}"><div class="s01-wi">${UI.voice(e.text, { size: 380 })}</div></div>`).join("")}</div>
     <div id="s01-flash" class="hf-flash"></div>
   `);
+
+  // 意図した重ね：取り消して薄くした原稿の上に判子・札・3語を載せる。色替え層は判子を覆う
+  HF.allowOverlap(S.qa(".s01-s, .s01-stw .hf-tag, .s01-stw .hf-stamp, #s01-words span, .s01-w .hf-voice"));
 
   const stage = S.stage, shakeEl = S.q("#s01-shake"), pen = S.q("#s01-pen");
   const sents = S.qa(".s01-s");
@@ -90,6 +93,7 @@ HF.scene("s01-hook", function (S) {
   const bgs = [COL.yellow, COL.blue, COL.ink], fgs = [COL.ink, COL.paper, COL.paper];
   const slamLayer = S.q("#s01-slam"), words = S.qa(".s01-w");
   M.show(tl, slamLayer, slams[0].t);
+  M.hide(tl, st1, slams[0].t); // 色替え層の下に隠れる判子は消しておく（覆われた文字のコントラスト警告を出さない）
   slams.forEach((e, i) => {
     M.bg(tl, slamLayer, e.t, bgs[i]);
     if (i > 0) M.hide(tl, words[i - 1], e.t);
@@ -102,7 +106,6 @@ HF.scene("s01-hook", function (S) {
   // ---- 拍12：ドロップ。紙に戻り、判子「…を示す箇所を引用できない。」＋shake＋拍フラッシュ
   const st2 = S.q("#s01-st2"), st2o = S.q("#s01-st2o"), t12 = stamps[1].t;
   M.hide(tl, slamLayer, t12);
-  M.hide(tl, st1, t12);
   tl.set("#s01-dim", { opacity: 0.8 }, t12);
   M.show(tl, "#s01-words", t12);
   M.flash(tl, "#s01-flash", t12, { opacity: 0.9 });

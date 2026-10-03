@@ -713,8 +713,8 @@ window.CUES = {
    "frame": 1488,
    "scene": "s14-rapid",
    "kind": "riser",
-   "visual": "上昇の開始。山は拍132",
-   "length_beats": 8
+   "visual": "上昇の開始。拍131の頭で断ち切って無音へ（山＝切れ目）",
+   "length_beats": 7
   },
   {
    "beat": 124,

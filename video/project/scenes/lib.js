@@ -3,7 +3,9 @@
 (function () {
   "use strict";
   const C = window.CUES;
-  const CFG = window.HF_CONFIG;
+  // 設定（only / offsetFrame / totalFrames / solo）は HF.boot() で読む。check は合成を束ねて読み込み、
+  // スクリプトが DOM より先に走ることがあるので、読み込み時には DOM に触らない
+  let CFG = null;
   const FPS = C.fps;
   const FPB = (FPS * 60) / C.bpm; // 1拍のフレーム数（12）
   const SPB = 60 / C.bpm; // 1拍の秒（0.4）
@@ -11,7 +13,12 @@
 
   const HF = (window.HF = {});
   HF.CUES = C;
-  HF.CFG = CFG;
+  HF.CFG = null;
+  HF.boot = function () {
+    const host = document.querySelector("[data-hf-config]");
+    CFG = HF.CFG = window.HF_CONFIG = window.HF_CONFIG || JSON.parse(host.getAttribute("data-hf-config"));
+    return CFG;
+  };
   HF.FPS = FPS;
   HF.FPB = FPB;
   HF.BEAT = SPB;
@@ -52,6 +59,13 @@
     const a = anc.getBoundingClientRect();
     const k = anc.offsetWidth ? a.width / anc.offsetWidth : 1;
     return { x: (r.left - a.left) / k, y: (r.top - a.top) / k, w: r.width / k, h: r.height / k };
+  };
+
+  // check の Layout に「意図した重ね」と伝える（重ねている当事者の文字要素にだけ付ける。シーンの包みには付けない）
+  HF.allowOverlap = function (els) {
+    (typeof els === "string" ? document.querySelectorAll(els) : els.length !== undefined ? els : [els]).forEach((el) =>
+      el.setAttribute("data-layout-allow-overlap", "")
+    );
   };
 
   HF._scenes = {};
@@ -244,7 +258,8 @@
   // 手書きの楕円（target を囲む）を host に足して path を返す。scribble() で描く
   UI.circleAround = function (host, target, o = {}) {
     const b = HF.rel(target, host), pad = o.pad ?? 26, r = HF.rng(o.seed ?? 3);
-    const cx = b.x + b.w / 2, cy = b.y + b.h / 2, rx = b.w / 2 + pad, ry = b.h / 2 + pad * 0.6;
+    // 楕円が箱の角を切らないよう半径に係数を掛ける（係数 1.0 だと角の字を横切る）
+    const cx = b.x + b.w / 2, cy = b.y + b.h / 2, rx = (b.w / 2) * 1.12 + pad, ry = (b.h / 2) * 1.08 + pad * 0.6;
     const pts = [];
     const turns = 1.12, steps = 48;
     for (let k = 0; k <= steps; k++) {

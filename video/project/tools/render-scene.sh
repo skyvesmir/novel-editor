@@ -17,6 +17,8 @@ cd "$PROJ"
 NAME="$(echo "$IDS" | tr ',' '\n' | sed 's/-.*//' | paste -sd- -)"
 node tools/build.mjs --solo "$IDS"
 HTML="_solo-${NAME}.html"
+# 書き出し後に消す（直下に入口の HTML が複数あると check が multiple_root_compositions で落ちる）
+trap 'rm -f "$PROJ/$HTML"' EXIT
 OUT_MP4="$VIDEO/out/scenes/${NAME}.mp4"
 INS="$VIDEO/out/inspect/scene-${NAME}"
 mkdir -p "$VIDEO/out/scenes" "$INS"

@@ -22,3 +22,6 @@ video/**/*.mp4
 video/**/*.wav
 video/**/*.mp3
 video/**/*.webm
+
+# 動画：1シーン書き出し用の一時 HTML（render-scene.sh が作って消す）
+video/project/_solo-*.html

@@ -1,7 +1,7 @@
 // s14-rapid：連打 → 白フラッシュ（拍 124〜136、12拍）
 // 担当が実装する。API は scenes/README.md。未登録のあいだは main.js が仮表示を出す。
 // このシーンの cues（S.ev に t=時間軸の秒つきで入る）:
-//   拍124 f1488 riser: 上昇の開始。山は拍132
+//   拍124 f1488 riser: 上昇の開始。拍131の頭で断ち切って無音へ（山＝切れ目） ／length_beats 7
 //   拍124 f1488 slam: 全面色替え＋軸名（4分音符） ／text「構成」(output:score)
 //   拍125 f1500 slam: 全面色替え＋軸名（4分音符） ／text「キャラクター」(output:score)
 //   拍126 f1512 slam: 全面色替え＋軸名（4分音符） ／text「世界観」(output:score)

@@ -1,7 +1,8 @@
 // 起動：フォントを読み込んでから各シーンの組み立て関数を呼び、1本の paused timeline を登録する。
 (function () {
   "use strict";
-  const C = window.CUES, CFG = window.HF_CONFIG, HF = window.HF;
+  const C = window.CUES, HF = window.HF;
+  let CFG = null;
   const FONTS = ['400 60px "Dela"', '400 60px "Mincho"', '700 60px "Mincho"', '600 60px "Klee"', '500 60px "ZenKaku"', '900 60px "ZenKaku"'];
 
   function placeholder(S) {
@@ -49,11 +50,18 @@
       if (fn) fn(S);
       else placeholder(S);
     }
+    window.__timelines = window.__timelines || {};
     window.__timelines["main"] = tl;
     if (typeof window.__hfForceTimelineRebind === "function") window.__hfForceTimelineRebind();
   }
 
-  Promise.all(FONTS.map((f) => document.fonts.load(f, "あ漢A1")))
-    .catch(() => null)
+  // DOM ができてから設定を読み、フォントを待って組み立てる
+  const domReady =
+    document.readyState === "loading" ? new Promise((r) => document.addEventListener("DOMContentLoaded", r, { once: true })) : Promise.resolve();
+  domReady
+    .then(() => {
+      CFG = HF.boot();
+      return Promise.all(FONTS.map((f) => document.fonts.load(f, "あ漢A1"))).catch(() => null);
+    })
     .then(build);
 })();

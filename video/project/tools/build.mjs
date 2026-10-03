@@ -86,10 +86,13 @@ ${baseCss}
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="${sec(totalFrames)}" data-fps="${fps}" data-width="${cues.width}" data-height="${cues.height}">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="${sec(totalFrames)}" data-fps="${fps}" data-width="${cues.width}" data-height="${cues.height}" data-hf-config="${JSON.stringify(config).replace(/"/g, "&quot;")}">
 ${sceneDivs}
 ${audio}    </div>
-    <script>window.HF_CONFIG = ${JSON.stringify(config)};</script>
+    <script>
+      window.HF_CONFIG = ${JSON.stringify(config)};
+      window.__timelines = window.__timelines || {}; // 登録は scenes/main.js（window.__timelines["main"] = tl）
+    </script>
     <script src="scenes/cues.js"></script>
     <script src="scenes/lib.js"></script>
 ${sceneScripts}

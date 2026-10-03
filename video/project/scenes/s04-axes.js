@@ -1,6 +1,6 @@
 // s04-axes：7軸の点数（拍 32〜40）
 // 拍32 7軸の枠が pop-stagger で並ぶ（数字は空）。数字は裏拍から count-up して拍頭に着地（拍32〜38）。拍39 溜め
-// 点数は skill-output-score.md の「点数：N/10」を写す。牽引力だけ出力が「5（回収未検証）/10」なので注記も写す
+// 点数は skill-output-score.md の「点数：N/10」を写す。牽引力だけ出力が「5（回収未検証）/10」なので注記も同じ順（数字→注記→/10）で写す
 HF.scene("s04-axes", function (S) {
   const { tl } = S, M = HF.M, UI = HF.ui;
   const ticks = S.ev.filter((e) => e.kind === "tick"); // 7件。text=軸名、score=点
@@ -17,7 +17,7 @@ HF.scene("s04-axes", function (S) {
     .s04-num { width:190px; justify-content:end; font-size:100px; line-height:1; color:var(--red); }
     .s04-num > span { text-align:right; }
     .s04-den { font-family:var(--f-slam); font-size:60px; color:var(--ink); line-height:1; }
-    .s04-note { font-family:var(--f-ui); font-weight:500; font-size:52px; color:var(--ink); line-height:1; margin-left:24px; flex:none; white-space:nowrap; }
+    .s04-note { font-family:var(--f-ui); font-weight:500; font-size:52px; color:var(--ink); line-height:1; margin:0 4px 0 -4px; flex:none; white-space:nowrap; }
     .s04-in { display:flex; align-items:center; width:100%; transform-origin:0% 50%; }
   `);
   S.html(`
@@ -28,8 +28,7 @@ HF.scene("s04-axes", function (S) {
         .map(
           (e) => `<div class="s04-row"><div class="s04-in hf-hidden">
             <div class="s04-name">${HF.esc(e.text)}</div>
-            <div class="s04-sc"><div class="s04-nw"><span class="hf-num s04-num"></span></div><span class="s04-den">/10</span></div>
-            ${NOTE[e.text] ? `<div class="s04-note s04-nt hf-hidden">${HF.esc(NOTE[e.text])}</div>` : ""}
+            <div class="s04-sc"><div class="s04-nw"><span class="hf-num s04-num"></span></div>${NOTE[e.text] ? `<span class="s04-note s04-nt hf-hidden">${HF.esc(NOTE[e.text])}</span>` : ""}<span class="s04-den">/10</span></div>
           </div></div>`
         )
         .join("")}

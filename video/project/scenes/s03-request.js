@@ -21,6 +21,7 @@ HF.scene("s03-request", function (S) {
     #s03-wrap { position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding:0 100px 40px 0; }
     #s03-b { position:relative; display:block; }
     #s03-b .hf-bubble { width:1720px; font-size:74px; }
+    #s03-b .s03-key { margin:0 0.45em 0 0.2em; } /* 赤丸が隣の字に掛からないための間 */
     #s03-b > .hf-tag { position:absolute; left:40px; top:-36px; z-index:2; }
   `);
   S.html(`
