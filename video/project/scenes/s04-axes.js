@@ -13,11 +13,7 @@ HF.scene("s04-axes", function (S) {
     .s04-row { flex:1; display:flex; align-items:center; border-bottom:4px solid rgba(20,17,15,0.18); }
     .s04-row:first-child { border-top:4px solid rgba(20,17,15,0.18); }
     .s04-name { flex:none; width:540px; padding-left:20px; font-family:var(--f-ui); font-weight:900; font-size:66px; color:var(--ink); line-height:1; }
-    .s04-sc { flex:none; display:flex; align-items:flex-end; gap:8px; }
-    /* 「/10」の列を全行でそろえる：注記は「/10」の上に積む（読む順は 数字→注記→/10 のまま） */
-    .s04-tail { position:relative; display:flex; flex-direction:column; align-items:flex-start; padding-bottom:6px; }
-    .s04-tail > .s04-note { position:absolute; left:0; bottom:100%; margin:0 0 2px 0; }
-    .s04-row.s04-tall { flex:1.3; padding-top:16px; } /* 注記を積む行だけ少し高くして、注記が罫線と「/10」に触れないようにする */
+    .s04-sc { flex:none; display:flex; align-items:baseline; gap:8px; }
     .s04-num { width:190px; justify-content:end; font-size:100px; line-height:1; color:var(--red); }
     .s04-num > span { text-align:right; }
     .s04-den { font-family:var(--f-slam); font-size:60px; color:var(--ink); line-height:1; }
@@ -30,9 +26,9 @@ HF.scene("s04-axes", function (S) {
     <div id="s04-list">
       ${ticks
         .map(
-          (e) => `<div class="s04-row${NOTE[e.text] ? " s04-tall" : ""}"><div class="s04-in hf-hidden">
+          (e) => `<div class="s04-row"><div class="s04-in hf-hidden">
             <div class="s04-name">${HF.esc(e.text)}</div>
-            <div class="s04-sc"><div class="s04-nw"><span class="hf-num s04-num"></span></div><div class="s04-tail">${NOTE[e.text] ? `<span class="s04-note s04-nt hf-hidden">${HF.esc(NOTE[e.text])}</span>` : ""}<span class="s04-den">/10</span></div></div>
+            <div class="s04-sc"><div class="s04-nw"><span class="hf-num s04-num"></span></div>${NOTE[e.text] ? `<span class="s04-note s04-nt hf-hidden">${HF.esc(NOTE[e.text])}</span>` : ""}<span class="s04-den">/10</span></div>
           </div></div>`
         )
         .join("")}
@@ -40,8 +36,6 @@ HF.scene("s04-axes", function (S) {
   `);
 
   const rows = S.qa(".s04-in"), nums = S.qa(".s04-num"), wraps = S.qa(".s04-nw");
-  // 注記は「/10」の真上に積んでいる。字面は離れているが（原寸で約13px）、字の箱（line-height 1 を超える高さ）が「/10」に触れるので check に意図を伝える
-  HF.allowOverlap(S.qa(".s04-nt"));
 
   // 拍32：札と7軸の枠が裏拍刻み（1/8拍）で次々に出る
   M.show(tl, "#s04-head", drop.t);
