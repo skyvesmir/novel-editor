@@ -16,7 +16,7 @@ OUT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "out" / "audio"
 SEED = 20261003
 
 TARGET_LUFS = -14.0
-CEIL_DB = -1.5  # 真ピークのリミッタ天井（AAC 化での上振れに余裕を持たせる）
+CEIL_DB = -1.7  # 真ピークのリミッタ天井（AAC 化での上振れに余裕を持たせる）
 
 # 効果音の種類ごとの音量（dB）と BGM のダッキング量（dB, 保持秒）
 # 効果音の種類ごとのピーク（dBFS、ミックス前）。打撃系は tanh で頭を丸めて波高率を下げる（drive）
@@ -27,6 +27,35 @@ SFX_DRIVE = {"slash": 2.5, "stamp": 2.0, "slam": 2.0, "impact": 2.0, "end": 2.0,
 DUCK = {"slash": (3, 0.15), "stamp": (6, 0.35), "slam": (5, 0.3), "impact": (8, 0.8), "whoosh": (3, 0.25),
         "type": (1.5, 0.05), "pen": (3, 0.5), "drop": (3, 0.3), "tick": (2.5, 0.15), "fall": (3, 1.0),
         "riser": (0, 0), "title": (4, 0.8), "end": (6, 1.5)}
+
+
+# 打鍵音が drop の余韻に埋もれないように（v1〜v3 講評 🟡）：
+#  (a) drop の余韻を短くする：続く最初の打鍵の 120ms 手前から時定数 30ms で畳み、TYPE_DUCK_DB で止める
+#  (b) drop の直後（2拍以内）の打鍵音だけ、3kHz 以上を足して輪郭を立てる（s03 の打鍵音は変えない）
+TYPE_DUCK_DB = -24.0
+TYPE_HI_GAIN = 1.0  # 3kHz 以上の成分を元の量だけ足す（その帯域で約 +6dB）
+
+
+def after_drop(e, events):
+    return any(x["kind"] == "drop" and 0 < e["beat"] - x["beat"] <= 2 for x in events)
+
+
+def duck_tail_for_typing(sig, e, events, fps):
+    t0 = event_time(e, fps)
+    ts = [event_time(x, fps) - t0 for x in events if x["kind"] == "type" and 0 < event_time(x, fps) - t0 < len(sig) / SR]
+    if not ts:
+        return sig
+    a = int((min(ts) - 0.12) * SR)
+    t = np.arange(len(sig) - a) / SR
+    lo = 10 ** (TYPE_DUCK_DB / 20)
+    g = np.ones(len(sig))
+    g[a:] = np.maximum(np.exp(-t / 0.03), lo)  # 打鍵の 120ms 手前から余韻を速く畳み、打鍵の頭までに TYPE_DUCK_DB に届く
+    return sig * g[:, None]
+
+
+def brighten_type(sig):
+    from synth import fft_filter
+    return sig + fft_filter(sig, 3000, None, 2) * TYPE_HI_GAIN
 
 
 def event_time(e, fps):
@@ -118,6 +147,10 @@ def main():
             sig = np.tanh(sig * dr) / np.tanh(dr)
         sig = sig * 10 ** (SFX_PEAK[e["kind"]] / 20)
         s = int(round(event_time(e, fps) * SR))
+        if e["kind"] == "drop":
+            sig = duck_tail_for_typing(sig, e, events, fps)
+        if e["kind"] == "type" and after_drop(e, events):
+            sig = brighten_type(sig)
         if e["kind"] == "riser":
             # 末尾（山）を length_beats 後の拍頭に合わせる
             peak = s + int(round(e["length_beats"] * spb * SR))
