@@ -35,7 +35,7 @@ ffmpeg -v error -y -i /home/user/novel-editor/video/out/scenes/s06.mp4 -vf "sele
 
 `summary.md` の読み方：
 - **「絵−イベント」列**が 0.0 なら絵は拍に乗っている（n/a は変化が小さいか拍0）。
-- **「音−イベント」が −100ms 前後で「超過」**と出るのは、検出窓の頭で前の音（BGM・余韻）を拾う誤検出。効果音は `video/out/audio/placement.json` のとおり標本単位で拍頭に置かれており、s01〜s05 では書き出した音と mix.wav の相互相関のずれは 0.0ms だった。これは直さなくてよい。
+- **音の立ち上がり**は、`video/out/audio/` の mix.wav が動画の音と一致すれば sfx.wav（効果音だけ）で測る（旧版の −100ms の誤検出は直した）。「検出不能」はずれではない（BGM や余韻に埋もれて測れないだけ）。
 - 「黒画面」「静止」が 0 であること。
 
 並列で走らせてよい：`render-scene.sh` は `_solo-<名>.html` を作って書き出し、終わったら消す（直下に入口の HTML が複数残ると `check` が落ちる）。
