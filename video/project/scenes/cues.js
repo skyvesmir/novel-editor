@@ -522,7 +522,7 @@ window.CUES = {
    "scene": "s10-drill",
    "kind": "whoosh",
    "visual": "出力カード。「感情語を使わず」に赤の下線（scribble）",
-   "text": "練習の題：評価を待つ数秒の緊張を、感情語を使わず、…300字で書く。",
+   "text": "練習の題：…感情語を使わず、…300字で書く。",
    "text_source": "output:score"
   },
   {

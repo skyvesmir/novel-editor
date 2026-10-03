@@ -7,8 +7,8 @@ HF.scene("s10-drill", function (S) {
   const voice = S.find("slam"); // 拍84。text は動画の声（video）
   const riser = S.find("riser"); // 拍86〜88
 
-  // カード本文：強調「感情語を使わず」と改行位置（「緊張を、」の後）。つなげると出力と同じことを確かめる
-  const KEY = "感情語を使わず", BR = "緊張を、";
+  // カード本文：強調「感情語を使わず」と改行位置（札「練習の題：」の後）。つなげると出力と同じことを確かめる
+  const KEY = "感情語を使わず", BR = "練習の題：";
   const ik = card.text.indexOf(KEY), ib = card.text.indexOf(BR) + BR.length;
   if (ik < 0 || ib < BR.length || ib > ik) throw new Error("s10: 出力の分割位置が見つからない");
   const html =
