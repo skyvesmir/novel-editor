@@ -12,7 +12,7 @@ HF.scene("s03-request", function (S) {
     { text: "投稿する予定の" },
     { text: "1話です。" },
     { text: pen.text, cls: "s03-key", nl: true },
-    { text: "評価してください。" },
+    { text: "評価してください。", cls: "s03-after" },
   ];
   if (chunks.map((c) => c.text).join("") !== req.text) throw new Error("s03: 依頼文の分割が原文と一致しない");
   if (chunks.length !== types.length) throw new Error("s03: 文字送りの回数と分割数が合わない");
@@ -21,7 +21,8 @@ HF.scene("s03-request", function (S) {
     #s03-wrap { position:absolute; inset:0; display:flex; align-items:center; justify-content:flex-end; padding:0 100px 40px 0; }
     #s03-b { position:relative; display:block; }
     #s03-b .hf-bubble { width:1720px; font-size:74px; }
-    #s03-b .s03-key { margin:0 0.45em 0 0.2em; } /* 赤丸が隣の字に掛からないための間 */
+    #s03-b .s03-key { margin:0 0.45em 0 0.2em; } /* 赤丸が隣の字に掛からないための間（拍28 までは x で詰めて見せない） */
+    #s03-b .s03-key, #s03-b .s03-after { display:inline-block; } /* x を効かせるため */
     #s03-b > .hf-tag { position:absolute; left:40px; top:-36px; z-index:2; }
   `);
   S.html(`
@@ -32,6 +33,11 @@ HF.scene("s03-request", function (S) {
   const box = S.q("#s03-b"), spans = S.qa(".hf-chunk");
   const key = S.q(".s03-key");
   const circle = UI.circleAround(S.q("#s03-b"), key, { pad: 20, width: 10, seed: 4 });
+  // 赤丸の間は拍28 まで x で詰めておく（赤丸の前に「厳しめで　評価」と空白に見えないように）。量は CSS の margin から測る
+  const after = S.q(".s03-after"), ks = getComputedStyle(key);
+  const ml = parseFloat(ks.marginLeft), mr = parseFloat(ks.marginRight);
+  tl.set(key, { x: -ml }, S.start);
+  tl.set(after, { x: -(ml + mr) }, S.start);
 
   // 拍24：吹き出しが右から滑り込む（whoosh。入りは急、止めは長め）
   M.show(tl, box, req.t);
@@ -41,7 +47,11 @@ HF.scene("s03-request", function (S) {
 
   // 拍28：「厳しめで」だけ赤くし、赤丸を手で描く
   tl.set(key, { color: HF.COLORS.red }, pen.t);
+  // 語彙外の補助：赤丸を描き始めると同時に、ペンが前後の字を押し広げて丸の入る間を作る（1/4拍、急な入り）
+  tl.fromTo(key, { x: -ml }, { x: 0, duration: HF.beats(0.25), ease: "power3.out", immediateRender: false }, pen.t);
+  tl.fromTo(after, { x: -(ml + mr) }, { x: 0, duration: HF.beats(0.25), ease: "power3.out", immediateRender: false }, pen.t);
   M.scribble(tl, circle, pen.t, HF.beats(0.75));
   // ハーフタイムの止め：吹き出しがゆっくり呼吸
-  M.breathe(tl, box, req.t + HF.beats(1), S.end, { amt: 0.012, period: HF.beats(4) });
+  // 周期 3.5拍：拍25〜32 の7拍をちょうど2往復で埋め、最後の拍で止まらないようにする
+  M.breathe(tl, box, req.t + HF.beats(1), S.end, { amt: 0.012, period: HF.beats(3.5) });
 });

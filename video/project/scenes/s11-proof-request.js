@@ -52,5 +52,6 @@ HF.scene("s11-proof-request", function (S) {
   M.shake(tl, "#s11-shake", pen.t, { amp: 9, seed: 31 });
 
   // 止めの微動（文字送りの後と、下線の後）
-  M.breathe(tl, "#s11-wrap", req.t + HF.beats(1), S.end, { amt: 0.012, period: HF.beats(4) });
+  // 周期 3.5拍：拍89〜96 の7拍をちょうど2往復で埋める（v2 は周期4拍で拍95〜96 が完全に止まっていた）
+  M.breathe(tl, "#s11-wrap", req.t + HF.beats(1), S.end, { amt: 0.012, period: HF.beats(3.5) });
 });
