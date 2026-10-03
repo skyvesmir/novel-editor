@@ -2,7 +2,7 @@
 name: video-builder
 description: 紹介動画の実行役。承認済みの絵コンテ・cues.json・スタイル指示書・早見表をもとに、HyperFrames のコンポジション（HTML + GSAP）を書いて書き出し、評価役の指摘を直す。/make-video から呼ぶ。
 tools: Read, Grep, Glob, Write, Edit, Bash
-model: opus
+model: claude-opus-5-5
 effort: high
 maxTurns: 80
 omitClaudeMd: true
@@ -37,7 +37,7 @@ hooks:
 ## 進め方
 
 1. 共通の部品（色・書体の変数、叩きつけ・赤ペンなどの動きの関数、拍→秒の換算）を先に作る。
-2. シーンを順に作る。各シーンを作ったら、そのシーンだけを書き出して縮小一覧を自分で見る（`video/tools/inspect.py`）。重なり・はみ出し・読めない文字・止まって見える区間を直してから次へ。
+2. シーンを順に作る。各シーンを作ったら、そのシーンだけを書き出して縮小一覧を自分で見る（`video/tools/av_inspect.py`）。重なり・はみ出し・読めない文字・止まって見える区間を直してから次へ。
 3. 全体を書き出す：`video/out/render/v<N>.mp4`（N は版番号。上書きしない）。
 4. 評価役の講評が来たら、🔴 を全部直し、🟡 は直すか理由を書いて残す。
 

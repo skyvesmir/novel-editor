@@ -2,7 +2,7 @@
 name: video-ref-scout
 description: 紹介動画の素材探し（見た目の参照）。参照動画のコマを分解し、音ハメ系モーショングラフィックスと日本語ショート動画の「最初の2秒の掴み」を調べて、数値つきのスタイル指示書 video/brief/style-brief.md にまとめる。/make-video から呼ぶ。
 tools: Read, Grep, Glob, Write, Bash, WebFetch, WebSearch
-model: sonnet
+model: claude-sonnet-5-5
 effort: medium
 maxTurns: 35
 omitClaudeMd: true

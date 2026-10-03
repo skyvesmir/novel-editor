@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "NotoJP";
+        src: url("assets/fonts/NotoSansJP.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #101014; }
+      #root { position: relative; width: 1920px; height: 1080px; background: #101014; }
+      #flash { position: absolute; inset: 0; background: #d7263d; opacity: 0; }
+      #word {
+        position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "NotoJP", sans-serif; font-weight: 900; font-size: 280px;
+        color: #f4f4f5; opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+      <div id="flash" class="clip" data-start="0" data-duration="4" data-track-index="0"></div>
+      <div id="word" class="clip" data-start="0" data-duration="4" data-track-index="1"></div>
+      <audio id="click" src="assets/audio/click.wav" data-start="0" data-duration="4" data-track-index="2"></audio>
+    </div>
+    <script>
+      // cues から時刻を計算（秒の直書きなし）。brief/cues.json と同形のデータをここに埋め込む
+      const CUES = { bpm: 120, events: [
+        {beat:0,text:"誤字"},{beat:1,text:"脱字"},{beat:2,text:"誤変換"},{beat:3,text:"表記ゆれ"},
+        {beat:4,text:"構成"},{beat:5,text:"牽引力"},{beat:6,text:"文章"},{beat:7,text:"採点"} ] };
+      const tl = gsap.timeline({ paused: true });
+      const word = document.getElementById("word");
+      CUES.events.forEach((e) => {
+        const t = (e.beat * 60) / CUES.bpm;
+        // 切り替わりはその時刻ちょうどに set（フェードで滲ませない）
+        tl.call(() => { word.textContent = e.text; }, null, t);
+        tl.fromTo("#word", { opacity: 1, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.out", immediateRender: false }, t);
+        tl.fromTo("#flash", { opacity: 0.9 }, { opacity: 0, duration: 0.12, ease: "none", immediateRender: false }, t);
+      });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

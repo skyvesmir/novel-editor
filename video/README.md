@@ -15,14 +15,14 @@ HyperFrames（HTML + GSAP → Puppeteer で1コマずつ撮影 → ffmpeg）で�
 | `brief/cues.json` | オーケストレーター（ユーザー承認） | **時間の唯一の正本**。BPM と拍で書く | 上げる |
 | `audio/` | video-sound | 合成コード | 上げる |
 | `project/` | video-builder | HyperFrames のプロジェクト | 上げる（node_modules 除く） |
-| `tools/inspect.py` | video-tech-scout | 決定的な検査（縮小一覧・音と拍のずれ・音量） | 上げる |
+| `tools/av_inspect.py` | video-tech-scout | 決定的な検査（縮小一覧・音と拍のずれ・音量） | 上げる |
 | `assets/fonts/` | video-font-scout | フォント本体（OFL） | 上げない |
 | `out/` | 各役 | 書き出し、参照動画、検査結果、講評 | 上げない |
 
 ## 時間の決まり
 
 - 時刻はすべて `cues.json` の拍から計算する（`秒 = 拍 × 60 / bpm`）。コードに秒を直書きしない。
-- 絵と音は同じ `cues.json` を読む。音ハメのずれは `tools/inspect.py` が数値で出す。
+- 絵と音は同じ `cues.json` を読む。音ハメのずれは `tools/av_inspect.py` が数値で出す。
 
 ## 著作権
 

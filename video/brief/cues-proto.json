@@ -1,0 +1,14 @@
+{
+  "bpm": 120, "beatsPerBar": 4, "fps": 30, "width": 1920, "height": 1080,
+  "scenes": [{"id": "s01-proto", "startBeat": 0, "lengthBeats": 8, "purpose": "試作"}],
+  "events": [
+    {"beat": 0, "scene": "s01-proto", "kind": "slam", "text": "誤字"},
+    {"beat": 1, "scene": "s01-proto", "kind": "slam", "text": "脱字"},
+    {"beat": 2, "scene": "s01-proto", "kind": "slam", "text": "誤変換"},
+    {"beat": 3, "scene": "s01-proto", "kind": "slam", "text": "表記ゆれ"},
+    {"beat": 4, "scene": "s01-proto", "kind": "slam", "text": "構成"},
+    {"beat": 5, "scene": "s01-proto", "kind": "slam", "text": "牽引力"},
+    {"beat": 6, "scene": "s01-proto", "kind": "slam", "text": "文章"},
+    {"beat": 7, "scene": "s01-proto", "kind": "slam", "text": "採点"}
+  ]
+}

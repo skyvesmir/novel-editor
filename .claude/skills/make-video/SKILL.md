@@ -11,16 +11,18 @@ description: novel-editor の紹介動画（HyperFrames・音ハメ）を、素�
 
 | 役 | エージェント | モデル／effort | 理由 |
 |---|---|---|---|
-| 素材：技術 | video-tech-scout | sonnet／medium | 導入と試作の書き出し、検査スクリプト。手順的なコード作業 |
-| 素材：見た目の参照 | video-ref-scout | sonnet／medium | 調査とコマの分解。最終の取捨はオーケストレーターが決める |
-| 素材：フォント | video-font-scout | haiku／low | 取得とライセンス・字形の機械確認だけ |
-| 素材：デモ原稿 | fixture-writer（既存） | opus／medium | 欠点を狙って仕込んだオリジナル原稿 |
-| 素材：skill の実出力 | eval-generator（既存） | sonnet／medium | 無料枠と同じ Sonnet で skill を実際に動かす |
-| 音作成 | video-sound | opus／medium | 聴けない前提で、拍に揃った音をコードで設計する |
-| 実行 | video-builder | opus／high | 最も重い創作コード |
-| 評価 | video-critic | opus／high | 合否の関門。画像を見て厳しく判定する |
+| 素材：技術 | video-tech-scout | Sonnet 5.5／medium | 導入と試作の書き出し、検査スクリプト。手順的なコード作業 |
+| 素材：見た目の参照 | video-ref-scout | Sonnet 5.5／medium | 調査とコマの分解。最終の取捨はオーケストレーターが決める |
+| 素材：フォント | video-font-scout | Haiku 4.5／low | 取得とライセンス・字形の機械確認だけ |
+| 素材：デモ原稿 | fixture-writer（既存） | Opus 5.5／medium | 欠点を狙って仕込んだオリジナル原稿 |
+| 素材：skill の実出力 | eval-generator（既存） | Sonnet 5.5／medium | 無料枠と同じ Sonnet で skill を実際に動かす |
+| 音作成 | video-sound | Opus 5.5／medium | 聴けない前提で、拍に揃った音をコードで設計する |
+| 実行 | video-builder | Opus 5.5／high | 最も重い創作コード |
+| 評価 | video-critic | Opus 5.5／high | 合否の関門。画像を見て厳しく判定する |
 
-**上位モデルへの切り替え**：同じシーンが評価で2回続けて 🔴 のままなら、そのシーンの修正だけ video-builder を `fable` で呼ぶ。解決したら opus に戻す（CLAUDE.md の切り替え規則と同じ）。
+**呼び方**：役は必ず登録済みの agentType で呼ぶ（frontmatter のツール制限とフックが効く）。未登録のときに定義ファイルを読ませて汎用エージェントに代行させない。代行役は全ツールを持ち、別セッションを勝手に起こした前例がある。モデルは frontmatter で版まで固定している（Opus 5.5・Sonnet 5.5）。
+
+**上位モデルへの切り替え**：同じシーンが評価で2回続けて 🔴 のままなら、そのシーンの修正だけ video-builder を `fable` で呼ぶ。解決したら Opus 5.5 に戻す（CLAUDE.md の切り替え規則と同じ）。
 
 ## フェーズ
 

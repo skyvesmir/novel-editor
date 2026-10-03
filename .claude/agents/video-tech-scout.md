@@ -1,8 +1,8 @@
 ---
 name: video-tech-scout
-description: 紹介動画の素材探し（技術）。HyperFrames をこの環境に入れ、日本語フォント＋音つきの短い試作を実際に書き出して通るまで直し、動いた手順だけを要約した早見表と、決定的な検査スクリプト video/tools/inspect.py を作る。/make-video の最初に呼ぶ。
+description: 紹介動画の素材探し（技術）。HyperFrames をこの環境に入れ、日本語フォント＋音つきの短い試作を実際に書き出して通るまで直し、動いた手順だけを要約した早見表と、決定的な検査スクリプト video/tools/av_inspect.py を作る。/make-video の最初に呼ぶ。
 tools: Read, Grep, Glob, Write, Edit, Bash, WebFetch, WebSearch
-model: sonnet
+model: claude-sonnet-5-5
 effort: medium
 maxTurns: 45
 omitClaudeMd: true
@@ -30,7 +30,7 @@ Node 22、ffmpeg/ffprobe、pip（numpy・fonttools を入れてよい）、Chrom
    - 既知の時刻にクリック音が鳴る wav（自分で合成してよい）を音声として載せる。
    - 書き出した mp4 で、**音の立ち上がりと絵の変化が1フレーム（33ms）以内で一致**することを数値で確かめる。
    通らなければ原因を潰して再挑戦する。回避策が要ったら必ず記録する。
-3. **検査スクリプト** `video/tools/inspect.py` を書く（引数：mp4 と `cues.json`、出力先 `video/out/inspect/<動画名>/`）。LLM を使わない決定的な処理だけにする。
+3. **検査スクリプト** `video/tools/av_inspect.py` を書く（引数：mp4 と `cues.json`、出力先 `video/out/inspect/<動画名>/`）。LLM を使わない決定的な処理だけにする。
    - 縮小一覧（2fps のタイル画像）と、`cues.json` の各イベント時刻の前後±2フレームの帯画像
    - 音の立ち上がり検出と、各イベント時刻との差（ms）の表。差が 1フレーム超のものを列挙
    - 画面の切り替わり時刻と、シーン開始時刻との差
