@@ -1,11 +1,3 @@
-<!doctype html>
-<!-- 生成物（tools/build.mjs）。手で編集しない。シーンは scenes/<id>.js、共通部品は scenes/lib.js -->
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="assets/gsap.min.js"></script>
-    <style>
       /* 共通の見た目。build.mjs が index.html に埋め込む（@font-face は同じファイル内に必要＝lint の規則） */
       @font-face { font-family: "Dela"; src: url("assets/fonts/DelaGothicOne-400.ttf") format("truetype"); font-weight: 400; }
       @font-face { font-family: "Mincho"; src: url("assets/fonts/ShipporiMinchoB1-400.ttf") format("truetype"); font-weight: 400; }
@@ -104,46 +96,3 @@
       .hf-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
         background: var(--paper); color: rgba(20, 17, 15, 0.55); font-family: var(--f-ui); font-weight: 500; font-size: 56px; text-align: center; padding: 0 160px; }
       .hf-placeholder b { font-family: var(--f-slam); font-weight: 400; font-size: 96px; color: var(--ink); }
-
-    </style>
-  </head>
-  <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="64" data-fps="30" data-width="1920" data-height="1080">
-      <div id="scene-s01-hook" class="clip scene" data-start="0" data-duration="6.4" data-track-index="1"></div>
-      <div id="scene-s02-title" class="clip scene" data-start="6.4" data-duration="3.2" data-track-index="2"></div>
-      <div id="scene-s03-request" class="clip scene" data-start="9.6" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s04-axes" class="clip scene" data-start="12.8" data-duration="3.2" data-track-index="2"></div>
-      <div id="scene-s05-rule" class="clip scene" data-start="16" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s06-prose" class="clip scene" data-start="19.2" data-duration="3.2" data-track-index="2"></div>
-      <div id="scene-s07-emotion" class="clip scene" data-start="22.4" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s08-ending" class="clip scene" data-start="25.6" data-duration="3.2" data-track-index="2"></div>
-      <div id="scene-s09-fix3" class="clip scene" data-start="28.8" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s10-drill" class="clip scene" data-start="32" data-duration="3.2" data-track-index="2"></div>
-      <div id="scene-s11-proof-request" class="clip scene" data-start="35.2" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s12-typos" class="clip scene" data-start="38.4" data-duration="8" data-track-index="2"></div>
-      <div id="scene-s13-norewrite" class="clip scene" data-start="46.4" data-duration="3.2" data-track-index="1"></div>
-      <div id="scene-s14-rapid" class="clip scene" data-start="49.6" data-duration="4.8" data-track-index="2"></div>
-      <div id="scene-s15-outro" class="clip scene" data-start="54.4" data-duration="9.6" data-track-index="1"></div>
-      <audio id="mix" src="assets/audio/mix.wav" data-start="0" data-duration="64" data-volume="1" data-track-index="0"></audio>
-    </div>
-    <script>window.HF_CONFIG = {"only":["s01-hook","s02-title","s03-request","s04-axes","s05-rule","s06-prose","s07-emotion","s08-ending","s09-fix3","s10-drill","s11-proof-request","s12-typos","s13-norewrite","s14-rapid","s15-outro"],"offsetFrame":0,"totalFrames":1920,"solo":false};</script>
-    <script src="scenes/cues.js"></script>
-    <script src="scenes/lib.js"></script>
-    <script src="scenes/s01-hook.js"></script>
-    <script src="scenes/s02-title.js"></script>
-    <script src="scenes/s03-request.js"></script>
-    <script src="scenes/s04-axes.js"></script>
-    <script src="scenes/s05-rule.js"></script>
-    <script src="scenes/s06-prose.js"></script>
-    <script src="scenes/s07-emotion.js"></script>
-    <script src="scenes/s08-ending.js"></script>
-    <script src="scenes/s09-fix3.js"></script>
-    <script src="scenes/s10-drill.js"></script>
-    <script src="scenes/s11-proof-request.js"></script>
-    <script src="scenes/s12-typos.js"></script>
-    <script src="scenes/s13-norewrite.js"></script>
-    <script src="scenes/s14-rapid.js"></script>
-    <script src="scenes/s15-outro.js"></script>
-    <script src="scenes/main.js"></script>
-  </body>
-</html>

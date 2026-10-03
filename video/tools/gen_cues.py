@@ -136,7 +136,7 @@ ev(116, "s13-norewrite", "slam", "動画の声", "直すのは、誤字だけ。
 ev(120, "s13-norewrite", "whoosh", "出力カード（静かに置く）", "大事な原稿は人の目でも確かめてください。", "output:proof")
 
 # s14 連打（小節32–34 = 拍124–135）
-ev(124, "s14-rapid", "riser", "上昇の開始。山は拍132", length_beats=8)
+ev(124, "s14-rapid", "riser", "上昇の開始。拍131の頭で断ち切って無音へ（山＝切れ目）", length_beats=7)
 for i, (ax, _) in enumerate(AXES[:4]):
     ev(124 + i, "s14-rapid", "slam", "全面色替え＋軸名（4分音符）", ax, "output:score")
 for i, (ax, _) in enumerate(AXES[4:]):

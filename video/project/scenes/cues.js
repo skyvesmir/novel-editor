@@ -1,13 +1,14 @@
-{
+// 生成物（tools/build.mjs）。編集しない。正本は video/brief/cues.json
+window.CUES = {
  "bpm": 150,
  "beatsPerBar": 4,
  "fps": 30,
  "width": 1920,
  "height": 1080,
  "seconds_per_beat": 0.4,
- "frames_per_beat": 12.0,
+ "frames_per_beat": 12,
  "duration_beats": 160,
- "duration_seconds": 64.0,
+ "duration_seconds": 64,
  "scenes": [
   {
    "id": "s01-hook",
@@ -712,8 +713,8 @@
    "frame": 1488,
    "scene": "s14-rapid",
    "kind": "riser",
-   "visual": "上昇の開始。拍131の頭で断ち切って無音へ（山＝切れ目）",
-   "length_beats": 7
+   "visual": "上昇の開始。山は拍132",
+   "length_beats": 8
   },
   {
    "beat": 124,
@@ -752,7 +753,7 @@
    "text_source": "output:score"
   },
   {
-   "beat": 128.0,
+   "beat": 128,
    "frame": 1536,
    "scene": "s14-rapid",
    "kind": "slam",
@@ -847,4 +848,4 @@
    "accent": "final"
   }
  ]
-}
+};
