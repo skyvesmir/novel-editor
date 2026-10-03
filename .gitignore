@@ -12,3 +12,12 @@ evals/.work/
 CLAUDE.local.md
 
 __pycache__/
+
+# 紹介動画の制作物（video/）: 生成物・素材バイナリは上げない。台本・設定・コードだけを上げる
+video/out/
+video/assets/fonts/
+video/**/node_modules/
+video/**/*.mp4
+video/**/*.wav
+video/**/*.mp3
+video/**/*.webm
