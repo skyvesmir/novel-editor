@@ -135,17 +135,22 @@ HF.scene("s12-typos", function (S) {
     if (i === 0 || i === items.length - 1) M.shake(tl, "#s12-shake", t, { amp: 11, seed: 90 + i });
 
     // ---- 赤ペン：刺した直後は語の右端（線を引き終えた位置）。そこから書き込む位置へゆっくり持ち上がる（書く前の溜め）
+    // 書く拍（pen）より前はインクを一切出さない（v1 は引き出し線が拍の 1〜2 フレーム前に見え始めていた）
     tl.set(pen, { opacity: 1, rotation: ROT, x: P(T.struck).x, y: P(T.struck).y }, t);
-    const tLead = tp - HF.beats(0.25);
-    movePen(P(T.struck), P(T.lead, 30, -40), t + HF.beats(0.25), tLead - t - HF.beats(0.25), "power2.inOut");
-    // ---- 書く拍の直前 1/4拍：引き出し線を引く（ペン先が線をたどって正しい形の書き出しへ）
-    it.leads.forEach((p) => M.scribble(tl, p, tLead, HF.beats(0.25)));
-    movePen(P(T.lead, 30, -40), P(T.fixL), tLead, HF.beats(0.25), "power3.inOut");
-    // ---- 2拍後（pen）：正しい形を拍頭から左から右へ等速で書く（語彙5 scribble と同じ「手書きが書かれる」動き。字の開示なので clip-path で描く）
-    tl.fromTo(it.fix, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: HF.beats(0.5), ease: "none", immediateRender: false }, tp);
-    movePen(P(T.fixL), P(T.fixR), tp, HF.beats(0.5), "none");
+    const tDown = tp - HF.beats(0.25);
+    movePen(P(T.struck), P(T.lead, 30, -40), t + HF.beats(0.25), tDown - t - HF.beats(0.25), "power2.inOut");
+    // 書く拍の直前 1/4拍：ペン先が引き出し線の始点へ降りる（インクなし）
+    movePen(P(T.lead, 30, -40), P(T.lead), tDown, HF.beats(0.25), "power3.in");
+    // ---- 2拍後（pen）：最初のインクは拍頭のフレームに出す。引き出し線を 1/4拍で引き（ペン先が線をたどって正しい形の書き出しへ）、
+    // 続けて正しい形を左から右へ等速で書く（語彙5 scribble と同じ「手書きが書かれる」動き。字の開示なので clip-path で描く）
+    // scribble は始点の時刻では長さ 0 なので、1フレーム前から 2フレームで引く：拍頭の前のコマは 0、拍頭のコマで半分、次のコマで引き終わる
+    it.leads.forEach((p) => M.scribble(tl, p, tp - FR, 2 * FR));
+    movePen(P(T.lead), P(T.fixL), tp - FR, 2 * FR, "none");
+    const tWrite = tp + FR;
+    tl.fromTo(it.fix, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: HF.beats(0.5), ease: "none", immediateRender: false }, tWrite);
+    movePen(P(T.fixL), P(T.fixR), tWrite, HF.beats(0.5), "none");
     // 書き終えたら離れる（右上へ逃げて、次の件の頭で次の語に移る）
-    movePen(P(T.fixR), P(T.fixR, 120, -110), tp + HF.beats(0.5), HF.beats(0.75), "power2.out");
+    movePen(P(T.fixR), P(T.fixR, 120, -110), tWrite + HF.beats(0.5), HF.beats(0.75), "power2.out");
     if (i === items.length - 1) M.hide(tl, pen, tp + HF.beats(1.5));
     // 止めの微動（刺した後から次の件まで）
     M.breathe(tl, it.iw, t + HF.beats(0.5), tNext, { amt: 0.012, period: HF.beats(2) });

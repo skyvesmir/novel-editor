@@ -4,7 +4,7 @@
 
 | 書体 | ファイル | ウェイト | ライセンス | 役割 | 欠けた字 |
 |---|---|---|---|---|---|
-| Dela Gothic One | `video/assets/fonts/DelaGothicOne/DelaGothicOne-400.ttf` | 400 | OFL | 叩きつけ見出し・数字 | ✓✗＋ |
+| Dela Gothic One | `video/assets/fonts/DelaGothicOne/DelaGothicOne-400.ttf` | 400 | OFL | 叩きつけ見出し・数字 | ✓✗＋①②③（丸数字は Zen Kaku Gothic New 900 で出す） |
 | Shippori Mincho B1 | `video/assets/fonts/ShipporiMinchoB1/ShipporiMinchoB1-400.ttf` | 400 | OFL | 原稿の本文・出力カード | ↔✓✗ |
 | Shippori Mincho B1 | `video/assets/fonts/ShipporiMinchoB1/ShipporiMinchoB1-700.ttf` | 700 | OFL | 原稿の本文・出力カード | ↔✓✗ |
 | Klee One | `video/assets/fonts/KleeOne/KleeOne-600.ttf` | 600 | OFL | 赤ペンの書き込み | ✓✗ |

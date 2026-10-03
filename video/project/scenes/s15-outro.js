@@ -28,7 +28,8 @@ HF.scene("s15-outro", function (S) {
     #s15-sb { display:flex; flex-direction:column; align-items:flex-start; gap:42px; }
     .s15-step { display:block; transform-origin:0% 50%; }
     .s15-step .hf-voice { color:var(--paper); }
-    .s15-n { color:var(--red); margin-right:0.35em; }
+    /* ①②③ は Dela Gothic One に無い（fonts.md）。同じ役割の別書体に落とさず、丸数字を持つ Zen Kaku 900 で描く */
+    .s15-n { color:var(--red); margin-right:0.35em; font-family:var(--f-ui); font-weight:900; }
     #s15-ug { position:absolute; left:0; right:0; top:800px; display:flex; justify-content:center; }
     #s15-uw { position:relative; display:block; }
     #s15-url { display:block; }
@@ -47,6 +48,10 @@ HF.scene("s15-outro", function (S) {
   `);
   S.qa(".s15-step .hf-voice").forEach((el, i) => {
     if (el.textContent !== steps[i].text) throw new Error("s15: 手順の文字が原文と一致しない");
+  });
+  // 番号が Dela に落ちていないこと（Dela には ①②③ が無い）を実行時に確かめる
+  S.qa(".s15-n").forEach((el) => {
+    if (!/ZenKaku/.test(getComputedStyle(el).fontFamily)) throw new Error("s15: 番号の書体が Zen Kaku でない");
   });
 
   // 横幅に収める（1行で 1700px 以内。超えたら字を小さくする。下限 56px）

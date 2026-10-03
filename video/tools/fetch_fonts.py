@@ -5,7 +5,7 @@
   python3 video/tools/fetch_fonts.py
 取得元：Google Fonts の css2 API（古い UA を名乗ると分割されない TTF 1本が返る）と、
 google/fonts リポジトリの OFL.txt（raw.githubusercontent.com）。
-字形の確認には、絵コンテ・デモ原稿・skill の出力に出てくる全ての非 ASCII 文字を使う。
+字形の確認には、絵コンテ・デモ原稿・skill の出力・cues.json に出てくる全ての非 ASCII 文字を使う。
 """
 import pathlib
 import re
@@ -36,7 +36,8 @@ def get(url):
 
 def coverage_text():
     chars = set()
-    for p in BRIEF.glob("*.md"):
+    # 画面に出る文字の正本は cues.json の text。md だけを見て「①②③」の欠けを見逃した前例がある
+    for p in list(BRIEF.glob("*.md")) + [BRIEF / "cues.json"]:
         if p.name in ("fonts.md",):
             continue
         chars |= {c for c in p.read_text(encoding="utf-8") if ord(c) > 0x7F and not c.isspace()}
@@ -72,7 +73,7 @@ def main():
             print(f"{name} {w}: {f.stat().st_size // 1024}KB 欠け{len(missing)}字")
 
     out = ["# 採用フォント（`video/tools/fetch_fonts.py` が生成）", "",
-           f"確認に使った文字：`video/brief/*.md` に出てくる非 ASCII 文字 {len(need)} 種。", "",
+           f"確認に使った文字：`video/brief/*.md` と `cues.json` に出てくる非 ASCII 文字 {len(need)} 種。", "",
            "| 書体 | ファイル | ウェイト | ライセンス | 役割 | 欠けた字 |", "|---|---|---|---|---|---|"]
     out += [f"| {n} | `{p}` | {w} | {l} | {r} | {m or 'なし'} |" for n, p, w, l, r, m in rows]
     out += ["", "Noto Sans JP（`video/assets/fonts/NotoSansJP.ttf`、可変・OFL）は試作で使用済み。",
