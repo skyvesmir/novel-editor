@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """動画の決定的な検査（LLM不使用）。
 
-使い方:  python3 video/tools/av_inspect.py <video.mp4> <cues.json> [--out DIR] [--tol-frames 1]
+使い方:  python3 video/tools/av_inspect.py <video.mp4> <cues.json> [--out DIR] [--tol-frames 1] [--stems DIR|none]
+音の立ち上がり：BGM が鳴り続ける mix では、効果音の立ち上がりが埋もれて測れない。
+  --stems（既定 video/out/audio/）に mix.wav と sfx.wav があれば、まず動画の音と mix.wav の
+  ずれを相互相関で確かめ（一致すれば）、効果音だけの sfx.wav で立ち上がりを測る。
+  立ち上がり＝「直後8ms − 直前20ms」の平均レベル差が最大の点（6dB 以上）。無ければ「検出不能」（ずれ扱いにしない）。
 出力先:  video/out/inspect/<動画名>/  （既定）
   overview.png        2fps の縮小一覧（タイル、時刻つき）
   bands/ev###.png     cues の各イベント時刻の前後±2フレームの帯
@@ -69,13 +73,44 @@ def decode_audio(path):
 
 
 def audio_onset(x, t0, t1):
-    """窓 [t0,t1] 秒で、窓内ピークの 15% を最初に超えるサンプルの時刻を返す。無音なら None。"""
-    a, b = max(0, int(t0 * SR)), min(len(x), int(t1 * SR))
-    seg = np.abs(x[a:b])
-    if len(seg) == 0 or seg.max() < 0.01:
-        return None
-    thr = seg.max() * 0.15
-    return (a + int(np.argmax(seg >= thr))) / SR
+    """窓 [t0,t1] 秒で、音が最もはっきり立ち上がる点の時刻と状態を返す。
+    点 τ の強さ＝「直後 8ms の平均レベル」−「直前 20ms の平均レベル」（dB、1ms 刻みのエネルギーで計算）。
+    最大の点が 6dB 未満なら「検出不能」（ずれ扱いにしない）。ファイルの先頭より前は無音として扱う。
+    旧方式（窓内ピークの15%を最初に超える点）は、BGM が鳴り続ける mix では窓の左端を返し、
+    -100ms の偽のずれを大量に出した（v1 で 71 件）。3ms の差だけで見る方式も、ノイズ系の音の
+    細かな揺れ（±6dB）を立ち上がりと取り違えた。"""
+    PRE, POST, hop = 20, 8, SR // 1000
+    a, b = int(t0 * SR) - PRE * hop, int(t1 * SR) + POST * hop
+    pad_l = max(0, -a)
+    seg = np.concatenate([np.zeros(pad_l, np.float32), x[max(0, a):min(len(x), b)]])
+    if len(seg) == 0 or np.abs(seg).max() < 0.01:
+        return None, "無音"
+    m = len(seg) // hop
+    le = 10 * np.log10(np.mean(seg[: m * hop].reshape(m, hop).astype(np.float64) ** 2, axis=1) + 1e-12)
+    cs = np.concatenate([[0.0], np.cumsum(le)])
+    best, best_k = -1e9, None
+    for k in range(PRE, m - POST + 1):
+        score = (cs[k + POST] - cs[k]) / POST - (cs[k] - cs[k - PRE]) / PRE
+        if score > best:
+            best, best_k = score, k
+    if best_k is None or best < 6.0:
+        return None, "検出不能"
+    return (a + best_k * hop) / SR, "ok"
+
+
+def align_lag(x, y):
+    """x（動画の音）に対する y（stem の mix）の遅れ（秒）と相関。±0.2秒を探す。"""
+    n = min(len(x), len(y))
+    if n == 0:
+        return None, 0.0
+    N = 1 << int(np.ceil(np.log2(2 * n)))
+    c = np.fft.irfft(np.fft.rfft(x[:n], N) * np.conj(np.fft.rfft(y[:n], N)), N)
+    L = int(0.2 * SR)
+    w = np.concatenate([c[-L:], c[: L + 1]])
+    lag = int(np.argmax(w)) - L
+    ys = np.roll(y[:n], lag)
+    corr = float(np.corrcoef(x[:n], ys)[0, 1])
+    return lag / SR, corr
 
 
 def label(img, text):
@@ -105,6 +140,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("video"); ap.add_argument("cues")
     ap.add_argument("--out"); ap.add_argument("--tol-frames", type=float, default=1.0)
+    ap.add_argument("--stems", default=str(Path(__file__).resolve().parents[1] / "out" / "audio"),
+                    help="mix.wav と sfx.wav のあるディレクトリ。none で使わない")
     a = ap.parse_args()
     vp = Path(a.video)
     if not vp.exists() or not Path(a.cues).exists():
@@ -135,6 +172,26 @@ def main():
 
     # --- 音声
     x = decode_audio(vp) if info["has_audio"] else np.zeros(0, np.float32)
+    # 生の PCM に書き出すと、コンテナ上の音声の開始位置（start_time）が捨てられる。
+    # 音声が映像より遅れて始まるファイルを「ずれなし」と見逃すので、開始位置の差を無音で埋めて戻す
+    a_off = (info["a_start"] - info["v_start"]) if info["has_audio"] else 0.0
+    if len(x) and abs(a_off) > 0.5 / SR:
+        k = int(round(a_off * SR))
+        x = np.concatenate([np.zeros(k, np.float32), x]) if k > 0 else x[-k:]
+    # 立ち上がりを測る音：stem が動画の音と一致すれば sfx.wav（効果音だけ）、でなければ動画の音
+    meas, meas_src, stem_note, lag_s, mix = x, "動画の音（mix）", "stem 不使用", 0.0, None
+    sd = None if a.stems == "none" else Path(a.stems)
+    if len(x) and sd and (sd / "mix.wav").exists() and (sd / "sfx.wav").exists():
+        mix = decode_audio(sd / "mix.wav")
+        lag_s, corr = align_lag(x, mix)
+        if lag_s is not None and corr >= 0.95:
+            sfx = decode_audio(sd / "sfx.wav")
+            shift = int(round(lag_s * SR))
+            meas = np.roll(np.pad(sfx, (0, max(0, len(x) - len(sfx)))), shift)[: len(x)]
+            meas_src = "sfx.wav（効果音だけ）"
+            stem_note = f"動画の音と {sd}/mix.wav のずれ {lag_s * 1000:+.2f}ms・相関 {corr:.3f} → 一致。立ち上がりは sfx.wav で測定"
+        else:
+            stem_note = f"動画の音と {sd}/mix.wav が一致しない（ずれ {0 if lag_s is None else lag_s * 1000:+.1f}ms・相関 {corr:.3f}）→ 動画の音で測定（BGM で検出不能が増える）"
 
     rows = []
     for e in events:
@@ -150,9 +207,21 @@ def main():
             w = diff[lo:hi + 1]
             if w.max() > 2.0:
                 v_t = (lo + int(np.argmax(w >= w.max() * 0.5))) / fps
-        a_t = audio_onset(x, e["t"] - 0.1, e["t"] + 0.25) if len(x) else None
+        kind = e.get("kind")
+        if kind == "silence":
+            # 溜め：その拍のあいだ、mix がほぼ無音か（-30dBFS 未満）
+            src = mix if mix is not None else x
+            lo_s, hi_s = int((e["t"] + 0.02) * SR), int((e["t"] + spb - 0.02) * SR)
+            pk = float(np.abs(src[lo_s:hi_s]).max()) if len(src) and hi_s > lo_s else 0.0
+            a_t, a_status = None, ("無音（ok）" if pk < 10 ** (-30 / 20) else f"無音のはずが {20 * np.log10(pk + 1e-9):.1f}dBFS")
+        elif kind == "riser":
+            a_t, a_status = None, "対象外（上昇音。山は次の拍頭）"
+        elif len(meas):
+            a_t, a_status = audio_onset(meas, e["t"] - 0.1, e["t"] + 0.1)
+        else:
+            a_t, a_status = None, "音声なし"
         rows.append({
-            "i": e["i"], "beat": e["beat"], "kind": e.get("kind"), "event_s": round(e["t"], 4),
+            "i": e["i"], "beat": e["beat"], "kind": kind, "event_s": round(e["t"], 4), "audio_status": a_status,
             "audio_onset_s": None if a_t is None else round(a_t, 4),
             "audio_minus_event_ms": None if a_t is None else round((a_t - e["t"]) * 1000, 1),
             "visual_change_s": None if v_t is None else round(v_t, 4),
@@ -162,11 +231,11 @@ def main():
     # 1フレーム超のずれ（音とイベント、音と絵）。音の無いイベント(silence)は対象外
     def bad(r):
         if r["kind"] == "silence":
-            return False
+            return not r["audio_status"].startswith("無音（ok）")
         for k in ("audio_minus_event_ms", "audio_minus_visual_ms", "visual_minus_event_ms"):
             if r[k] is not None and abs(r[k]) > tol_ms + 0.5:
                 return True
-        return r["audio_onset_s"] is None and r["kind"] != "silence"
+        return False  # 検出不能は「ずれ」に数えない（別に件数を出す）
     for r in rows:
         r["over_tol"] = bad(r)
 
@@ -202,7 +271,8 @@ def main():
     expected = (max([e["t"] for e in events] + [s["t"] for s in scenes] + [0]))
     flags = []
     over = [r for r in rows if r["over_tol"]]
-    if over: flags.append(f"音ズレ/検出失敗 {len(over)} 件 (許容 {tol_ms:.1f}ms)")
+    undetected = [r for r in rows if r["audio_status"] == "検出不能"]
+    if over: flags.append(f"ずれ・溜めの不成立 {len(over)} 件 (許容 {tol_ms:.1f}ms)")
     if loud["clipped_samples"]: flags.append(f"クリップ {loud['clipped_samples']} サンプル")
     if loud["true_peak_dbfs"] is not None and loud["true_peak_dbfs"] > -1.0: flags.append(f"True Peak {loud['true_peak_dbfs']} dBFS > -1.0")
     if bl: flags.append(f"黒画面 {len(bl)} 箇所")
@@ -213,6 +283,7 @@ def main():
     summary = {"video": str(vp), "cues": a.cues, "duration_s": info["duration"], "fps": fps, "size": [info["w"], info["h"]],
                "frames": n, "frame_ms": round(frame_ms, 2), "tolerance_ms": round(tol_ms, 2),
                "stream_start": {"video": info["v_start"], "audio": info["a_start"]},
+               "audio_measured_on": meas_src, "stems": stem_note, "undetected": len(undetected),
                "events": rows, "scenes": scene_rows, "cuts_s": cuts, "loudness": loud,
                "black": bl, "freeze": fz, "flags": flags, "ok": not flags}
     (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2))
@@ -220,13 +291,14 @@ def main():
     md = [f"# 検査 {vp.name}", "",
           f"- 尺 {info['duration']:.3f}s / {info['w']}x{info['h']} / {fps:g}fps / {n}フレーム（1フレーム={frame_ms:.1f}ms、許容 {tol_ms:.1f}ms）",
           f"- 音量 {loud['integrated_lufs']} LUFS / True Peak {loud['true_peak_dbfs']} dBFS / サンプルピーク {loud['sample_peak']} / クリップ {loud['clipped_samples']}",
-          f"- 黒画面 {len(bl)} / 静止 {len(fz)}",
+          f"- 黒画面 {len(bl)} / 静止 {len(fz)}" + (" （" + ", ".join(f"{z['start']:.2f}s〜{z['duration']:.2f}s間" for z in fz) + "）" if fz else ""),
+          f"- 音の立ち上がりの測定：{meas_src}。{stem_note}。検出不能 {len(undetected)} 件（ずれには数えない）",
           f"- 判定: {'異常なし' if not flags else '要確認 — ' + '; '.join(flags)}", "",
           "## 音と拍のずれ（ms。+は遅れ）", "",
-          "| # | 拍 | kind | イベント s | 音−イベント | 絵−イベント | 音−絵 | 超過 |", "|---|---|---|---|---|---|---|---|"]
+          "| # | 拍 | kind | イベント s | 音−イベント | 絵−イベント | 音−絵 | 音の状態 | 超過 |", "|---|---|---|---|---|---|---|---|---|"]
     f = lambda v: "n/a" if v is None else f"{v:+.1f}"
     for r in rows:
-        md.append(f"| {r['i']} | {r['beat']} | {r['kind']} | {r['event_s']:.3f} | {f(r['audio_minus_event_ms'])} | {f(r['visual_minus_event_ms'])} | {f(r['audio_minus_visual_ms'])} | {'超過' if r['over_tol'] else ''} |")
+        md.append(f"| {r['i']} | {r['beat']} | {r['kind']} | {r['event_s']:.3f} | {f(r['audio_minus_event_ms'])} | {f(r['visual_minus_event_ms'])} | {f(r['audio_minus_visual_ms'])} | {r['audio_status']} | {'超過' if r['over_tol'] else ''} |")
     md += ["", "## シーン開始と画面切り替え", "", "| シーン | 開始 s | 最寄りの切り替え s | 差 ms |", "|---|---|---|---|"]
     for s in scene_rows:
         md.append(f"| {s['id']} | {s['start_s']:.3f} | {s['nearest_cut_s']} | {f(s['cut_minus_start_ms'])} |")
