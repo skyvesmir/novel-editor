@@ -17,6 +17,7 @@
 | 配布zipの再構築・検証 | `/package-skill` | スクリプトのみ（LLM不要） |
 | 長編原稿の機械走査 | audit-scanner に依頼 | sonnet／medium |
 | テスト原稿の作成 | fixture-writer に依頼 | opus／medium |
+| 紹介動画の制作 | `/make-video` | video-tech-scout・video-ref-scout（sonnet／medium）、video-font-scout（haiku／low）、video-sound（opus／medium）、video-builder（opus／high）、video-critic（opus／high） |
 
 この skill は claude.ai の無料枠・有料枠のどちらでも動くことを目標にする。eval-generator は無料枠で使われる Sonnet（`sonnet` = 最新の Sonnet）を基準にし、有料枠の確認が要るときだけ opus でも回す。skill の読み込み量（採点1回あたりのトークン）も無料枠の負担になるので、配布ファイルに開発の経緯を書かない（経緯は `docs/calibration-evidence.md`）。
 
